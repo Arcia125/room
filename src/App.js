@@ -1,22 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import { ApolloProvider } from '@apollo/react-hooks';
+
 import './App.css';
+import { client } from './apolloClient';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Create a room to get started
-        </p>
-        <button
-          className="create-room-button"
-        >
-          Create a room
-        </button>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <Home></Home>
+    </ApolloProvider>
   );
 }
 
