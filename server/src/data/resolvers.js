@@ -1,30 +1,32 @@
-const channels = [
+const rooms = [
   {
     id: 1,
     name: 'games',
+    messages: []
   },
   {
     id: 2,
     name: 'tv',
+    message: []
   },
 ];
 
-let nextId = channels.length + 1;
+let nextId = rooms.length + 1;
 
 const Query = {
-  channels: () => {
-    return channels;
+  rooms: () => {
+    return rooms;
   },
-  channel: (root, { id }) => {
-    return channels.find(channel => channel.id == id);
+  room: (root, { id }) => {
+    return rooms.find(room => room.id == id);
   },
 };
 
 const Mutation = {
-  addChannel: (root, args) => {
-    const newChannel = { id: nextId++, name: args.name, messages: [] };
-    channels.push(newChannel);
-    return newChannel;
+  addRoom: (root, args) => {
+    const newRoom = { id: nextId++, name: args.name, messages: [] };
+    rooms.push(newRoom);
+    return newRoom;
   },
 };
 

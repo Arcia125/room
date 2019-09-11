@@ -1,5 +1,5 @@
 const typeDefs = `
-  type Channel {
+  type Room {
     id: ID!
     name: String
     messages: [Message]!
@@ -12,14 +12,14 @@ const typeDefs = `
 
   # This type specifies the entry points into our API. 
   type Query {
-    channels: [Channel]
-    channel(id: ID!): Channel
+    rooms: [Room]
+    room(id: ID!): Room
   }
 
   # The mutation root type, used to define all mutations.
   type Mutation {
-    # A mutation to add a new channel to the list of channels
-    addChannel(name: String!): Channel
+    # A mutation to add a new room to the list of rooms
+    addRoom(name: String!): Room
   }
 `;
 

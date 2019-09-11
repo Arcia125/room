@@ -3,15 +3,29 @@ import PropTypes from 'prop-types';
 import { useMutation } from '@apollo/react-hooks';
 
 import logo from '../logo.svg';
+import { ADD_ROOM } from '../graphql/addRoom';
 
-const Home = props => {
-  const [createRoom, {data, loading, error }] = useMutation()
+const roomNames = [
+  'test1',
+  'test2',
+];
+
+const Home = ({ history }) => {
+  const [addRoom, {data, loading, error }] = useMutation(ADD_ROOM, { variables: { name: roomNames[Math.random() > .5 ? 0 : 1] }});
+
+  React.useEffect(() => {
+    if (data && data.addRoom && data.addRoom.id) {
+      history.push(`/r/${data.addRoom.id}`);
+    }
+  }, [data && data.addRoom && data.addRoom.id]);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Create a room to get started</p>
-        <button className="create-room-button">create a room</button>
+        <button className="create-room-button" onClick={() => addRoom()}>create a room</button>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
       </header>
     </div>
   );
