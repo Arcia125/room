@@ -3,7 +3,7 @@ import { MockedProvider } from '@apollo/react-testing';
 import { render, wait, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Home from './Home';
+import Home from '.';
 
 afterEach(cleanup);
 

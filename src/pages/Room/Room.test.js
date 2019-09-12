@@ -9,8 +9,8 @@ import {
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Room from './Room';
-import { GET_ROOM } from '../graphql/getRoom';
+import Room from '.';
+import { GET_ROOM } from '../../graphql/getRoom';
 
 const mockRoom = {
   id: 'test-id',

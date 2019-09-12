@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery, useMutation, useLazyQuery } from '@apollo/react-hooks';
 
-import { GET_ROOM } from '../graphql/getRoom';
-import { SEND_MESSAGE } from '../graphql/sendMessage';
+import { GET_ROOM } from '../../graphql/getRoom';
+import { SEND_MESSAGE } from '../../graphql/sendMessage';
+import { Button } from '../../components/styled/Button';
 
 const Room = ({ match }) => {
-  debugger;
   const [userMessage, setUserMessage] = React.useState('');
   const handleInputChange = event => setUserMessage(event.target.value);
 
@@ -52,9 +52,9 @@ const Room = ({ match }) => {
           value={userMessage}
           onChange={handleInputChange}
         />
-        <button className="room-page-content__send-button" onClick={handleSend}>
+        <Button color="primary" onClick={handleSend}>
           send
-        </button>
+        </Button>
       </main>
     );
   }

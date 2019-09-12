@@ -1,16 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
-import './App.css';
-import Home from './pages/Home';
-import Room from './pages/Room';
+import Home from './pages/Home/';
+import Room from './pages/Room/';
+import { theme } from './theme';
 
 const App = () => {
   return (
-    <Router>
-      <Route path="/" component={Home} exact />
-      <Route path="/r/:roomId" component={Room} />
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Route path="/" component={Home} exact />
+        <Route path="/r/:roomId" component={Room} />
+      </Router>
+    </ThemeProvider>
   );
 };
 
