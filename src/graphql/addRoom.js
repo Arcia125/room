@@ -7,7 +7,7 @@ const ADD_ROOM = gql`
       name
       messages {
         id
-        text
+        content
       }
     }
   }

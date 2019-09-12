@@ -1,24 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 
 import { GET_ROOM } from '../graphql/getRoom';
-
+import { SEND_MESSAGE } from '../graphql/sendMessage';
 
 const Room = ({ match }) => {
-  const [getRoom, { data, loading, error }] = useLazyQuery(GET_ROOM);
+  const [userMessage, setUserMessage] = React.useState('');
+  const handleInputChange = event => setUserMessage(event.target.value);
 
-  React.useEffect(() => {
-    if (match.params.roomId) {
-      getRoom({ variables: { id: match.params.roomId } });
+  const roomId = match.params.roomId;
+
+  const roomQuery = useQuery(GET_ROOM, { variables: { id: roomId } });
+
+  const room = roomQuery.data && roomQuery.data.room;
+
+  const handleSendMessageComplete = () => setUserMessage('');
+
+  const [sendMessage, sendMessageMutation] = useMutation(SEND_MESSAGE, {
+    variables: { roomId, content: userMessage },
+    onCompleted: handleSendMessageComplete,
+  });
+
+  const handleSend = event => {
+    if (userMessage.length) {
+      sendMessage();
     }
-  }, [match.params.roomId])
+  };
+
+  let content;
+  if (roomQuery.loading) {
+    content = 'loading...';
+  }
+
+  if (roomQuery.error) {
+    content = roomQuery.error.message;
+  }
+
+  if (room) {
+    content = (
+      <main className="room-page-content">
+        <h1 className="room-page-content__header">{room.name}</h1>
+        <ul className="message-list">
+          {room.messages.map(message => (
+            <li className="message-list__item">{message.content}</li>
+          ))}
+        </ul>
+        <input className="room-page-content__user-input" value={userMessage} onChange={handleInputChange} />
+        <button className="room-page-content__send-button" onClick={handleSend}>send</button>
+      </main>
+    );
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      </header>
+    <div className="room-page">
+      <header className="room-page-header"></header>
+      {content}
     </div>
   );
 };

@@ -19,12 +19,14 @@ const Home = ({ history }) => {
     }
   }, [data && data.addRoom && data.addRoom.id]);
 
+  const handleCreateRoom = () => addRoom();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="home-page">
+      <header className="home-page-header">
+        <img src={logo} className="home-page-logo" alt="logo" />
         <p>Create a room to get started</p>
-        <button className="create-room-button" onClick={() => addRoom()}>create a room</button>
+        <button className="create-room-button" onClick={handleCreateRoom}>create a room</button>
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </header>
     </div>

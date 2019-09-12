@@ -7,7 +7,7 @@ const GET_ROOM = gql`
       name
       messages {
         id
-        text
+        content
       }
     }
   }
