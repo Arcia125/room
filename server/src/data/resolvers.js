@@ -1,24 +1,4 @@
-const rooms = [
-  {
-    id: 1,
-    name: 'games',
-    messages: [
-      {
-        id: 0,
-        content: 'test',
-      },
-      {
-        id: 1,
-        content: 'test2',
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: 'tv',
-    messages: [],
-  },
-];
+import { rooms } from '../../../shared/mockData/rooms';
 
 let nextRoomId = rooms.length + 1;
 
@@ -34,8 +14,8 @@ const Query = {
 };
 
 const Mutation = {
-  addRoom: (root, args) => {
-    const newRoom = { id: nextRoomId++, name: args.name, messages: [] };
+  addRoom: (root, { name }) => {
+    const newRoom = { id: nextRoomId++, name, messages: [] };
     rooms.push(newRoom);
     return newRoom;
   },
