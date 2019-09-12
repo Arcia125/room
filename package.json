@@ -21,6 +21,9 @@
     "express": "^4.17.1",
     "graphql": "^14.5.4",
     "graphql-tools": "^4.0.5",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -41,6 +44,17 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
     ]
   }
 }

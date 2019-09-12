@@ -19,7 +19,7 @@ const Room = ({ match }) => {
 
   const [sendMessage, sendMessageMutation] = useMutation(SEND_MESSAGE, {
     variables: { roomId, content: userMessage },
-    onCompleted: handleSendMessageComplete,
+    onCompleted: handleSendMessageComplete
   });
 
   const handleSend = event => {
@@ -46,8 +46,14 @@ const Room = ({ match }) => {
             <li className="message-list__item">{message.content}</li>
           ))}
         </ul>
-        <input className="room-page-content__user-input" value={userMessage} onChange={handleInputChange} />
-        <button className="room-page-content__send-button" onClick={handleSend}>send</button>
+        <input
+          className="room-page-content__user-input"
+          value={userMessage}
+          onChange={handleInputChange}
+        />
+        <button className="room-page-content__send-button" onClick={handleSend}>
+          send
+        </button>
       </main>
     );
   }
