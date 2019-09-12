@@ -1,3 +1,6 @@
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+
 const theme = {
   spacing: {
     0: '0px',
@@ -7,4 +10,10 @@ const theme = {
   }
 };
 
-export { theme };
+const Provider = ({ children, ...restPRops }) => (
+  <ThemeProvider theme={theme} {...restPRops}>
+    {children}
+  </ThemeProvider>
+);
+
+export { theme, Provider };

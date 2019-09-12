@@ -11,6 +11,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Room from '.';
 import { GET_ROOM } from '../../graphql/getRoom';
+import { Provider } from '../../theme';
 
 const mockRoom = {
   id: 'test-id',
@@ -43,7 +44,9 @@ describe('Room', () => {
   it('renders without crashing', async () => {
     const { container } = render(
       <MockedProvider mocks={[getRoomMock]}>
-        <Room match={{ params: { roomId } }} />
+        <Provider>
+          <Room match={{ params: { roomId } }} />
+        </Provider>
       </MockedProvider>
     );
     await wait(() => expect(container).toBeInTheDocument());
