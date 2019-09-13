@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  useQuery,
-  useMutation,
-  useLazyQuery,
-  useSubscription
-} from '@apollo/react-hooks';
+import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 
 import { GET_ROOM } from '../../graphql/getRoom';
 import { SEND_MESSAGE } from '../../graphql/sendMessage';

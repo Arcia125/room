@@ -1,17 +1,12 @@
 import React from 'react';
 import { MockedProvider } from '@apollo/react-testing';
-import {
-  render,
-  cleanup,
-  wait,
-  waitForElement,
-  act
-} from '@testing-library/react';
+import { render, cleanup, wait } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import Room from '.';
 import { GET_ROOM } from '../../graphql/getRoom';
 import { Provider } from '../../theme';
+import { NEW_ROOM_MESSAGE } from '../../graphql/newRoomMessage';
 
 const mockRoom = {
   id: 'test-id',
@@ -19,9 +14,11 @@ const mockRoom = {
   messages: [
     {
       id: 0,
-      content: 'test-content'
+      content: 'test-content',
+      __typename: 'Message'
     }
-  ]
+  ],
+  __typename: 'Room'
 };
 
 const { id: roomId } = mockRoom;
@@ -31,7 +28,7 @@ afterEach(cleanup);
 const getRoomMock = {
   request: {
     query: GET_ROOM,
-    variables: { roomId }
+    variables: { id: roomId }
   },
   result: {
     data: {
@@ -40,10 +37,28 @@ const getRoomMock = {
   }
 };
 
+const newRoomMessageMock = {
+  request: {
+    query: NEW_ROOM_MESSAGE,
+    variables: { roomId }
+  },
+  result: {
+    data: {
+      newRoomMessage: {
+        id: 1,
+        content: 'test-content',
+        __typename: 'Message'
+      }
+    }
+  }
+};
+
+const mocks = [getRoomMock, newRoomMessageMock];
+
 describe('Room', () => {
   it('renders without crashing', async () => {
     const { container } = render(
-      <MockedProvider mocks={[getRoomMock]}>
+      <MockedProvider addTypename mocks={mocks}>
         <Provider>
           <Room match={{ params: { roomId } }} />
         </Provider>
