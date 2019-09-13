@@ -19,6 +19,10 @@ const typeDefs = `
     addRoom(name: String!): Room
     sendMessage(roomId: ID!, content: String!): Message
   }
+
+  type Subscription {
+    newRoomMessage(roomId: ID!): Message
+  }
 `;
 
 export { typeDefs };

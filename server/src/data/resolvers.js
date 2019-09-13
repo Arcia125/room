@@ -1,8 +1,14 @@
+import { PubSub } from 'graphql-subscriptions';
+
 import { rooms } from '../../../shared/mockData/rooms';
 
 let nextRoomId = rooms.length + 1;
 
 let nextMessageId = 2;
+
+const pubsub = new PubSub();
+
+const NEW_ROOM_MESSAGE = 'newRoomMessage';
 
 const Query = {
   rooms: () => {
@@ -25,15 +31,30 @@ const Mutation = {
 
     const newMessage = { id: nextMessageId++, content };
     room.messages.push(newMessage);
+    
+    const data = {
+      newRoomMessage: newMessage
+    };
+
+    pubsub.publish(NEW_ROOM_MESSAGE, data);
 
     // TODO: update all clients in room
     return newMessage;
   },
 };
 
+const Subscription = {
+  newRoomMessage: {
+    subscribe: (root, { roomId }) => {
+      return pubsub.asyncIterator(NEW_ROOM_MESSAGE);
+    }
+  }
+}
+
 const resolvers = {
   Query,
   Mutation,
+  Subscription,
 };
 
 export { resolvers };
