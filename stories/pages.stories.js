@@ -1,13 +1,20 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { mockedProvider, themeProvider } from './decorators';
-import RoomStory from './Room.stories';
-import { getRoomMock, newRoomMessageMock } from '../shared/queryMocks/room';
+import { getRoomMock, newRoomMessageMock, mockRoom } from '../shared/queryMocks/room';
+import roomMdText from './Room.md';
+import Room from '../src/pages/Room';
 
 const mocks = [getRoomMock, newRoomMessageMock];
 
-storiesOf('pages', module)
-  .addDecorator(mockedProvider(mocks))
-  .addDecorator(themeProvider)
-  .add('Room', () => <RoomStory />);
+export default {
+  title: 'pages',
+  decorators: [mockedProvider(mocks), themeProvider],
+};
+
+export const room = () => <Room match={{ params: { roomId: mockRoom.id }}} />;
+
+room.story = {
+  name: 'Room',
+  parameters: { notes: { markdown: roomMdText } },
+};
