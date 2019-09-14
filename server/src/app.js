@@ -11,9 +11,11 @@ const app = express();
 app.use(express.static(builtFrontendPath));
 
 // Send basic htmlFile
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
   res.sendFile(indexHtmlPath);
 });
+
+// app.use('/graphiql', graphiqlExpress);
 
 /**
  * @description Simple wrapper for app.listen() that creates and adds the graphql subscription server
@@ -21,14 +23,18 @@ app.get('/', function (req, res) {
  */
 const listen = (...args) => {
   const server = app.listen(...args);
-  const subscriptionServer = SubscriptionServer.create({
-    schema,
-    execute,
-    subscribe,
-  }, {
-    server: server,
-    path: '/graphql'
-  });
+  const subscriptionServer = SubscriptionServer.create(
+    {
+      schema,
+      execute,
+      subscribe,
+    },
+    {
+      server: server,
+      path: '/graphql',
+    }
+  );
+
   return { server, subscriptionServer };
 };
 

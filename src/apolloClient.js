@@ -1,4 +1,5 @@
 import React from 'react';
+import { typeDefs } from './typeDefs';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -9,6 +10,8 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
 const client = new ApolloClient({
+  connectToDevTools: true,
+  typeDefs,
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors)

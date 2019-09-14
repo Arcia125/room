@@ -1,4 +1,6 @@
-const typeDefs = `
+import { gql } from 'apollo-boost';
+
+const typeDefs = gql`
   type Room {
     id: ID!
     name: String

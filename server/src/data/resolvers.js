@@ -10,6 +10,8 @@ const pubsub = new PubSub();
 
 const NEW_ROOM_MESSAGE = 'newRoomMessage';
 
+const getNewRoomMessageChannel = roomId => `${NEW_ROOM_MESSAGE}__${roomId}`;
+
 const Query = {
   rooms: () => {
     return rooms;
@@ -31,14 +33,13 @@ const Mutation = {
 
     const newMessage = { id: nextMessageId++, content };
     room.messages.push(newMessage);
-    
+
     const data = {
-      newRoomMessage: newMessage
+      newRoomMessage: newMessage,
     };
 
-    pubsub.publish(NEW_ROOM_MESSAGE, data);
+    pubsub.publish(getNewRoomMessageChannel(roomId), data);
 
-    // TODO: update all clients in room
     return newMessage;
   },
 };
@@ -46,10 +47,10 @@ const Mutation = {
 const Subscription = {
   newRoomMessage: {
     subscribe: (root, { roomId }) => {
-      return pubsub.asyncIterator(NEW_ROOM_MESSAGE);
-    }
-  }
-}
+      return pubsub.asyncIterator(getNewRoomMessageChannel(roomId));
+    },
+  },
+};
 
 const resolvers = {
   Query,

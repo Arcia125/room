@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/react-hooks';
 import logo from '../../logo.svg';
 import { ADD_ROOM } from '../../graphql/addRoom';
 import { HomePage } from './styles';
-import { Button } from '../../components/styled/Button';
+import { Button } from '../../components/styles/Button';
 
 const roomNames = ['test1', 'test2'];
 
@@ -21,6 +21,7 @@ const Home = ({ history }) => {
       history.push(`/r/${addedRoomId}`);
     }
   }, [addedRoomId]);
+  console.log('Donte was here');
 
   const handleCreateRoom = () => addRoom();
 
