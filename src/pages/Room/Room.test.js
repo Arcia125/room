@@ -4,63 +4,23 @@ import { render, cleanup, wait } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import Room from '.';
-import { GET_ROOM } from '../../graphql/getRoom';
 import { Provider } from '../../theme';
-import { NEW_ROOM_MESSAGE } from '../../graphql/newRoomMessage';
-
-const mockRoom = {
-  id: 'test-id',
-  name: 'test-room',
-  messages: [
-    {
-      id: 0,
-      content: 'test-content',
-      __typename: 'Message'
-    }
-  ],
-  __typename: 'Room'
-};
-
-const { id: roomId } = mockRoom;
-
-afterEach(cleanup);
-
-const getRoomMock = {
-  request: {
-    query: GET_ROOM,
-    variables: { id: roomId }
-  },
-  result: {
-    data: {
-      room: mockRoom
-    }
-  }
-};
-
-const newRoomMessageMock = {
-  request: {
-    query: NEW_ROOM_MESSAGE,
-    variables: { roomId }
-  },
-  result: {
-    data: {
-      newRoomMessage: {
-        id: 1,
-        content: 'test-content',
-        __typename: 'Message'
-      }
-    }
-  }
-};
+import {
+  getRoomMock,
+  newRoomMessageMock,
+  mockRoom
+} from '../../../shared/queryMocks/room';
 
 const mocks = [getRoomMock, newRoomMessageMock];
+
+afterEach(cleanup);
 
 describe('Room', () => {
   it('renders without crashing', async () => {
     const { container } = render(
       <MockedProvider addTypename mocks={mocks}>
         <Provider>
-          <Room match={{ params: { roomId } }} />
+          <Room match={{ params: { roomId: mockRoom.id } }} />
         </Provider>
       </MockedProvider>
     );

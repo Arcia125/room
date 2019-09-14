@@ -11,7 +11,9 @@
     "develop:frontend": "react-scripts start",
     "build:frontend": "react-scripts build",
     "test:frontend": "react-scripts test",
-    "eject:frontend": "react-scripts eject"
+    "eject:frontend": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.0",
@@ -37,9 +39,15 @@
     "subscriptions-transport-ws": "^0.9.16"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-links": "^5.1.11",
+    "@storybook/addons": "^5.1.11",
+    "@storybook/react": "^5.1.11",
     "@testing-library/dom": "^6.2.0",
     "@testing-library/jest-dom": "^4.1.0",
-    "@testing-library/react": "^9.1.4"
+    "@testing-library/react": "^9.1.4",
+    "babel-loader": "^8.0.6"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,0 +1,32 @@
+{
+  "folders": [
+	{
+		"path": ".git"
+	},
+	{
+		"path": ".vscode"
+	},
+	{
+		"path": "build"
+	},
+	{
+		"path": "coverage"
+	},
+	{
+		"path": "node_modules"
+	},
+	{
+		"path": "public"
+	},
+	{
+		"path": "server"
+	},
+	{
+		"path": "shared"
+	},
+	{
+		"path": "src"
+	}
+],
+  "settings": {}
+}
