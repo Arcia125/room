@@ -1,27 +1,10 @@
 {
   "folders": [
     {
-      "path": ".vscode"
-    },
-    {
-      "path": "public"
-    },
-    {
-      "path": "server"
-    },
-    {
-      "path": "shared"
-    },
-    {
-      "path": "src"
-    },
-    {
-      "path": ".storybook"
-    },
-    {
-      "path": "stories"
+      "path": "."
     }
   ],
   "settings": {
+    "editor.tabSize": 2
   }
 }
