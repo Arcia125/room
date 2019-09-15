@@ -17,6 +17,12 @@ const StyledRoom = styled.div`
       border-radius: 2px;
     }
     &__input {
+      &--field {
+        height: 4.8rem;
+        /* padding: .8rem; */
+      }
+      &--button {
+      }
     }
     &__header {
       color: ${p => p.theme.colors.grayDark};
