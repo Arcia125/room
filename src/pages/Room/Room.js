@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 
 import StyledRoom from '../../components/styles/Room';
+import UserList from '../../components/UserList';
 import { GET_ROOM } from '../../graphql/getRoom';
 import { SEND_MESSAGE } from '../../graphql/sendMessage';
 import { Button } from '../../components/styles/Button';
@@ -88,12 +89,7 @@ const Room = ({
   if (room) {
     content = (
       <StyledRoom>
-        <div className="user-list">
-          <li>Kevin</li>
-          <li>Kaitlyn</li>
-          <li>Chelsie</li>
-          <li>Donte</li>
-        </div>
+        <UserList />
         <div className="chatbox">
           <h1 className="chatbox__header">{room.name}</h1>
           <ul className="chatbox__message-list">
@@ -105,12 +101,16 @@ const Room = ({
           </ul>
           <div className="chatbox__input">
             <input
-              className="room-page-content__user-input"
+              className="chatbox__input--field"
               value={userMessage}
               onChange={handleInputChange}
               onKeyDown={submitIfEnter}
             />
-            <Button color="primary" onClick={handleSend}>
+            <Button
+              className="chatbox__input--button"
+              color="primary"
+              onClick={handleSend}
+            >
               {sendMessageMutation.loading ? 'sending...' : 'send'}
             </Button>
           </div>
