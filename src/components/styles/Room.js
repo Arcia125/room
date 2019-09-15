@@ -8,6 +8,7 @@ const StyledRoom = styled.div`
   grid-template-areas:
     'search-bar room-name'
     'list' 'messages';
+  background-color: ${p => p.theme.colors.lightPurple};
   .chatbox {
     &__user-list {
       grid-area: 'list';

@@ -1,7 +1,11 @@
 import React from 'react';
 
 import { mockedProvider, themeProvider } from './decorators';
-import { getRoomMock, newRoomMessageMock, mockRoom } from '../shared/queryMocks/room';
+import {
+  getRoomMock,
+  newRoomMessageMock,
+  mockRoom,
+} from '../shared/queryMocks/room';
 import roomMdText from './Room.md';
 import Room from '../src/pages/Room';
 import homeMdText from './Home.md';
@@ -18,10 +22,12 @@ export const home = () => <Home />;
 
 home.story = {
   name: 'Home',
-  parameters: { notes: { markdown: homeMdText } }
+  parameters: { notes: { markdown: homeMdText } },
 };
 
-export const room = () => <Room match={{ params: { roomId: mockRoom.id }}} />;
+export const room = () => <Room match={{ params: { roomId: mockRoom.id } }} />;
+
+export const UserList = () => <div></div>;
 
 room.story = {
   name: 'Room',

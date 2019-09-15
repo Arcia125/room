@@ -11,9 +11,9 @@ const theme = {
   colors: {
     gray: '#B3B2C0',
     grayDark: '#1f1f1f',
-    white: '#EFEEF8',
     lightBlue: '#AEAFE8',
     blue: '#AC2FC9',
+    lightPurple: '#EFEEF8',
     purple: '#9056D4',
     pink: '#DD6589',
     bleh: '#8A4966'
