@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 
 import StyledRoom from '../../components/styles/Room';
+import UserList from '../../components/UserList';
 import { GET_ROOM } from '../../graphql/getRoom';
 import { SEND_MESSAGE } from '../../graphql/sendMessage';
 import { Button } from '../../components/styles/Button';
@@ -87,41 +88,42 @@ const Room = ({
 
   if (room) {
     content = (
-      <StyledRoom className="chatbox">
-        <h1 className="chatbox__header">{room.name}</h1>
-        <div className="chatbox__user-list">
-          <li>Kevin</li>
-          <li>Kaitlyn</li>
-          <li>Chelsie</li>
-          <li>Donte</li>
-        </div>
-        <ul className="chatbox__message-list">
-          {room.messages.map(message => (
-            <li key={message.id} className="chatbox__message-list--item">
-              {message.content}
-            </li>
-          ))}
-        </ul>
-        <div className="chatbox__input">
-          <input
-            className="room-page-content__user-input"
-            value={userMessage}
-            onChange={handleInputChange}
-            onKeyDown={submitIfEnter}
-          />
-          <Button color="primary" onClick={handleSend}>
-            {sendMessageMutation.loading ? 'sending...' : 'send'}
-          </Button>
+      <StyledRoom>
+        <UserList />
+        <div className="chatbox">
+          <h1 className="chatbox__header">{room.name}</h1>
+          <ul className="chatbox__message-list">
+            {room.messages.map(message => (
+              <li key={message.id} className="chatbox__message-list--item">
+                {message.content}
+              </li>
+            ))}
+          </ul>
+          <div className="chatbox__input">
+            <input
+              className="chatbox__input--field"
+              value={userMessage}
+              onChange={handleInputChange}
+              onKeyDown={submitIfEnter}
+            />
+            <Button
+              className="chatbox__input--button"
+              color="primary"
+              onClick={handleSend}
+            >
+              {sendMessageMutation.loading ? 'sending...' : 'send'}
+            </Button>
+          </div>
         </div>
       </StyledRoom>
     );
   }
 
   return (
-    <StyledRoom className="room__page">
+    <div className="room-page">
       <header className="room-page__header">Chat</header>
       {content}
-    </StyledRoom>
+    </div>
   );
 };
 

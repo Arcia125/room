@@ -3,12 +3,12 @@ import styled from 'styled-components';
 const StyledRoom = styled.div`
   /* This line is giving padding to both chatbox and room-page... */
   padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+    'search-bar room-name'
+    'list' 'messages';
   .chatbox {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas:
-      'search-bar room-name'
-      'list' 'messages';
     &__user-list {
       grid-area: 'list';
       list-style: none;
@@ -17,6 +17,12 @@ const StyledRoom = styled.div`
       border-radius: 2px;
     }
     &__input {
+      &--field {
+        height: 4.8rem;
+        /* padding: .8rem; */
+      }
+      &--button {
+      }
     }
     &__header {
       color: ${p => p.theme.colors.grayDark};
@@ -29,6 +35,7 @@ const StyledRoom = styled.div`
       grid-area: message-list;
       border: 1px solid gray;
       width: 90rem;
+      min-height: 70rem;
       list-style: none;
       &--item {
       }
@@ -36,6 +43,7 @@ const StyledRoom = styled.div`
   }
 
   .room-page {
+    padding: 4rem;
     &__header {
       color: ${p => p.theme.colors.grayDark};
       font-family: 'Poppins', sans-serif;
