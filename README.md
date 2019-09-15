@@ -1,5 +1,7 @@
 # Room
 
+[![CircleCI](https://circleci.com/gh/Arcia125/room.svg?style=svg)](https://circleci.com/gh/Arcia125/room)
+
 Chatroom app with GraphQL subscriptions.
 
 ## Scripts
