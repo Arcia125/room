@@ -35,3 +35,15 @@ Run storybook
 ```bash
 npm run storybook
 ```
+
+Build docker image
+
+```bash
+npm run build-docker
+```
+
+Run docker image (after running build-docker command above)
+
+```bash
+npm run start-docker
+```

@@ -9,6 +9,14 @@ import { ApolloLink } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 // import { getMainDefinition } from 'apollo-utilities';
 
+// 'ws://localhost:9001/graphql'
+
+const getSameOriginWebSocketUri = path =>
+  window && window.location.origin.replace(/https?/, 'ws') + path;
+
+const webSocketUri = getSameOriginWebSocketUri('/graphql');
+console.log(`webSocketUri = ${webSocketUri}`);
+
 const link = ApolloLink.from([
   onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors)
@@ -20,7 +28,7 @@ const link = ApolloLink.from([
     if (networkError) console.error(`[Network error]: `, networkError);
   }),
   new WebSocketLink({
-    uri: 'ws://localhost:9001/graphql',
+    uri: webSocketUri,
     options: {
       reconnect: true
     }

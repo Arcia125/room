@@ -13,7 +13,9 @@
     "test:frontend": "react-scripts test",
     "eject:frontend": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-docker": "docker build -t arcia125/room .",
+    "start-docker": "docker run -d -p 9001:9001 arcia125/room"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.0",
@@ -27,6 +29,7 @@
     "graphql-subscriptions": "^1.1.0",
     "graphql-tools": "^4.0.5",
     "husky": "^3.0.5",
+    "jsonwebtoken": "^8.5.1",
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
