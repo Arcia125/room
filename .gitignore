@@ -6,8 +6,10 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# frontend build directory
 build/
 
+# test coverate directory
 coverage/
 
 # Dependency directories

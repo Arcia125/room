@@ -21,7 +21,6 @@ const Home = ({ history }) => {
       history.push(`/r/${addedRoomId}`);
     }
   }, [addedRoomId]);
-  console.log('Donte was here');
 
   const handleCreateRoom = () => addRoom();
 

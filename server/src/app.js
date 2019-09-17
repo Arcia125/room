@@ -2,22 +2,29 @@ import express from 'express';
 import { execute, subscribe } from 'graphql';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { graphiqlExpress } from 'graphql-server-express';
+import jwt from 'jsonwebtoken';
 
 import { builtFrontendPath, indexHtmlPath } from './filePaths';
 import { schema } from './data/schema';
-import { PORT } from '../config';
+import { PORT, JWT_SECRET } from '../config';
 
 const app = express();
 
 // Setup express static to serve static files from build directory.
 app.use(express.static(builtFrontendPath));
 
-app.use('/graphiql', graphiqlExpress({
-  endpointURL: `ws://localhost:${PORT}/graphql`,
-}));
+app.use(
+  '/graphiql',
+  graphiqlExpress({
+    endpointURL: `ws://localhost:${PORT}/graphql`,
+  })
+);
+// app.get('/test', function(req, res) {
+//   res.json({ test: 'test' });
+// });
 
 // Send basic htmlFile
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
   res.sendFile(indexHtmlPath);
 });
 
@@ -34,6 +41,30 @@ const listen = (...args) => {
       schema,
       execute,
       subscribe,
+      // onOperation: (operation, webSocket) => {
+      //   console.log(operation, webSocket);
+
+      // },
+      onConnect: (connectionParams, websocket) => {
+        // if (connectionParams.authToken) {
+        //   // try {
+        //   //   const decoded = jwt.verify(connectionParams.authToken, JWT_SECRET);
+        //   // }
+        //   return validateToken(connectionParams.authToken)
+        //     .then(findUser(connectionParams.authToken))
+        //     .then(user => {
+        //       return {
+        //         currentUser: user,
+        //       };
+        //     });
+        // } else {
+        //   const user = {};
+        //   const context = {
+        //     currentUser: user,
+        //   };
+        // }
+        // throw new Error('Missing auth token!');
+      },
     },
     {
       server: server,

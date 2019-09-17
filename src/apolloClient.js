@@ -7,14 +7,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
-// import { getMainDefinition } from 'apollo-utilities';
+import { webSocketUri } from './urls';
 
-// 'ws://localhost:9001/graphql'
-
-const getSameOriginWebSocketUri = path =>
-  window && window.location.origin.replace(/https?/, 'ws') + path;
-
-const webSocketUri = getSameOriginWebSocketUri('/graphql');
 console.log(`webSocketUri = ${webSocketUri}`);
 
 const link = ApolloLink.from([
