@@ -1,4 +1,3 @@
-
 import { rooms } from '../../../shared/mockData/rooms';
 import { pubsub } from '../controllers/pubsub';
 import { users } from '../../../shared/mockData/users';
@@ -18,10 +17,11 @@ const findRoomById = roomId => {
 
 const getNewRoomMessageChannel = roomId => `${NEW_ROOM_MESSAGE}__${roomId}`;
 
-const publishNewRoomMessage = (roomId, newRoomMessage) => pubsub.publish(getNewRoomMessageChannel(roomId), { newRoomMessage });
+const publishNewRoomMessage = (roomId, newRoomMessage) =>
+  pubsub.publish(getNewRoomMessageChannel(roomId), { newRoomMessage });
 
-const subscribeToNewRoomMessages = roomId => pubsub.asyncIterator(getNewRoomMessageChannel(roomId));
-
+const subscribeToNewRoomMessages = roomId =>
+  pubsub.asyncIterator(getNewRoomMessageChannel(roomId));
 
 const Query = {
   rooms: () => {
@@ -50,12 +50,16 @@ const Mutation = {
     return user;
   },
   addRoom: (root, { name }, context) => {
-    
-    const newRoom = { id: nextRoomId++, name, messages: [], users: [context.currentUser] };
+    const newRoom = {
+      id: nextRoomId++,
+      name,
+      messages: [],
+      users: [context.currentUser],
+    };
 
     rooms.push(newRoom);
 
-    return newRoom; 
+    return newRoom;
   },
   sendMessage: (root, { roomId, content }) => {
     const room = findRoomById(roomId);
