@@ -1,23 +1,35 @@
 import { gql } from 'apollo-boost';
 
 const typeDefs = gql`
-  type Room {
-    id: ID!
-    name: String
-    messages: [Message]!
-  }
-
   type Message {
     id: ID!
     content: String
   }
 
+  type User {
+    id: ID!
+    firstName: String
+    lastName: String
+    avatar: String
+    username: String
+  }
+
+  type Room {
+    id: ID!
+    name: String
+    messages: [Message]!
+    users: [User]!
+  }
+
   type Query {
     rooms: [Room]
     room(id: ID!): Room
+    users: [User]
+    user(id: ID!): User
   }
 
   type Mutation {
+    login(username: String!, password: String!): User
     addRoom(name: String!): Room
     sendMessage(roomId: ID!, content: String!): Message
   }

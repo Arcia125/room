@@ -1,5 +1,4 @@
 import React from 'react';
-import { typeDefs } from './typeDefs';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -7,14 +6,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
-// import { getMainDefinition } from 'apollo-utilities';
 
-// 'ws://localhost:9001/graphql'
+import { typeDefs } from './typeDefs';
+import { webSocketUri } from './urls';
+import { resolvers } from './resolvers/';
 
-const getSameOriginWebSocketUri = path =>
-  window && window.location.origin.replace(/https?/, 'ws') + path;
-
-const webSocketUri = getSameOriginWebSocketUri('/graphql');
 console.log(`webSocketUri = ${webSocketUri}`);
 
 const link = ApolloLink.from([
@@ -59,6 +55,8 @@ const link = ApolloLink.from([
 
 const options = {
   connectToDevTools: true,
+  resolvers: resolvers.resolvers,
+  // clientState: resolvers,
   typeDefs,
   link,
   cache: new InMemoryCache()

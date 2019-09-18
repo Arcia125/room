@@ -12,11 +12,13 @@ const rooms = [
         content: 'test2',
       },
     ],
+    users: [],
   },
   {
     id: 2,
     name: 'tv',
     messages: [],
+    users: [],
   },
 ];
 

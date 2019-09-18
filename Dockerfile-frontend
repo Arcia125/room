@@ -8,17 +8,23 @@ WORKDIR /usr/src/room
 # where available (npm@5+)
 COPY package*.json ./
 
+COPY .env.docker ./.env
+
+RUN ls
+
 RUN npm install
-# In production, this line should be:
-# RUN npm ci --only=production
 
-COPY . .
 
-EXPOSE 9001
+EXPOSE 3000
+EXPOSE 35729
 
-# build frontend DCACHEBUST
-ARG DCACHEBUST=0
-RUN npm run build:frontend
+COPY ./shared ./shared
+
+COPY ./src ./src
+
+COPY ./public ./public
+
+RUN ls
 
 # run server
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "develop:frontend" ]

@@ -1,0 +1,28 @@
+version: '3.6'
+
+services:
+  ################################
+  #   Setup node container
+  ################################
+  server:
+    build: .
+    expose:
+      - 9001
+    ports:
+      - 9001:9001
+
+  ################################
+  #   Setup frontend container
+  ################################
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    expose:
+      - 3000
+      - 35729
+    ports:
+      - 3000:3000
+      - 35729:35729
+    links:
+      - server

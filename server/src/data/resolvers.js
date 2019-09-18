@@ -1,6 +1,8 @@
 
 import { rooms } from '../../../shared/mockData/rooms';
 import { pubsub } from '../controllers/pubsub';
+import { users } from '../../../shared/mockData/users';
+import { RoomNotFoundError } from './errors';
 
 let nextRoomId = rooms.length + 1;
 
@@ -28,15 +30,32 @@ const Query = {
   room: (root, { id }) => {
     return findRoomById(id);
   },
+  users: () => {
+    return users;
+  },
+  user: (root, { id }) => {
+    return users.find(user => user.id === id);
+  },
 };
 
 const Mutation = {
-  addRoom: (root, { name }) => {
-    const newRoom = { id: nextRoomId++, name, messages: [] };
+  // signup: (root, { username, password }) => {
+  //   // const user = new User();
+  // },
+  login: (root, { username, password }) => {
+    console.warn('IMPLEMENT AUTH');
+
+    const user = users.find(user => user.username === username);
+
+    return user;
+  },
+  addRoom: (root, { name }, context) => {
+    
+    const newRoom = { id: nextRoomId++, name, messages: [], users: [context.currentUser] };
 
     rooms.push(newRoom);
 
-    return newRoom;
+    return newRoom; 
   },
   sendMessage: (root, { roomId, content }) => {
     const room = findRoomById(roomId);

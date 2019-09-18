@@ -20,8 +20,8 @@ const theme = {
   }
 };
 
-const Provider = ({ children, ...restPRops }) => (
-  <ThemeProvider theme={theme} {...restPRops}>
+const Provider = ({ children, ...restProps }) => (
+  <ThemeProvider theme={theme} {...restProps}>
     {children}
   </ThemeProvider>
 );

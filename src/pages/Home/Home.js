@@ -20,8 +20,7 @@ const Home = ({ history }) => {
     if (addedRoomId || addedRoomId === 0) {
       history.push(`/r/${addedRoomId}`);
     }
-  }, [addedRoomId]);
-  console.log('Donte was here');
+  });
 
   const handleCreateRoom = () => addRoom();
 

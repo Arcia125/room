@@ -1,6 +1,8 @@
 import { listen } from './src/app';
-import { PORT } from './config';
+import config from './config';
 
-listen({ port: PORT }, () => {
-  console.log(`Server is listening at http://localhost:${PORT}`);
+listen({ port: config.PORT }, () => {
+  console.log(`Server is listening at http://localhost:${config.PORT}`);
+}).then(({ server, subscriptionServer, dbConnection }) => {
+  console.log(server, subscriptionServer, dbConnection);
 });
