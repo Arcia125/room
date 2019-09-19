@@ -6,10 +6,11 @@ const hostName =
     : process.env.REACT_APP_PUBLIC_URL) || 'http://localhost:9001';
 
 module.exports = function(app) {
-  app.use(proxy('/*', { target: hostName }));
+  app.use(proxy('/graphql', { target: hostName }));
   app.use(
-    proxy('/graphql', {
-      target: `ws://${hostName.replace(/https?:\/\//, '')}`,
+    proxy(process.env.REACT_APP_GRAPHQL_WS_ENDPOINT, {
+      // target: `ws://${hostName.replace(/https?:\/\//, '')}`,
+      target: hostName,
       ws: true
     })
   );

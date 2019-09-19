@@ -1,7 +1,12 @@
+import jwt from 'jsonwebtoken';
+
 import { rooms } from '../../../shared/mockData/rooms';
 import { pubsub } from '../controllers/pubsub';
 import { users } from '../../../shared/mockData/users';
 import { RoomNotFoundError } from './errors';
+import { User } from '../models/user';
+import { createRandomUsername } from '../utils/createRandomUsername';
+import { signToken } from '../utils/auth';
 
 let nextRoomId = rooms.length + 1;
 
@@ -42,19 +47,52 @@ const Mutation = {
   // signup: (root, { username, password }) => {
   //   // const user = new User();
   // },
+  createUser: async (root, { username }) => {
+    console.log(`creating user ${username}`);
+
+    const user = new User({
+      username: username || createRandomUsername(),
+      password: null,
+    });
+
+    const savedUser = await user.save();
+
+    // const token = 'implement this!';
+    // const token = jwt.sign({
+    //   email: savedUser.email,
+    //   username: savedUser.username,
+    // });
+
+    // Sign jwt with user email and username as payload
+    const token = signToken({
+      email: savedUser.email,
+      username: savedUser.username,
+    });
+
+    return {
+      token,
+      user: savedUser,
+    };
+  },
   login: (root, { username, password }) => {
     console.warn('IMPLEMENT AUTH');
 
     const user = users.find(user => user.username === username);
 
-    return user;
+    const token = 'implement this!';
+
+    return {
+      user,
+      token,
+    };
   },
   addRoom: (root, { name }, context) => {
+    console.log('adding room. context ', context);
     const newRoom = {
       id: nextRoomId++,
       name,
       messages: [],
-      users: [context.currentUser],
+      users: context.currentUser ? [context.currentUser] : [],
     };
 
     rooms.push(newRoom);

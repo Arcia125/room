@@ -18,6 +18,10 @@ const PUBLIC_URL_FROM_WINDOW = window && window.location.origin;
 
 const webSocketUriBase = PUBLIC_URL_FROM_WINDOW.replace(/https?/, 'ws');
 
-const webSocketUri = `${webSocketUriBase}/graphql`;
+console.log('webSocketUriBase', webSocketUriBase);
 
-export { webSocketUri };
+const webSocketUri = `${webSocketUriBase}${process.env.REACT_APP_GRAPHQL_WS_ENDPOINT}`;
+
+const httpUri = `${PUBLIC_URL_FROM_WINDOW}${process.env.REACT_APP_GRAPHQL_HTTP_ENDPOINT}`;
+
+export { webSocketUri, httpUri };

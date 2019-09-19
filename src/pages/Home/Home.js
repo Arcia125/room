@@ -1,37 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import logo from '../../logo.svg';
 import { ADD_ROOM } from '../../graphql/addRoom';
 import { HomePage } from './styles';
 import { Button } from '../../components/styles/Button';
+import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
+import { CREATE_USER } from '../../graphql/createUser';
+import { SAVE_USER } from '../../graphql/saveUser';
 
-const roomNames = ['test1', 'test2'];
+const useField = ({ initialValue = '' } = { initialValue: '' }) => {
+  const [value, setValue] = useState(initialValue);
+  const onChange = event => setValue(event.target.value);
+  return {
+    value,
+    onChange
+  };
+};
 
-const Home = ({ history }) => {
-  const [addRoom, addRoomMutation] = useMutation(ADD_ROOM, {
-    variables: { name: roomNames[Math.random() > 0.5 ? 0 : 1] }
-  });
+const GetStarted = ({ history }) => {
+  const { value, onChange } = useField();
 
-  const addedRoomId = addRoomMutation.data && addRoomMutation.data.addRoom.id;
+  const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
 
-  React.useEffect(() => {
-    if (addedRoomId || addedRoomId === 0) {
-      history.push(`/r/${addedRoomId}`);
+  const [createUser, createUserMutation] = useMutation(CREATE_USER, {
+    update: (client, mutResult) => {
+      const variables = {
+        ...mutResult.data.createUser.user,
+        token: mutResult.data.createUser.token
+      };
+      console.log('saving user ', variables);
+      saveUser({
+        variables
+      });
+
+      window.location.reload();
     }
   });
 
-  const handleCreateRoom = () => addRoom();
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    createUser({ variables: { username: value } });
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          value={value}
+          onChange={onChange}
+          placeholder="Enter a username"
+        />
+        <Button color="primary" type="submit">
+          →
+        </Button>
+      </form>
+    </div>
+  );
+};
+
+const Home = ({ history }) => {
+  const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
+
+  if (getCurrentUserQuery.loading) return 'Loading...';
+  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+  const currentUser =
+    getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
+  if (currentUser) {
+    history.push('/dashboard');
+  }
 
   return (
     <HomePage>
       <header className="home-page-header">
         <img src={logo} className="home-page-logo" alt="logo" />
-        <p>Create a room to get started</p>
-        <Button color="primary" padding="2" onClick={handleCreateRoom}>
-          {addRoomMutation.loading ? 'loading...' : 'create a room'}
-        </Button>
+        <p>Pick a username to get started</p>
+        <GetStarted history={history} />
       </header>
     </HomePage>
   );

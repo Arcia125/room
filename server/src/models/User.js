@@ -11,7 +11,6 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
     trim: true,
   },
 });
@@ -35,7 +34,7 @@ userSchema.statics.findByLogin = async function(login) {
 // encrypt password before save
 userSchema.pre('save', function(next) {
   const user = this;
-  if (!user.isModified || !user.isNew) {
+  if (!user.isModified || !user.isNew || !user.password) {
     // don't rehash if it's an old user
     next();
   } else {

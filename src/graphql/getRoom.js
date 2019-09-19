@@ -5,6 +5,11 @@ const GET_ROOM = gql`
     room(id: $id) {
       id
       name
+      users {
+        id
+        username
+        avatar
+      }
       messages {
         id
         content
