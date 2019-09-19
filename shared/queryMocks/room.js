@@ -11,6 +11,7 @@ const mockRoom = {
       __typename: 'Message',
     },
   ],
+  users: [],
   __typename: 'Room',
 };
 
