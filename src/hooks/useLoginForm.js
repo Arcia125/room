@@ -1,4 +1,4 @@
-import React from 'react';
+import { useField } from './useField';
 
 const defaultLoginOpts = { username: '', password: '' };
 
@@ -6,16 +6,14 @@ const useLoginForm = ({
   initialUsername = '',
   initialPassword = ''
 } = defaultLoginOpts) => {
-  const [username, setUsername] = React.useState(initialUsername);
-  const [password, setPassword] = React.useState(initialPassword);
-  const onChangeUsername = e => setUsername(e.target.value);
-  const onChangePassword = e => setPassword(e.target.value);
+  const usernameField = useField({ initialValue: initialUsername });
+  const passwordField = useField({ initialValue: initialPassword });
 
   return {
-    username,
-    password,
-    onChangeUsername,
-    onChangePassword
+    username: usernameField.value,
+    password: passwordField.value,
+    onChangeUsername: usernameField.onChange,
+    onChangePassword: passwordField.onChange
   };
 };
 

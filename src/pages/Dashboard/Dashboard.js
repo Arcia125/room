@@ -5,11 +5,52 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { ADD_ROOM } from '../../graphql/addRoom';
 import { Button } from '../../components/styles/Button';
+import { ClaimAccountForm } from '../../components/ClaimAccountForm';
+import { CLAIM_ACCOUNT } from '../../graphql/claimAccount';
+import Modal from '../../components/Modal';
+import { SAVE_USER } from '../../graphql/saveUser';
 
 const roomNames = ['test1', 'test2'];
 
+const useModalState = (
+  { initialIsOpen = false } = { initialIsOpen: false }
+) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const open = () => setIsOpen(true);
+
+  const close = () => setIsOpen(false);
+
+  return {
+    isOpen,
+    open,
+    close
+  };
+};
+
 const Dashboard = ({ history }) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
+
+  const claimAccountModal = useModalState();
+
+  const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
+
+  const [claimAccount, claimAccountMutation] = useMutation(CLAIM_ACCOUNT, {
+    update: (client, mutResult) => {
+      const variables = {
+        ...mutResult.data.claimAccount.user,
+        token: mutResult.data.claimAccount.token
+      };
+
+      console.log('saving user ', variables);
+
+      saveUser({
+        variables
+      });
+
+      window.location.reload();
+    }
+  });
 
   const [addRoom, addRoomMutation] = useMutation(ADD_ROOM, {
     variables: { name: roomNames[Math.random() > 0.5 ? 0 : 1] }
@@ -23,12 +64,21 @@ const Dashboard = ({ history }) => {
     }
   });
 
+  if (getCurrentUserQuery.loading) return 'Loading...';
+  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+
+  const currentUser =
+    getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
+
   const handleCreateRoom = () => {
     addRoom();
   };
 
-  if (getCurrentUserQuery.loading) return 'Loading...';
-  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+  const handleClickMyAccount = () => {
+    if (!currentUser.email) return claimAccountModal.open();
+    history.push('/account');
+  };
+
   return (
     <div>
       <h1>
@@ -43,6 +93,21 @@ const Dashboard = ({ history }) => {
           ? 'loading...'
           : 'create a room'}
       </Button>
+
+      <Button color="primary" padding="2" onClick={handleClickMyAccount}>
+        My Account
+      </Button>
+
+      <Modal
+        isOpen={claimAccountModal.isOpen}
+        onRequestClose={claimAccountModal.close}
+      >
+        <ClaimAccountForm onSubmit={variables => claimAccount({ variables })}>
+          <Button type="submit" disabled={claimAccountMutation.loading}>
+            Submit
+          </Button>
+        </ClaimAccountForm>
+      </Modal>
     </div>
   );
 };

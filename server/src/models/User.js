@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
+
 import config from '../../config';
 
 const userSchema = new Schema({
@@ -7,6 +8,18 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: false,
+    unique: true,
+    trim: true,
+  },
+  avatar: {
+    type: String,
+    required: false,
+    unique: false,
     trim: true,
   },
   password: {

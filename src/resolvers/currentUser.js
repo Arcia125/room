@@ -13,8 +13,8 @@ const currentUser = {
   },
   resolvers: {
     Mutation: {
-      saveUser: (_, { username, id, token }, { cache }) => {
-        const user = { id, username, __typename: 'User' };
+      saveUser: (_, { username, id, email, token }, { cache }) => {
+        const user = { id, username, email, __typename: 'User' };
         console.log('saveUser resolver', user, token);
         // console.log('saving user ', user);
         // cache.writeQuery({

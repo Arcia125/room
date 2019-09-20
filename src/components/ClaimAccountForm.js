@@ -21,9 +21,21 @@ const ClaimAccountForm = ({ onSubmit, children }) => {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email</label>
-      <input id="email" type="email" name="email" {...emailField} />
+      <input
+        id="email"
+        type="email"
+        name="email"
+        autoComplete="username email"
+        {...emailField}
+      />
       <label htmlFor="password">Password</label>
-      <input id="password" type="password" name="password" {...passwordField} />
+      <input
+        id="password"
+        type="password"
+        name="password"
+        autoComplete="current-password"
+        {...passwordField}
+      />
       {children}
     </form>
   );

@@ -74,6 +74,31 @@ const Mutation = {
       user: savedUser,
     };
   },
+  claimAccount: async (root, { email, password }, context) => {
+    if (!context.currentUser) throw new Error('Must be signed in.');
+    if (context.currentUser.email)
+      throw new Error('Can only be used by unclaimed accounts');
+
+    console.log(context.currentUser);
+
+    const user = context.currentUser;
+
+    user.email = email;
+
+    user.password = password;
+
+    const updatedUser = await user.save();
+
+    const token = signToken({
+      email: updatedUser.email,
+      username: updatedUser.username,
+    });
+
+    return {
+      user: updatedUser,
+      token,
+    };
+  },
   login: (root, { username, password }) => {
     console.warn('IMPLEMENT AUTH');
 

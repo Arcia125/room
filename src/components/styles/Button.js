@@ -12,8 +12,12 @@ const buttonColorStyles = props => {
         color: #24468a;
         background-color: #fff;
       }
+      &:disabled {
+        background-color: #ccc;
+      }
     `;
   }
+
   return css`
     color: #fff;
     background-color: #2f2f2f;
@@ -21,6 +25,9 @@ const buttonColorStyles = props => {
     &:active {
       color: #2f2f2f;
       background-color: #fff;
+    }
+    &:disabled {
+      background-color: #ccc;
     }
   `;
 };
