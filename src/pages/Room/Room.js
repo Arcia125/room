@@ -136,9 +136,10 @@ const Room = ({
   }
 
   if (room) {
+    console.log('room', room);
     content = (
       <StyledRoom>
-        <UserList />
+        <UserList users={room.users} />
         <div className="chatbox">
           <h1 className="chatbox__header">{room.name}</h1>
           <ul className="chatbox__message-list">

@@ -3,9 +3,12 @@ import UserTile from './UserTile';
 
 import StyledUserList from './styles/UserList';
 
-const UserList = () => (
+const UserList = ({ users }) => (
   <StyledUserList>
-    <UserTile
+    {users.map(user => (
+      <UserTile key={user.id} avatar={user.avatar} name={user.username} />
+    ))}
+    {/* <UserTile
       avatar="https://source.unsplash.com/cqraK2a3Or8/50x50"
       name="Kevin"
     />
@@ -20,7 +23,7 @@ const UserList = () => (
     <UserTile
       avatar="https://source.unsplash.com/4TMBk-LqEKo/50x50"
       name="Chelsie"
-    />
+    /> */}
   </StyledUserList>
 );
 

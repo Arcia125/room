@@ -2,22 +2,26 @@ import express from 'express';
 import { execute, subscribe } from 'graphql';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { graphiqlExpress } from 'graphql-server-express';
-import jwt from 'jsonwebtoken';
+import { ApolloServer } from 'apollo-server-express';
+import morgan from 'morgan';
 
 import { builtFrontendPath, indexHtmlPath } from './filePaths';
 import { schema } from './data/schema';
 import config from '../config';
 import { connectDb } from './models';
+import { validateToken, findUserByDecodedToken } from './utils/auth';
 
 const app = express();
 
 // Setup express static to serve static files from build directory.
 app.use(express.static(builtFrontendPath));
 
+app.use(morgan());
+
 app.use(
   '/graphiql',
   graphiqlExpress({
-    endpointURL: `ws://localhost:${config.PORT}/graphql`,
+    endpointURL: `ws://localhost:${config.PORT}${config.REACT_APP_GRAPHQL_WS_ENDPOINT}`,
   })
 );
 // app.get('/test', function(req, res) {
@@ -30,6 +34,31 @@ app.get('*', function(req, res) {
 });
 
 // app.use('/graphiql', graphiqlExpress);
+
+const apolloServer = new ApolloServer({
+  schema,
+  context: ({ req }) => {
+    console.log('Creating graphql http context. req.headers: ', req.headers);
+    const token = req.headers.authorization;
+
+    if (token) {
+      return validateToken(token)
+        .then(findUserByDecodedToken(token))
+        .then(user => {
+          console.log('authenticating user ', user);
+          return {
+            currentUser: user,
+          };
+        });
+    }
+
+    return {
+      currentUser: null,
+    };
+  },
+});
+
+apolloServer.applyMiddleware({ app });
 
 /**
  * @description Simple wrapper for app.listen() that creates and adds the graphql subscription server
@@ -48,29 +77,37 @@ const listen = async (...args) => {
 
       // },
       onConnect: (connectionParams, websocket) => {
-        // if (connectionParams.authToken) {
-        //   // try {
-        //   //   const decoded = jwt.verify(connectionParams.authToken, JWT_SECRET);
-        //   // }
-        //   return validateToken(connectionParams.authToken)
-        //     .then(findUser(connectionParams.authToken))
-        //     .then(user => {
-        //       return {
-        //         currentUser: user,
-        //       };
-        //     });
-        // } else {
-        //   const user = {};
-        //   const context = {
-        //     currentUser: user,
-        //   };
-        // }
+        console.log('connectionParams', connectionParams);
+        const authToken =
+          connectionParams &&
+          connectionParams.headers &&
+          connectionParams.headers.Authorization;
+        if (authToken) {
+          // try {
+          //   const decoded = jwt.verify(connectionParams.authToken, JWT_SECRET);
+          // }
+          return validateToken(authToken)
+            .then(findUserByDecodedToken(authToken))
+            .then(user => {
+              console.log(user, ' connected');
+              return {
+                currentUser: user,
+              };
+            });
+        }
+
+        console.log('unauthenticated user connected');
+
+        return {
+          currentUser: null,
+        };
+
         // throw new Error('Missing auth token!');
       },
     },
     {
       server: server,
-      path: '/graphql',
+      path: config.REACT_APP_GRAPHQL_WS_ENDPOINT,
     }
   );
 

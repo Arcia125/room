@@ -1,17 +1,6 @@
 import { currentUser } from './currentUser';
+import { merge } from '../utils/merge';
 
-const resolvers = {
-  defaults: {
-    ...currentUser.defaults
-  },
-  resolvers: {
-    Mutation: {
-      ...currentUser.resolvers.Mutation
-    },
-    Query: {
-      ...currentUser.resolvers.Query
-    }
-  }
-};
+const resolvers = merge(currentUser);
 
 export { resolvers };

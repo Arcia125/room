@@ -1,23 +1,30 @@
-import { GET_CURRENT_USER } from '../graphql/getCurrentUser';
+import { getUser, setUser, getToken } from '../utils/user';
+// let user = {
+//   id: null,
+//   username: null,
+//   __typename: 'User'
+// };
 
-let user = {
-  id: null,
-  username: null,
-  __typename: 'User'
-};
+// let user = getUser();
 
 const currentUser = {
   defaults: {
-    currentUser: user
+    currentUser: getUser()
   },
   resolvers: {
     Mutation: {
-      saveUser: (_, { id, username }, { cache }) => {
-        user = { id, username };
-        cache.writeQuery({
-          query: GET_CURRENT_USER,
-          data: user
-        });
+      saveUser: (_, { username, id, token }, { cache }) => {
+        const user = { id, username, __typename: 'User' };
+        console.log('saveUser resolver', user, token);
+        // console.log('saving user ', user);
+        // cache.writeQuery({
+        //   query: GET_CURRENT_USER,
+        //   data: { currentUser: user },
+        // });
+
+        setUser({ user, cache, token });
+
+        return { user, token, __typename: 'AuthPayload' };
         // cache.writeData({
         //   currentUser: {
         //     id,
@@ -35,7 +42,12 @@ const currentUser = {
         //   query: GET_CURRENT_USER,
         // });
         // console.log('readQuery', queryResult);
-        return user;
+        const user = getUser();
+        return user ? user : null;
+        // return {
+        //   user: getUser(),
+        //   token: getToken(),
+        // };
       }
     }
   }

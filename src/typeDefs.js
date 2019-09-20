@@ -14,6 +14,11 @@ const typeDefs = gql`
     username: String
   }
 
+  type AuthPayload {
+    token: String
+    user: User
+  }
+
   type Room {
     id: ID!
     name: String
@@ -29,7 +34,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    login(username: String!, password: String!): User
+    createUser(username: String): AuthPayload
+    login(username: String!, password: String!): AuthPayload
     addRoom(name: String!): Room
     sendMessage(roomId: ID!, content: String!): Message
   }
