@@ -85,8 +85,6 @@ const Mutation = {
     };
   },
   login: async (root, { username, password }) => {
-    console.warn('IMPLEMENT AUTH');
-
     // const user = users.find(user => user.username === username);
     const user = await User.findByLogin(username);
 

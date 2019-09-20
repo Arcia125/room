@@ -1,9 +1,12 @@
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import { LOGIN } from '../graphql/login';
 import { SAVE_USER } from '../graphql/saveUser';
+import { GET_CURRENT_USER } from '../graphql/getCurrentUser';
 
 export const useAuth = () => {
+  const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
+
   const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
 
   const [executeLogin, loginMutation] = useMutation(LOGIN, {
@@ -20,10 +23,14 @@ export const useAuth = () => {
       window.location.reload();
     }
   });
+
   const loginUser = ({ username, password }) => {
     executeLogin({ variables: { username, password } });
   };
+
   return {
-    loginUser
+    loginUser,
+    currentUser:
+      getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser
   };
 };
