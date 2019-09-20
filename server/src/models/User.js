@@ -44,23 +44,37 @@ userSchema.statics.findByLogin = async function(login) {
   return user;
 };
 
+userSchema.methods.comparePassword = function(candidatePassword) {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+      if (err) return reject(err);
+
+      resolve(isMatch);
+    });
+  });
+};
+
 // encrypt password before save
 userSchema.pre('save', function(next) {
   const user = this;
-  if (!user.isModified || !user.isNew || !user.password) {
+
+  if (!user.isModified('password') || !user.password) {
     // don't rehash if it's an old user
     next();
-  } else {
-    bcrypt.hash(user.password, config.SALTING_ROUNDS, function(err, hash) {
-      if (err) {
-        console.log('Error hashing password for user', user.name);
-        next(err);
-      } else {
-        user.password = hash;
-        next();
-      }
-    });
+    return;
   }
+
+  bcrypt.hash(user.password, config.SALTING_ROUNDS, function(err, hash) {
+    if (err) {
+      console.log('Error hashing password for user', user.username);
+      return next(err);
+    }
+
+    // replace password with hashed password
+    user.password = hash;
+
+    return next();
+  });
 });
 
 userSchema.pre('remove', function(next) {

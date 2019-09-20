@@ -5,7 +5,7 @@ import { LoginForm } from '../../components/LoginForm';
 import { useLoginForm } from '../../hooks/useLoginForm';
 import { useAuth } from '../../hooks/useAuth';
 
-const Login = props => {
+const Login = ({ history }) => {
   const auth = useAuth();
 
   const {
@@ -14,6 +14,11 @@ const Login = props => {
     onChangeUsername,
     onChangePassword
   } = useLoginForm();
+
+  if (auth.currentUser) {
+    // if there is a current user, redirect to dashboard
+    history.push('/dashboard');
+  }
 
   const onSubmit = e => {
     e.preventDefault();
