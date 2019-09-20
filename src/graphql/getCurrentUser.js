@@ -5,6 +5,7 @@ const GET_CURRENT_USER = gql`
     currentUser @client {
       id
       username
+      email
     }
   }
 `;

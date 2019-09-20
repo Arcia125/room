@@ -8,6 +8,7 @@ const typeDefs = gql`
 
   type User {
     id: ID!
+    email: String
     firstName: String
     lastName: String
     avatar: String
@@ -35,6 +36,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(username: String): AuthPayload
+    claimAccount(email: String, password: String): AuthPayload
     login(username: String!, password: String!): AuthPayload
     addRoom(name: String!): Room
     sendMessage(roomId: ID!, content: String!): Message
