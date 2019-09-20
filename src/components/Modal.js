@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
-ReactModal.setAppElement('#root');
+if (typeof window !== 'undefined') {
+  const root = document.querySelector('#root');
+  if (root) {
+    ReactModal.setAppElement(root);
+  }
+}
 
 /**
  * @type {React.ComponentType<ReactModal.Props>}
