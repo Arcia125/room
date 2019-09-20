@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
@@ -9,15 +9,7 @@ import { Button } from '../../components/styles/Button';
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { CREATE_USER } from '../../graphql/createUser';
 import { SAVE_USER } from '../../graphql/saveUser';
-
-const useField = ({ initialValue = '' } = { initialValue: '' }) => {
-  const [value, setValue] = useState(initialValue);
-  const onChange = event => setValue(event.target.value);
-  return {
-    value,
-    onChange
-  };
-};
+import { useField } from '../../hooks/useField';
 
 const GetStarted = ({ history }) => {
   const { value, onChange } = useField();
@@ -30,7 +22,9 @@ const GetStarted = ({ history }) => {
         ...mutResult.data.createUser.user,
         token: mutResult.data.createUser.token
       };
+
       console.log('saving user ', variables);
+
       saveUser({
         variables
       });
