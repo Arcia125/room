@@ -62,6 +62,9 @@
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
     "babel-loader": "^8.0.6",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
     "nodemon": "^1.19.2"
   },
   "eslintConfig": {
