@@ -1,8 +1,5 @@
-import jwt from 'jsonwebtoken';
-
 import { rooms } from '../../../shared/mockData/rooms';
 import { pubsub } from '../controllers/pubsub';
-import { users } from '../../../shared/mockData/users';
 import { RoomNotFoundError } from './errors';
 import { User } from '../models/user';
 import { createRandomUsername } from '../utils/createRandomUsername';
@@ -35,12 +32,6 @@ const Query = {
   room: (root, { id }) => {
     return findRoomById(id);
   },
-  users: () => {
-    return users;
-  },
-  user: (root, { id }) => {
-    return users.find(user => user.id === id);
-  },
 };
 
 const Mutation = {
@@ -56,12 +47,6 @@ const Mutation = {
     });
 
     const savedUser = await user.save();
-
-    // const token = 'implement this!';
-    // const token = jwt.sign({
-    //   email: savedUser.email,
-    //   username: savedUser.username,
-    // });
 
     // Sign jwt with user email and username as payload
     const token = signToken({
@@ -99,17 +84,30 @@ const Mutation = {
       token,
     };
   },
-  login: (root, { username, password }) => {
+  login: async (root, { username, password }) => {
     console.warn('IMPLEMENT AUTH');
 
-    const user = users.find(user => user.username === username);
+    // const user = users.find(user => user.username === username);
+    const user = await User.findByLogin(username);
 
-    const token = 'implement this!';
+    if (!user) throw new Error('User not found');
 
-    return {
-      user,
-      token,
-    };
+    const matches = await user.comparePassword(password);
+
+    if (matches) {
+      // const token = 'implement this!';
+      const token = signToken({
+        email: user.email,
+        username: user.username,
+      });
+
+      return {
+        user,
+        token,
+      };
+    }
+
+    throw new Error('Password did not match');
   },
   addRoom: (root, { name }, context) => {
     console.log('adding room. context ', context);
