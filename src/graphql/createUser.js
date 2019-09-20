@@ -7,6 +7,7 @@ const CREATE_USER = gql`
       user {
         id
         username
+        email
         __typename
       }
     }
