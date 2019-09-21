@@ -1,5 +1,9 @@
 import React from 'react';
-import UserList from '../src/components/UserList';
 import { storiesOf } from '@storybook/react';
 
-storiesOf('UserList', module).add('with some people', () => <UserList />);
+import { users } from '../shared/mockData/users';
+import UserList from '../src/components/UserList';
+
+storiesOf('UserList', module).add('with some people', () => (
+  <UserList users={users} />
+));
