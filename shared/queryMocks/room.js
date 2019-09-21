@@ -1,5 +1,6 @@
 import { GET_ROOM } from '../../src/graphql/getRoom';
 import { NEW_ROOM_MESSAGE } from '../../src/graphql/newRoomMessage';
+import { users } from '../mockData/users';
 
 const mockRoom = {
   id: 'test-id',
@@ -11,7 +12,7 @@ const mockRoom = {
       __typename: 'Message',
     },
   ],
-  users: [],
+  users,
   __typename: 'Room',
 };
 
