@@ -11,8 +11,9 @@ import Room from '../src/pages/Room';
 import homeMdText from './Home.md';
 import Home from '../src/pages/Home';
 import Login from '../src/pages/Login/Login';
+import { currentUserMock } from '../shared/queryMocks/currentUser';
 
-const mocks = [getRoomMock, newRoomMessageMock];
+const mocks = [getRoomMock, newRoomMessageMock, currentUserMock];
 
 export default {
   title: 'pages',
