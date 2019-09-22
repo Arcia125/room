@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
+import { RouteComponentProps } from 'react-router';
 
 import StyledRoom from '../../components/styles/Room';
 import UserList from '../../components/UserList';
@@ -102,11 +103,7 @@ const Room = ({
   match: {
     params: { roomId }
   }
-}: {
-  match: {
-    params: { roomId: string };
-  };
-}) => {
+}: RouteComponentProps<{ roomId: string }>) => {
   const [userMessage, setUserMessage] = React.useState('');
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUserMessage(event.target.value);
