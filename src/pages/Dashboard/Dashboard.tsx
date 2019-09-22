@@ -67,7 +67,7 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
     }
   });
 
-  if (getCurrentUserQuery.loading) return <div>'Loading...'</div>;
+  if (getCurrentUserQuery.loading) return <div>Loading...</div>;
   if (getCurrentUserQuery.error)
     return <div>{getCurrentUserQuery.error.message}</div>;
 

@@ -99,11 +99,13 @@ interface RoomMessage {
   content: string;
 }
 
-const Room = ({
+const Room: React.FunctionComponent<
+  RouteComponentProps<{ roomId: string }>
+> = ({
   match: {
     params: { roomId }
   }
-}: RouteComponentProps<{ roomId: string }>) => {
+}) => {
   const [userMessage, setUserMessage] = React.useState('');
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUserMessage(event.target.value);
