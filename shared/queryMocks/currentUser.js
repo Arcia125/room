@@ -7,7 +7,9 @@ const currentUserMock = {
     query: GET_CURRENT_USER,
   },
   result: {
-    data: users[0]
+    data: {
+      currentUser: users[0]
+    }
   }
 }
 

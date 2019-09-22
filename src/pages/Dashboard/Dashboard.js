@@ -15,7 +15,7 @@ const roomNames = ['test1', 'test2'];
 const useModalState = (
   { initialIsOpen = false } = { initialIsOpen: false }
 ) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(initialIsOpen);
 
   const open = () => setIsOpen(true);
 
