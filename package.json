@@ -16,7 +16,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prod-build:docker": "docker build -t arcia125/room .",
-    "prod-start:docker": "docker run -d -p 9001:9001 --name room arcia125/room"
+    "prod-start:docker": "docker run -d -p 9001:9001 --name room arcia125/room",
+    "cypress": "npx cypress open"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
@@ -63,6 +64,7 @@
     "@storybook/addon-notes": "^5.2.0",
     "@storybook/addons": "^5.2.0",
     "@storybook/react": "^5.2.0",
+    "@testing-library/cypress": "^5.0.1",
     "@testing-library/dom": "^6.2.0",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
