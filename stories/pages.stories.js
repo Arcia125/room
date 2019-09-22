@@ -13,6 +13,7 @@ import Home from '../src/pages/Home';
 import Login from '../src/pages/Login/Login';
 import { currentUserMock } from '../shared/queryMocks/currentUser';
 import Dashboard from '../src/pages/Dashboard';
+import Account from '../src/pages/Account';
 
 const mocks = [getRoomMock, newRoomMessageMock, currentUserMock];
 
@@ -49,4 +50,11 @@ export const dashboard = () => <Dashboard />;
 
 dashboard.story = {
   name: 'Dashboard'
-}
+};
+
+export const account = () => <Account />;
+
+account.story = {
+  name: 'Account'
+};
+
