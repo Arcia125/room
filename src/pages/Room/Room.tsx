@@ -8,8 +8,10 @@ import { GET_ROOM } from '../../graphql/getRoom';
 import { SEND_MESSAGE } from '../../graphql/sendMessage';
 import { Button } from '../../components/styles/Button';
 import { NEW_ROOM_MESSAGE } from '../../graphql/newRoomMessage';
+import { OnSubscriptionDataOptions } from '@apollo/react-common';
 
-const useRoom = roomId => useQuery(GET_ROOM, { variables: { id: roomId } });
+const useRoom = (roomId: string) =>
+  useQuery(GET_ROOM, { variables: { id: roomId } });
 
 /**
  * @description Hack added to force rerenders when a new message arrives.
@@ -32,7 +34,7 @@ const useHackyUpdater = () => {
   return forceUpdate;
 };
 
-const useActiveRoom = roomId => {
+const useActiveRoom = (roomId: string) => {
   const roomQuery = useRoom(roomId);
 
   /**
@@ -46,7 +48,10 @@ const useActiveRoom = roomId => {
   /**
    * @description updates the room query
    */
-  const updateRoomQuery = ({ subscriptionData, client }) => {
+  const updateRoomQuery = ({
+    subscriptionData,
+    client
+  }: OnSubscriptionDataOptions<any>) => {
     if (!subscriptionData.data) return;
 
     const { newRoomMessage } = subscriptionData.data;
@@ -68,14 +73,9 @@ const useActiveRoom = roomId => {
     // };
     // client.writeQuery(newQuery);
 
-    roomQuery.updateQuery(
-      previousQueryResult => {
-        return newData;
-      },
-      {
-        variables: roomQuery.variables
-      }
-    );
+    roomQuery.updateQuery((previousQueryResult: any) => {
+      return newData;
+    });
 
     /**
      * Necessary to force an update for roomQuery, see definition for further explanation
@@ -93,13 +93,23 @@ const useActiveRoom = roomId => {
   return { roomQuery, newMessageSubscription };
 };
 
+interface RoomMessage {
+  id: string;
+  content: string;
+}
+
 const Room = ({
   match: {
     params: { roomId }
   }
+}: {
+  match: {
+    params: { roomId: string };
+  };
 }) => {
   const [userMessage, setUserMessage] = React.useState('');
-  const handleInputChange = event => setUserMessage(event.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setUserMessage(event.target.value);
 
   // const roomId = match.params.roomId;
 
@@ -120,7 +130,7 @@ const Room = ({
     }
   };
 
-  const submitIfEnter = event => {
+  const submitIfEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const enterPressed = event.keyCode === 13;
     if (!enterPressed) return;
     handleSend();
@@ -136,14 +146,13 @@ const Room = ({
   }
 
   if (room) {
-    console.log('room', room);
     content = (
       <StyledRoom>
         <UserList users={room.users} />
         <div className="chatbox">
           <h1 className="chatbox__header">{room.name}</h1>
           <ul className="chatbox__message-list">
-            {room.messages.map(message => (
+            {room.messages.map((message: RoomMessage) => (
               <li key={message.id} className="chatbox__message-list--item">
                 {message.content}
               </li>
