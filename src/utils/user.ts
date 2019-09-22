@@ -4,6 +4,14 @@ import {
   removeFromLocalStorage
 } from './storage';
 import { GET_CURRENT_USER } from '../graphql/getCurrentUser';
+import { ApolloCache } from 'apollo-cache';
+
+interface User {
+  id: string;
+  email: string;
+  username: string;
+  avatar: string;
+}
 
 const TOKEN_STORAGE_KEY = 'roomCurrentUserToken';
 
@@ -13,7 +21,15 @@ const getUser = () => getLocalStorageValue(USER_STORAGE_KEY);
 
 const getToken = () => getLocalStorageValue(TOKEN_STORAGE_KEY, null);
 
-const setUser = ({ user, cache, token }) => {
+const setUser = ({
+  user,
+  cache,
+  token
+}: {
+  user: User;
+  cache: ApolloCache<any>;
+  token: String;
+}) => {
   if (cache) {
     cache.writeQuery({
       query: GET_CURRENT_USER,
@@ -29,7 +45,7 @@ const setUser = ({ user, cache, token }) => {
 /**
  * @TODO finish
  */
-const logout = ({ cache }) => {
+const logout = ({ cache }: { cache: ApolloCache<any> }) => {
   // if (cache) {
   // }
   removeFromLocalStorage(TOKEN_STORAGE_KEY);
