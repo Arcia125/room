@@ -2,10 +2,11 @@ import React from 'react';
 import UserTile from './UserTile';
 
 import StyledUserList from './styles/UserList';
+import { User } from '../utils/user';
 
-const UserList = ({ users }) => (
+const UserList: React.FunctionComponent<{ users: User[] }> = ({ users }) => (
   <StyledUserList>
-    {users.map(user => (
+    {users.map((user: User) => (
       <UserTile key={user.id} avatar={user.avatar} name={user.username} />
     ))}
     {/* <UserTile

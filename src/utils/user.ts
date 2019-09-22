@@ -6,7 +6,7 @@ import {
 import { GET_CURRENT_USER } from '../graphql/getCurrentUser';
 import { ApolloCache } from 'apollo-cache';
 
-interface User {
+export interface User {
   id: string;
   email: string;
   username: string;
