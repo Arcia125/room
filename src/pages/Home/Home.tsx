@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useMutation, useQuery } from '@apollo/react-hooks';
+import { RouteComponentProps } from 'react-router';
 
 import { ADD_ROOM } from '../../graphql/addRoom';
+import logo from '../../logo.svg';
 import { HomePage } from './styles';
 import Navbar from '../../components/Navbar';
 import { Button } from '../../components/styles/Button';
@@ -64,7 +66,7 @@ const GetStarted = ({ history }) => {
     }
   });
 
-  const handleSubmit = event => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     createUser({ variables: { username: value } });
@@ -89,11 +91,12 @@ const GetStarted = ({ history }) => {
   );
 };
 
-const Home = ({ history }) => {
+const Home: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
-  if (getCurrentUserQuery.loading) return 'Loading...';
-  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+  if (getCurrentUserQuery.loading) return <HomePage>Loading...</HomePage>;
+  if (getCurrentUserQuery.error)
+    return <HomePage>getCurrentUserQuery.error.message</HomePage>;
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
   if (currentUser) {

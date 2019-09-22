@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery, useMutation } from '@apollo/react-hooks';
+import { RouteComponentProps } from 'react-router';
 
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { ADD_ROOM } from '../../graphql/addRoom';
@@ -28,7 +29,9 @@ const useModalState = (
   };
 };
 
-const Dashboard = ({ history }) => {
+const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
+  history
+}) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
   const claimAccountModal = useModalState();
@@ -64,8 +67,9 @@ const Dashboard = ({ history }) => {
     }
   });
 
-  if (getCurrentUserQuery.loading) return 'Loading...';
-  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+  if (getCurrentUserQuery.loading) return <div>Loading...</div>;
+  if (getCurrentUserQuery.error)
+    return <div>{getCurrentUserQuery.error.message}</div>;
 
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
@@ -89,9 +93,11 @@ const Dashboard = ({ history }) => {
       </h1>
       <p>Create a room to get started</p>
       <Button color="primary" padding="2" onClick={handleCreateRoom}>
-        {getCurrentUserQuery.loading || addRoomMutation.loading
-          ? 'loading...'
-          : 'create a room'}
+        {getCurrentUserQuery.loading || addRoomMutation.loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div>create a room</div>
+        )}
       </Button>
 
       <Button color="primary" padding="2" onClick={handleClickMyAccount}>

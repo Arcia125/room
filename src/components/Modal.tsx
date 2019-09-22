@@ -1,18 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
 if (typeof window !== 'undefined') {
   const root = document.querySelector('#root');
   if (root) {
-    ReactModal.setAppElement(root);
+    ReactModal.setAppElement(root as HTMLElement);
   }
 }
 
-/**
- * @type {React.ComponentType<ReactModal.Props>}
- */
-const Modal = ({ ...restProps }) => {
+const Modal: React.FunctionComponent<ReactModal.Props> = ({ ...restProps }) => {
   return <ReactModal {...restProps} />;
 };
 

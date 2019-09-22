@@ -1,7 +1,11 @@
 import React from 'react';
+
 import StyledUserTile from './styles/UserTile';
 
-const UserTile = ({ avatar, name }) => (
+const UserTile: React.FunctionComponent<{ avatar: string; name: string }> = ({
+  avatar,
+  name
+}) => (
   <StyledUserTile>
     <img
       style={{ borderRadius: '50%' }}

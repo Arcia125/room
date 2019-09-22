@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -11,7 +11,7 @@ import { getMainDefinition } from 'apollo-utilities';
 
 import { typeDefs } from './typeDefs';
 import { webSocketUri, httpUri } from './urls';
-import { resolvers } from './resolvers/';
+import { resolvers } from './resolvers';
 import { getToken } from './utils/user';
 
 console.log(`webSocketUri = ${webSocketUri}`);
@@ -88,15 +88,15 @@ const options = {
   // clientState: resolvers,
   typeDefs,
   link,
-  cache: new InMemoryCache(),
-  context: (...args) => {
-    console.log(args);
-  }
+  cache: new InMemoryCache()
 };
 
 const client = new ApolloClient(options);
 
-const Provider = ({ children, ...restProps }) => (
+const Provider: React.FunctionComponent<{ children: ReactElement }> = ({
+  children,
+  ...restProps
+}) => (
   <ApolloProvider client={client} {...restProps}>
     {children}
   </ApolloProvider>

@@ -1,5 +1,14 @@
 import React from 'react';
-export const LoginForm = ({
+
+interface LoginFormProps {
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
+  username: string;
+  onChangeUsername: React.ChangeEventHandler<HTMLInputElement>;
+  password: string;
+  onChangePassword: React.ChangeEventHandler<HTMLInputElement>;
+}
+
+const LoginForm: React.FunctionComponent<LoginFormProps> = ({
   onSubmit,
   username,
   onChangeUsername,
@@ -14,3 +23,5 @@ export const LoginForm = ({
     </form>
   );
 };
+
+export { LoginForm };
