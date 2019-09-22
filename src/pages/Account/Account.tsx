@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { useQuery } from '@apollo/react-hooks';
 
-const Account = props => {
+const Account = () => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
   if (getCurrentUserQuery.loading) return 'Loading...';
