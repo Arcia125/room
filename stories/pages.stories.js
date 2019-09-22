@@ -28,8 +28,6 @@ home.story = {
 
 export const room = () => <Room match={{ params: { roomId: mockRoom.id } }} />;
 
-export const UserList = () => <div></div>;
-
 room.story = {
   name: 'Room',
   parameters: { notes: { markdown: roomMdText } },
