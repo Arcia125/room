@@ -9,6 +9,7 @@ import { ClaimAccountForm } from '../../components/ClaimAccountForm';
 import { CLAIM_ACCOUNT } from '../../graphql/claimAccount';
 import Modal from '../../components/Modal';
 import { SAVE_USER } from '../../graphql/saveUser';
+import { RouteComponentProps } from 'react-router';
 
 const roomNames = ['test1', 'test2'];
 
@@ -28,7 +29,7 @@ const useModalState = (
   };
 };
 
-const Dashboard = ({ history }) => {
+const Dashboard = ({ history }: RouteComponentProps) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
   const claimAccountModal = useModalState();
