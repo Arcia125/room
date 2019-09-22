@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
 
@@ -181,10 +180,6 @@ const Room: React.FunctionComponent<
       {content}
     </div>
   );
-};
-
-Room.propTypes = {
-  match: PropTypes.object
 };
 
 export default Room;
