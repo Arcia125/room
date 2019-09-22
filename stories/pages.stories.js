@@ -16,12 +16,16 @@ import Dashboard from '../src/pages/Dashboard';
 
 const mocks = [getRoomMock, newRoomMessageMock, currentUserMock];
 
+const mockHistory = {
+  push: () => { }
+};
+
 export default {
   title: 'pages',
   decorators: [mockedProvider(mocks), themeProvider],
 };
 
-export const home = () => <Home />;
+export const home = () => <Home history={mockHistory} />;
 
 home.story = {
   name: 'Home',
@@ -35,7 +39,7 @@ room.story = {
   parameters: { notes: { markdown: roomMdText } },
 };
 
-export const login = () => <Login />
+export const login = () => <Login history={mockHistory} />
 
 login.story = {
   name: 'Login',
