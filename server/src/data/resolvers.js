@@ -1,9 +1,11 @@
 import { rooms } from '../../../shared/mockData/rooms';
 import { pubsub } from '../controllers/pubsub';
 import { RoomNotFoundError } from './errors';
-import { User } from '../models/user';
+
 import { createRandomUsername } from '../utils/createRandomUsername';
 import { signToken } from '../utils/auth';
+import { User } from '../models/User';
+
 
 let nextRoomId = rooms.length + 1;
 
