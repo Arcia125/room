@@ -36,7 +36,7 @@ const logout = ({ cache }) => {
 
   removeFromLocalStorage(USER_STORAGE_KEY);
 
-  window.location.reload();
+  window.location.replace('/');
 };
 
 export { getUser, setUser, getToken, logout };
