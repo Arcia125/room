@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled, { css, StyledComponent } from 'styled-components';
 
 import { getThemeSpacing } from '../../utils/styleUtils';
+import { ReactElement } from 'react';
 
-const buttonColorStyles = props => {
+const buttonColorStyles = (props: { color: 'primary' | undefined }) => {
   if (props.color === 'primary') {
     return css`
       color: #fff;
@@ -37,7 +38,19 @@ const buttonReset = css`
   border: none;
 `;
 
-const Button = styled.button`
+type StyledButton = StyledComponent<
+  'button',
+  any,
+  {
+    children: ReactElement | string;
+    color?: 'primary';
+    padding?: number | string;
+    disabled?: boolean;
+    type?: string;
+  }
+>;
+
+const Button: StyledButton = styled.button`
   ${buttonReset};
   border-radius: 4px;
   transition: 325ms ease-in-out;
@@ -46,6 +59,6 @@ const Button = styled.button`
   font-size: 1.5rem;
   padding: ${getThemeSpacing};
   ${buttonColorStyles};
-`;
+` as StyledButton;
 
 export { Button };

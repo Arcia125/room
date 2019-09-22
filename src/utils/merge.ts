@@ -1,4 +1,4 @@
-export const merge = (...objs) =>
+const merge = (...objs: { [key: string]: any }[]) =>
   [...objs].reduce(
     (acc, obj) =>
       Object.keys(obj).reduce((a, k) => {
@@ -9,3 +9,5 @@ export const merge = (...objs) =>
       }, {}),
     {}
   );
+
+export { merge };

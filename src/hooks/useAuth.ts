@@ -24,7 +24,13 @@ export const useAuth = () => {
     }
   });
 
-  const loginUser = ({ username, password }) => {
+  const loginUser = ({
+    username,
+    password
+  }: {
+    username: string;
+    password: string;
+  }) => {
     executeLogin({ variables: { username, password } });
   };
 

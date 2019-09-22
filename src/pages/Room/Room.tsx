@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery, useMutation, useSubscription } from '@apollo/react-hooks';
+import { RouteComponentProps } from 'react-router';
 
 import StyledRoom from '../../components/styles/Room';
 import UserList from '../../components/UserList';
@@ -98,20 +99,16 @@ interface RoomMessage {
   content: string;
 }
 
-const Room = ({
+const Room: React.FunctionComponent<
+  RouteComponentProps<{ roomId: string }>
+> = ({
   match: {
     params: { roomId }
   }
-}: {
-  match: {
-    params: { roomId: string };
-  };
 }) => {
   const [userMessage, setUserMessage] = React.useState('');
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUserMessage(event.target.value);
-
-  // const roomId = match.params.roomId;
 
   const { roomQuery, newMessageSubscription } = useActiveRoom(roomId);
 

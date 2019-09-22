@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useMutation, useQuery } from '@apollo/react-hooks';
+import { RouteComponentProps } from 'react-router';
 
 import logo from '../../logo.svg';
-import { ADD_ROOM } from '../../graphql/addRoom';
 import { HomePage } from './styles';
 import { Button } from '../../components/styles/Button';
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
@@ -11,7 +10,7 @@ import { CREATE_USER } from '../../graphql/createUser';
 import { SAVE_USER } from '../../graphql/saveUser';
 import { useField } from '../../hooks/useField';
 
-const GetStarted = ({ history }) => {
+const GetStarted = () => {
   const { value, onChange } = useField();
 
   const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
@@ -33,7 +32,7 @@ const GetStarted = ({ history }) => {
     }
   });
 
-  const handleSubmit = event => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     createUser({ variables: { username: value } });
@@ -55,11 +54,12 @@ const GetStarted = ({ history }) => {
   );
 };
 
-const Home = ({ history }) => {
+const Home: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
-  if (getCurrentUserQuery.loading) return 'Loading...';
-  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+  if (getCurrentUserQuery.loading) return <HomePage>Loading...</HomePage>;
+  if (getCurrentUserQuery.error)
+    return <HomePage>getCurrentUserQuery.error.message</HomePage>;
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
   if (currentUser) {
@@ -71,7 +71,7 @@ const Home = ({ history }) => {
       <header className="home-page-header">
         <img src={logo} className="home-page-logo" alt="logo" />
         <p>Pick a username to get started</p>
-        <GetStarted history={history} />
+        <GetStarted />
       </header>
     </HomePage>
   );

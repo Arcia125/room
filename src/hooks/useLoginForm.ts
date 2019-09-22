@@ -1,6 +1,6 @@
 import { useField } from './useField';
 
-const defaultLoginOpts = { username: '', password: '' };
+const defaultLoginOpts = { initialUsername: '', initialPassword: '' };
 
 const useLoginForm = ({
   initialUsername = '',

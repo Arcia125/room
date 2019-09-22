@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Chatbox = (props: any) => <div></div>;
+const Chatbox: React.FunctionComponent<any> = props => <div></div>;
 
 export default Chatbox;

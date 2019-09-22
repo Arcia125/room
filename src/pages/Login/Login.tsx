@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { LoginForm } from '../../components/LoginForm';
 import { useLoginForm } from '../../hooks/useLoginForm';
 import { useAuth } from '../../hooks/useAuth';
+import { RouteComponentProps } from 'react-router';
 
-const Login = ({ history }) => {
+const Login = ({ history }: RouteComponentProps) => {
   const auth = useAuth();
 
   const {
@@ -20,8 +21,8 @@ const Login = ({ history }) => {
     history.push('/dashboard');
   }
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
+    event.preventDefault();
     auth.loginUser({ username, password });
   };
 

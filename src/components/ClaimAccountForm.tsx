@@ -1,13 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ReactElement } from 'react';
 
 import { useField } from '../hooks/useField';
 
-const ClaimAccountForm = ({ onSubmit, children }) => {
+type ClaimAccountFormOnSubmit = ({
+  email,
+  password
+}: {
+  password: string;
+  email: string;
+}) => any;
+
+type ClaimAccountFormProps = {
+  onSubmit: ClaimAccountFormOnSubmit;
+  children: ReactElement;
+};
+
+const ClaimAccountForm: React.FunctionComponent<ClaimAccountFormProps> = ({
+  onSubmit,
+  children
+}) => {
   const emailField = useField();
   const passwordField = useField();
 
-  const handleSubmit = event => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = event => {
     event.preventDefault();
 
     const onSubmitValue = {
@@ -39,11 +54,6 @@ const ClaimAccountForm = ({ onSubmit, children }) => {
       {children}
     </form>
   );
-};
-
-ClaimAccountForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  children: PropTypes.node
 };
 
 export { ClaimAccountForm };
