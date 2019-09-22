@@ -10,8 +10,11 @@ import roomMdText from './Room.md';
 import Room from '../src/pages/Room';
 import homeMdText from './Home.md';
 import Home from '../src/pages/Home';
+import Login from '../src/pages/Login/Login';
+import { currentUserMock } from '../shared/queryMocks/currentUser';
+import Dashboard from '../src/pages/Dashboard';
 
-const mocks = [getRoomMock, newRoomMessageMock];
+const mocks = [getRoomMock, newRoomMessageMock, currentUserMock];
 
 export default {
   title: 'pages',
@@ -27,9 +30,19 @@ home.story = {
 
 export const room = () => <Room match={{ params: { roomId: mockRoom.id } }} />;
 
-export const UserList = () => <div></div>;
-
 room.story = {
   name: 'Room',
   parameters: { notes: { markdown: roomMdText } },
 };
+
+export const login = () => <Login />
+
+login.story = {
+  name: 'Login',
+};
+
+export const dashboard = () => <Dashboard />;
+
+dashboard.story = {
+  name: 'Dashboard'
+}
