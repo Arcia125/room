@@ -18,3 +18,7 @@ node_modules/
 # dotenv environment variables file
 .env
 .env.test
+
+#ignore cypress videos and screenshots
+cypress/videos
+cypress/screenshots
