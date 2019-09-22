@@ -22,6 +22,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
     "@apollo/react-testing": "^3.1.1",
+    "@storybook/design-system": "^1.0.0",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
