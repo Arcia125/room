@@ -54,11 +54,12 @@ const GetStarted = () => {
   );
 };
 
-const Home = ({ history }: RouteComponentProps) => {
+const Home: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
-  if (getCurrentUserQuery.loading) return 'Loading...';
-  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+  if (getCurrentUserQuery.loading) return <HomePage>Loading...</HomePage>;
+  if (getCurrentUserQuery.error)
+    return <HomePage>getCurrentUserQuery.error.message</HomePage>;
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
   if (currentUser) {

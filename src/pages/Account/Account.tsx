@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { useQuery } from '@apollo/react-hooks';
 
-const Account = () => {
+const Account: React.FunctionComponent = () => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
-  if (getCurrentUserQuery.loading) return 'Loading...';
-  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+  if (getCurrentUserQuery.loading) return <div>Loading...</div>;
+  if (getCurrentUserQuery.error)
+    return <div>{getCurrentUserQuery.error.message}</div>;
 
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;

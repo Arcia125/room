@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery, useMutation } from '@apollo/react-hooks';
+import { RouteComponentProps } from 'react-router';
 
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { ADD_ROOM } from '../../graphql/addRoom';
@@ -9,7 +10,6 @@ import { ClaimAccountForm } from '../../components/ClaimAccountForm';
 import { CLAIM_ACCOUNT } from '../../graphql/claimAccount';
 import Modal from '../../components/Modal';
 import { SAVE_USER } from '../../graphql/saveUser';
-import { RouteComponentProps } from 'react-router';
 
 const roomNames = ['test1', 'test2'];
 
@@ -29,7 +29,9 @@ const useModalState = (
   };
 };
 
-const Dashboard = ({ history }: RouteComponentProps) => {
+const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
+  history
+}) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
   const claimAccountModal = useModalState();
@@ -65,8 +67,9 @@ const Dashboard = ({ history }: RouteComponentProps) => {
     }
   });
 
-  if (getCurrentUserQuery.loading) return 'Loading...';
-  if (getCurrentUserQuery.error) return getCurrentUserQuery.error.message;
+  if (getCurrentUserQuery.loading) return <div>'Loading...'</div>;
+  if (getCurrentUserQuery.error)
+    return <div>{getCurrentUserQuery.error.message}</div>;
 
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
