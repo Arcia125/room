@@ -1,15 +1,46 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
-import logo from '../../logo.svg';
 import { ADD_ROOM } from '../../graphql/addRoom';
 import { HomePage } from './styles';
+import Navbar from '../../components/Navbar';
 import { Button } from '../../components/styles/Button';
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { CREATE_USER } from '../../graphql/createUser';
 import { SAVE_USER } from '../../graphql/saveUser';
 import { useField } from '../../hooks/useField';
+
+const GetStartedForm = styled.form`
+  .form {
+    display: flex;
+    width: 39.6rem;
+    height: min-content;
+    border: none;
+    &__input {
+      font-size: 1.6rem;
+      padding: 1.5rem;
+      width: 34.8rem;
+      border: 1px;
+      border-radius: 2px 0 0 2px;
+    }
+    &__button {
+      cursor: pointer;
+      height: 4.8rem;
+      width: 4.8rem;
+      border: 1px solid #f2f2f2;
+      border-radius: 0 2px 2px 0;
+      padding: 0;
+      color: #fff;
+      /* avoids weird gap when input is focused */
+      border: 1px;
+      &:hover {
+        background-color: ${p => p.theme.colors.purple};
+      }
+    }
+  }
+`;
 
 const GetStarted = ({ history }) => {
   const { value, onChange } = useField();
@@ -40,18 +71,21 @@ const GetStarted = ({ history }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={value}
-          onChange={onChange}
-          placeholder="Enter a username"
-        />
-        <Button color="primary" type="submit">
-          →
-        </Button>
-      </form>
-    </div>
+    <>
+      <GetStartedForm onSubmit={handleSubmit}>
+        <div className="form">
+          <input
+            className="form__input"
+            value={value}
+            onChange={onChange}
+            placeholder="Enter a username"
+          />
+          <Button className="form__button" color="primary" type="submit">
+            <i class="material-icons">arrow_right_alt</i>
+          </Button>
+        </div>
+      </GetStartedForm>
+    </>
   );
 };
 
@@ -68,11 +102,11 @@ const Home = ({ history }) => {
 
   return (
     <HomePage>
-      <header className="home-page-header">
-        <img src={logo} className="home-page-logo" alt="logo" />
-        <p>Pick a username to get started</p>
+      <Navbar />
+      <div className="homePage">
+        <p className="homePage__invite">Pick a username to get started</p>
         <GetStarted history={history} />
-      </header>
+      </div>
     </HomePage>
   );
 };

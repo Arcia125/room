@@ -6,7 +6,7 @@ const buttonColorStyles = props => {
   if (props.color === 'primary') {
     return css`
       color: #fff;
-      background-color: #24468a;
+      background-color: #2d9cdb;
       &:hover,
       &:active {
         color: #24468a;
@@ -41,7 +41,7 @@ const Button = styled.button`
   ${buttonReset};
   border-radius: 4px;
   transition: 325ms ease-in-out;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
   font-size: 1.5rem;
   padding: ${getThemeSpacing};
