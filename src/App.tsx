@@ -14,7 +14,9 @@ const App = () => {
   return (
     <Provider>
       <Router>
-        <Button onClick={logout}>logout</Button>
+        <Button onClick={logout as React.MouseEventHandler<HTMLButtonElement>}>
+          logout
+        </Button>
         <Route path="/" component={Home} exact />
         <Route path="/login" component={Login} />
         <Route path="/r/:roomId" component={Room} />

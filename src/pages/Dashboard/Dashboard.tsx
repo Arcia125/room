@@ -93,9 +93,11 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
       </h1>
       <p>Create a room to get started</p>
       <Button color="primary" padding="2" onClick={handleCreateRoom}>
-        {getCurrentUserQuery.loading || addRoomMutation.loading
-          ? 'loading...'
-          : 'create a room'}
+        {getCurrentUserQuery.loading || addRoomMutation.loading ? (
+          <div>Loading...</div>
+        ) : (
+          <div>create a room</div>
+        )}
       </Button>
 
       <Button color="primary" padding="2" onClick={handleClickMyAccount}>

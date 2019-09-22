@@ -45,7 +45,7 @@ const setUser = ({
 /**
  * @TODO finish
  */
-const logout = ({ cache }: { cache: ApolloCache<any> }) => {
+const logout = ({ cache }: { cache?: ApolloCache<any> }) => {
   // if (cache) {
   // }
   removeFromLocalStorage(TOKEN_STORAGE_KEY);
