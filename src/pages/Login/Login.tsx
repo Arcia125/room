@@ -21,8 +21,8 @@ const Login = ({ history }: RouteComponentProps) => {
     history.push('/dashboard');
   }
 
-  const onSubmit: React.ChangeEventHandler<HTMLInputElement> = e => {
-    e.preventDefault();
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
+    event.preventDefault();
     auth.loginUser({ username, password });
   };
 
