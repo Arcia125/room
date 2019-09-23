@@ -44,7 +44,11 @@ const GetStartedForm = styled.form`
   }
 `;
 
-const GetStarted = ({ history }) => {
+export interface GetStartedProps {
+  history: any;
+}
+
+const GetStarted = (props: GetStartedProps): JSX.Element => {
   const { value, onChange } = useField();
 
   const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
@@ -68,8 +72,8 @@ const GetStarted = ({ history }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     createUser({ variables: { username: value } });
+    props.history.push('/dashboard');
   };
 
   return (
@@ -83,7 +87,7 @@ const GetStarted = ({ history }) => {
             placeholder="Enter a username"
           />
           <Button className="form__button" color="primary" type="submit">
-            <i class="material-icons">arrow_right_alt</i>
+            <i className="material-icons">arrow_right_alt</i>
           </Button>
         </div>
       </GetStartedForm>
