@@ -19,7 +19,7 @@ const USER_STORAGE_KEY = 'roomCurrentUser';
 
 const getUser = () => getLocalStorageValue(USER_STORAGE_KEY);
 
-const getToken = () => getLocalStorageValue(TOKEN_STORAGE_KEY, null);
+const getToken = () => getLocalStorageValue(TOKEN_STORAGE_KEY);
 
 const setUser = ({
   user,

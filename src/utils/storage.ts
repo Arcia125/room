@@ -2,12 +2,12 @@ type LocalStorageParser = (text: string) => any;
 
 const getLocalStorageValue = (
   key: string,
-  parser: LocalStorageParser = JSON.parse
+  parser: LocalStorageParser | null = JSON.parse
 ) => {
   const value = localStorage.getItem(key);
-  if (value === 'undefined') return undefined;
-
-  return parser ? parser(value || '') : value;
+  if (value === null) return undefined;
+  // if (value === 'undefined') return undefined;
+  return parser && value ? parser(value) : value;
 };
 
 const setLocalStorage = (key: string, value: any) =>
