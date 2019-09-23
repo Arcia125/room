@@ -8,6 +8,7 @@ const CREATE_USER = gql`
         id
         username
         email
+        avatar
         __typename
       }
     }

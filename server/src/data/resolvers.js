@@ -32,7 +32,10 @@ const subscribeToNewRoomMessages = roomId =>
   pubsub.asyncIterator(getNewRoomMessageChannel(roomId));
 
 
-const publishNewRoomUserChannel = (roomId, newRoomUser) => pubsub.publish(getNewRoomUserChannel(roomId), { newRoomUser });
+const publishNewRoomUserChannel = (roomId, newRoomUser) => {
+  const channel = getNewRoomUserChannel(roomId)
+  return pubsub.publish(channel, { newRoomUser });
+}
 
 const subscribeToNewRoomUsers = roomId => pubsub.asyncIterator(getNewRoomUserChannel(roomId));
 
@@ -124,7 +127,8 @@ const Mutation = {
       id: nextRoomId++,
       name,
       messages: [],
-      users: context.currentUser ? [context.currentUser] : [],
+      // users: context.currentUser ? [context.currentUser] : [],
+      users: []
     };
 
     rooms.push(newRoom);
@@ -141,6 +145,20 @@ const Mutation = {
 
     return newMessage;
   },
+  joinRoom: (root, { roomId }, context) => {
+    if (!context.currentUser) throw new Error('Must be logged in to join a room');
+
+    const room = findRoomById(roomId);
+
+    if (!room.users.find(user => user.id === context.currentUser.id)) {
+      room.users.push(context.currentUser);
+      publishNewRoomUserChannel(roomId, context.currentUser)
+    }
+
+    return {
+      success: true
+    };
+  }
 };
 
 const Subscription = {
@@ -149,6 +167,11 @@ const Subscription = {
       return subscribeToNewRoomMessages(roomId);
     },
   },
+  newRoomUser: {
+    subscribe: (root, { roomId }) => {
+      return subscribeToNewRoomUsers(roomId);
+    }
+  }
 };
 
 const resolvers = {

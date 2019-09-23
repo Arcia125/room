@@ -24,7 +24,7 @@ const Room: React.FunctionComponent<
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setUserMessage(event.target.value);
 
-  const { roomQuery, newMessageSubscription } = useActiveRoom(roomId);
+  const { roomQuery } = useActiveRoom(roomId);
 
   const room = roomQuery.data && roomQuery.data.room;
 

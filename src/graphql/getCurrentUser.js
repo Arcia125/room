@@ -6,6 +6,7 @@ const GET_CURRENT_USER = gql`
       id
       username
       email
+      avatar
     }
   }
 `;

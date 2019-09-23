@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSubscription } from '@apollo/react-hooks';
+import { useSubscription, useMutation, useQuery } from '@apollo/react-hooks';
 import {
   OnSubscriptionDataOptions,
   SubscriptionResult
@@ -7,7 +7,10 @@ import {
 
 import { NEW_ROOM_MESSAGE } from '../graphql/newRoomMessage';
 import { NEW_ROOM_USER } from '../graphql/newRoomUser';
+import { JOIN_ROOM } from '../graphql/joinRoom';
 import { useRoom } from './useRoom';
+import { GET_CURRENT_USER } from '../graphql/getCurrentUser';
+import { User } from '../utils/user';
 
 /**
  * @description Hack added to force rerenders when a new message arrives.
@@ -33,6 +36,7 @@ type GetUpdatedDataFunc = (subscriptionData: SubscriptionResult<any>) => any;
 export const useActiveRoom = (roomId: string) => {
   const roomQuery = useRoom(roomId);
 
+  const room = roomQuery.data && roomQuery.data.room;
   /**
    * Forces updates when a new message is send. Shouldn't be necessary,
    * but the roomQuery isn't updating otherwise.
@@ -41,14 +45,7 @@ export const useActiveRoom = (roomId: string) => {
    */
   const hackyForceUpdate = useHackyUpdater();
 
-  const createRoomQueryUpdater = (getUpdatedData: GetUpdatedDataFunc) => ({
-    subscriptionData,
-    client
-  }: OnSubscriptionDataOptions<any>) => {
-    if (!subscriptionData.data) return;
-
-    const newData = getUpdatedData(subscriptionData);
-
+  const updateRoomQuery = (newData: any) => {
     // update query in cache
     // const newQuery = {
     //   query: GET_ROOM,
@@ -66,6 +63,17 @@ export const useActiveRoom = (roomId: string) => {
      * @TODO remove once this function is no longer necessary to force an update to roomQuery
      */
     hackyForceUpdate();
+  };
+
+  const createRoomQueryUpdater = (getUpdatedData: GetUpdatedDataFunc) => ({
+    subscriptionData,
+    client
+  }: OnSubscriptionDataOptions<any>) => {
+    if (!subscriptionData.data) return;
+
+    const newData = getUpdatedData(subscriptionData);
+
+    updateRoomQuery(newData);
   };
 
   /**
@@ -97,6 +105,27 @@ export const useActiveRoom = (roomId: string) => {
 
     return newData;
   });
+  const currentUserQuery = useQuery(GET_CURRENT_USER);
+
+  const [joinRoom, joinRoomMutation] = useMutation(JOIN_ROOM, {
+    onCompleted: data => {
+      // Whenever this mutation completes, add the current user to the room if not already present
+      if (data.joinRoom.success) {
+        const currentUser: User = currentUserQuery.data.currentUser;
+
+        // don't add user to the current room unless already present
+        if (!room.users.find((user: User) => user.id === currentUser.id)) {
+          const newData = {
+            ...roomQuery.data
+          };
+
+          newData.room.users = [...newData.room.users, currentUser];
+
+          updateRoomQuery(newData);
+        }
+      }
+    }
+  });
 
   const newMessageSubscription = useSubscription(NEW_ROOM_MESSAGE, {
     variables: { roomId },
@@ -107,6 +136,12 @@ export const useActiveRoom = (roomId: string) => {
     variables: { roomId },
     onSubscriptionData: newUserUpdater
   });
+
+  React.useEffect(() => {
+    if (room) {
+      joinRoom({ variables: { roomId } });
+    }
+  }, [roomId, room]);
 
   return { roomQuery, newMessageSubscription, newUserSubscription };
 };

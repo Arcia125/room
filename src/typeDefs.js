@@ -12,6 +12,12 @@ const typeDefs = gql`
     avatar: String
   }
 
+  type ChatUser implements PublicUser {
+    id: ID!
+    username: String
+    avatar: String
+  }
+
   type User implements PublicUser {
     id: ID!
     username: String
@@ -30,7 +36,11 @@ const typeDefs = gql`
     id: ID!
     name: String
     messages: [Message]!
-    users: [User]!
+    users: [ChatUser]!
+  }
+
+  type SuccessResult {
+    success: Boolean!
   }
 
   type Query {
@@ -44,11 +54,12 @@ const typeDefs = gql`
     login(username: String!, password: String!): AuthPayload
     addRoom(name: String!): Room
     sendMessage(roomId: ID!, content: String!): Message
+    joinRoom(roomId: ID!): SuccessResult
   }
 
   type Subscription {
     newRoomMessage(roomId: ID!): Message
-    newRoomUser(roomId: ID!): PublicUser
+    newRoomUser(roomId: ID!): ChatUser
   }
 `;
 

@@ -6,8 +6,8 @@ const currentUser = {
   },
   resolvers: {
     Mutation: {
-      saveUser: (_, { username, id, email, token }, { cache }) => {
-        const user = { id, username, email, __typename: 'User' };
+      saveUser: (_, { username, id, email, token, avatar }, { cache }) => {
+        const user = { id, username, email, avatar, __typename: 'User' };
 
         console.log('saveUser resolver', user, token);
 
