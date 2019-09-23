@@ -1,4 +1,4 @@
-# Room
+![Logo](./src/logoText.svg)
 
 [![CircleCI](https://circleci.com/gh/Arcia125/room.svg?style=svg)](https://circleci.com/gh/Arcia125/room)
 
