@@ -13,19 +13,28 @@ let nextMessageId = 2;
 
 const NEW_ROOM_MESSAGE = 'newRoomMessage';
 
+const NEW_ROOM_USER = 'newRoomUser';
+
 const findRoomById = roomId => {
   const room = rooms.find(room => room.id == roomId);
-  if (!room) throw new RoomNotFoundError('Room could');
+  if (!room) throw new RoomNotFoundError('Room could not be found');
   return room;
 };
 
 const getNewRoomMessageChannel = roomId => `${NEW_ROOM_MESSAGE}__${roomId}`;
+
+const getNewRoomUserChannel = roomId => `${NEW_ROOM_USER}__${roomId}`;
 
 const publishNewRoomMessage = (roomId, newRoomMessage) =>
   pubsub.publish(getNewRoomMessageChannel(roomId), { newRoomMessage });
 
 const subscribeToNewRoomMessages = roomId =>
   pubsub.asyncIterator(getNewRoomMessageChannel(roomId));
+
+
+const publishNewRoomUserChannel = (roomId, newRoomUser) => pubsub.publish(getNewRoomUserChannel(roomId), { newRoomUser });
+
+const subscribeToNewRoomUsers = roomId => pubsub.asyncIterator(getNewRoomUserChannel(roomId));
 
 const Query = {
   rooms: () => {
@@ -143,6 +152,9 @@ const Subscription = {
 };
 
 const resolvers = {
+  PublicUser: {
+    __resolveType: 'User'
+  },
   Query,
   Mutation,
   Subscription,

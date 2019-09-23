@@ -6,13 +6,19 @@ const typeDefs = gql`
     content: String
   }
 
-  type User {
+  interface PublicUser {
     id: ID!
+    username: String
+    avatar: String
+  }
+
+  type User implements PublicUser {
+    id: ID!
+    username: String
+    avatar: String
     email: String
     firstName: String
     lastName: String
-    avatar: String
-    username: String
   }
 
   type AuthPayload {
@@ -42,6 +48,7 @@ const typeDefs = gql`
 
   type Subscription {
     newRoomMessage(roomId: ID!): Message
+    newRoomUser(roomId: ID!): PublicUser
   }
 `;
 

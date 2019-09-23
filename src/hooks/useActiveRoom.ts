@@ -1,8 +1,12 @@
 import React from 'react';
 import { useSubscription } from '@apollo/react-hooks';
-import { OnSubscriptionDataOptions } from '@apollo/react-common';
+import {
+  OnSubscriptionDataOptions,
+  SubscriptionResult
+} from '@apollo/react-common';
 
 import { NEW_ROOM_MESSAGE } from '../graphql/newRoomMessage';
+import { NEW_ROOM_USER } from '../graphql/newRoomUser';
 import { useRoom } from './useRoom';
 
 /**
@@ -24,6 +28,8 @@ const useHackyUpdater = () => {
   return forceUpdate;
 };
 
+type GetUpdatedDataFunc = (subscriptionData: SubscriptionResult<any>) => any;
+
 export const useActiveRoom = (roomId: string) => {
   const roomQuery = useRoom(roomId);
 
@@ -35,24 +41,13 @@ export const useActiveRoom = (roomId: string) => {
    */
   const hackyForceUpdate = useHackyUpdater();
 
-  /**
-   * @description updates the room query
-   */
-  const updateRoomQuery = ({
+  const createRoomQueryUpdater = (getUpdatedData: GetUpdatedDataFunc) => ({
     subscriptionData,
     client
   }: OnSubscriptionDataOptions<any>) => {
     if (!subscriptionData.data) return;
 
-    const { newRoomMessage } = subscriptionData.data;
-
-    // copy previous query data
-    const newData = {
-      ...roomQuery.data
-    };
-
-    // add new message to data
-    newData.room.messages = [...newData.room.messages, newRoomMessage];
+    const newData = getUpdatedData(subscriptionData);
 
     // update query in cache
     // const newQuery = {
@@ -73,10 +68,45 @@ export const useActiveRoom = (roomId: string) => {
     hackyForceUpdate();
   };
 
-  const newMessageSubscription = useSubscription(NEW_ROOM_MESSAGE, {
-    variables: { roomId },
-    onSubscriptionData: updateRoomQuery
+  /**
+   * @description funciton tha tupdates the room whenever a new message is received
+   */
+  const newMessageUpdater = createRoomQueryUpdater(subscriptionData => {
+    const newData = {
+      ...roomQuery.data
+    };
+
+    const { newRoomMessage } = subscriptionData.data;
+
+    newData.room.messages = [...newData.room.messages, newRoomMessage];
+
+    return newData;
   });
 
-  return { roomQuery, newMessageSubscription };
+  /**
+   * @description function that updates the room whenever new users join
+   */
+  const newUserUpdater = createRoomQueryUpdater(subscriptionData => {
+    const newData = {
+      ...roomQuery.data
+    };
+
+    const { newRoomUser } = subscriptionData.data;
+
+    newData.room.users = [...newData.room.users, newRoomUser];
+
+    return newData;
+  });
+
+  const newMessageSubscription = useSubscription(NEW_ROOM_MESSAGE, {
+    variables: { roomId },
+    onSubscriptionData: newMessageUpdater
+  });
+
+  const newUserSubscription = useSubscription(NEW_ROOM_USER, {
+    variables: { roomId },
+    onSubscriptionData: newUserUpdater
+  });
+
+  return { roomQuery, newMessageSubscription, newUserSubscription };
 };
