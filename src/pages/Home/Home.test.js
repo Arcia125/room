@@ -10,13 +10,15 @@ afterEach(cleanup);
 
 describe('Home', () => {
   it('renders without crashing', async () => {
-    const { container } = render(
+    const { container, getByText, debug } = render(
       <MockedProvider mocks={[]}>
         <Provider>
           <Home />
         </Provider>
       </MockedProvider>
     );
+    debug();
     await wait(() => expect(container).toBeInTheDocument());
+    await wait(() => getByText(/Loading.../i));
   });
 });
