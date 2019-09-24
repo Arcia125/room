@@ -18,7 +18,26 @@ describe('Account', () => {
         </Provider>
       </MockedProvider>
     );
+
     expect(container).toBeInTheDocument();
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("finishes loading and displays the current user's username", async () => {
+    const { getByDisplayValue, asFragment } = render(
+      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
+        <Provider>
+          <Account />
+        </Provider>
+      </MockedProvider>
+    );
+
+    await wait(() =>
+      expect(
+        getByDisplayValue(currentUserMockResolvers.Query.currentUser().username)
+      ).toBeInTheDocument()
+    );
 
     expect(asFragment()).toMatchSnapshot();
   });
