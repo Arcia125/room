@@ -20,11 +20,7 @@ afterEach(cleanup);
 describe('Home', () => {
   it('renders without crashing when no user is logged in', async () => {
     const { container } = render(
-      <MockedProvider
-        addTypename
-        mocks={[]}
-        resolvers={nullCurrentUserMockResolvers}
-      >
+      <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
         <Provider>
           <Home {...mockRouteComponentProps} />
         </Provider>
@@ -36,11 +32,7 @@ describe('Home', () => {
 
   it('renders without crashing when a user is logged in', async () => {
     const { container } = render(
-      <MockedProvider
-        addTypename
-        mocks={[]}
-        resolvers={currentUserMockResolvers}
-      >
+      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
         <Provider>
           <Home {...mockRouteComponentProps} />
         </Provider>
@@ -52,11 +44,7 @@ describe('Home', () => {
 
   it('redirects logged in users', async () => {
     const { container } = render(
-      <MockedProvider
-        addTypename
-        mocks={[]}
-        resolvers={currentUserMockResolvers}
-      >
+      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
         <Provider>
           <Home {...mockRouteComponentProps} />
         </Provider>
