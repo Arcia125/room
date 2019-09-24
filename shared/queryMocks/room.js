@@ -1,7 +1,7 @@
+import * as generate from '../mockData/generate';
 import { GET_ROOM } from '../../src/graphql/getRoom';
 import { NEW_ROOM_MESSAGE } from '../../src/graphql/newRoomMessage';
 import { users } from '../mockData/users';
-import * as generate from '../mockData/generate';
 import { NEW_ROOM_USER } from '../../src/graphql/newRoomUser';
 import { JOIN_ROOM } from '../../src/graphql/joinRoom';
 

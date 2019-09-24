@@ -15,14 +15,17 @@ export type FakeDataGenerator<T> = (defaults: Partial<T>) => T;
 export type MultipleFunc<T> = (gen: FakeDataGenerator<T>, count: number) => T[];
 
 
-const multiple: MultipleFunc<any> = (gen, count) => new Array(count).fill(null).map(() => gen({}));
+const multiple: MultipleFunc<any> = (gen, count) => new Array(count).fill(null).map(() => {
+  const generated = gen({});
+  return generated;
+});
 
 /**
  * @description Convenience wrapper around generating arrays with generators.
  * @example
  * import faker from 'faker';
  * 
- * let id = 0;
+ * let id = 0 ;
  * 
  * const userGenerator = () => ({ id: id++, username: faker.internet.userName() })
  * 
@@ -35,7 +38,10 @@ createMultipleGenerator = (gen) => (count) => multiple(gen, count);
 
 let nextId = 0;
 
-const genId = () => (++nextId).toString();
+const genId = () => {
+  const id = (nextId++).toString();
+  return id;
+}
 
 
 const user: FakeDataGenerator<User> = ({ id, username, avatar, firstName, lastName, email } = {}) => ({

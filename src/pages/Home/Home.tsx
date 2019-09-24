@@ -100,7 +100,7 @@ const Home: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   if (getCurrentUserQuery.loading) return <HomePage>Loading...</HomePage>;
   if (getCurrentUserQuery.error)
-    return <HomePage>getCurrentUserQuery.error.message</HomePage>;
+    return <HomePage>{getCurrentUserQuery.error.message}</HomePage>;
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
   if (currentUser) {

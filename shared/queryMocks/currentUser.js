@@ -11,7 +11,17 @@ const currentUserMock = {
       currentUser: users[0]
     }
   }
-}
+};
 
+const nullCurrentUserMock = {
+  request: {
+    query: GET_CURRENT_USER,
+  },
+  result: {
+    data: {
+      currentUser: null
+    }
+  }
+};
 
-export { currentUserMock };
+export { currentUserMock, nullCurrentUserMock };
