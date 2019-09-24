@@ -12,7 +12,7 @@ afterEach(cleanup);
 
 describe('Modal', () => {
   it('renders without crashing', () => {
-    const { container } = render(<Modal isOpen />);
+    const { container } = render(<Modal isOpen appElement={document.body} />);
 
     expect(container).toBeInTheDocument();
   });
