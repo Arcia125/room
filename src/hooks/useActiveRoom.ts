@@ -81,8 +81,6 @@ export const useActiveRoom = (roomId: string) => {
    */
   const newMessageUpdater = createRoomQueryUpdater(subscriptionData => {
     const newData = {
-      messages: [],
-
       ...roomQuery.data
     };
 
