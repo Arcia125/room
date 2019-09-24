@@ -111,8 +111,12 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/apolloClient.js",
-      "!src/index.js"
+      "**/*.{js, ts, tsx}",
+      "!src/index.js",
+      "!src/setupProxy.js",
+      "!src/typeDefs.js",
+      "!src/urls.js",
+      "!src/serviceWorker.js"
     ]
   }
 }
