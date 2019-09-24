@@ -12,10 +12,9 @@ exports[`Dashboard renders without crashing 1`] = `
     <button
       class="sc-bdVaJa jcypuS"
       color="primary"
+      data-testid="create-room-button"
     >
-      <div>
-        create a room
-      </div>
+      create a room
     </button>
     <button
       class="sc-bdVaJa jcypuS"

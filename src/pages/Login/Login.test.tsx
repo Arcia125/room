@@ -19,7 +19,9 @@ describe('Login', () => {
         </Provider>
       </MockedProvider>
     );
+
     await wait(() => expect(container).toBeInTheDocument());
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

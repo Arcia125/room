@@ -52,7 +52,7 @@ const typeDefs = gql`
     createUser(username: String): AuthPayload
     claimAccount(email: String, password: String): AuthPayload
     login(username: String!, password: String!): AuthPayload
-    addRoom(name: String!): Room
+    addRoom(name: String): Room
     sendMessage(roomId: ID!, content: String!): Message
     joinRoom(roomId: ID!): SuccessResult
   }

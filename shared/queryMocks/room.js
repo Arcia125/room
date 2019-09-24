@@ -4,6 +4,7 @@ import { NEW_ROOM_MESSAGE } from '../../src/graphql/newRoomMessage';
 import { users } from '../mockData/users';
 import { NEW_ROOM_USER } from '../../src/graphql/newRoomUser';
 import { JOIN_ROOM } from '../../src/graphql/joinRoom';
+import { ADD_ROOM } from '../../src/graphql/addRoom';
 
 const mockRoom = generate.room({
   id: 'test-id',
@@ -65,4 +66,15 @@ const joinRoomMock = {
   }
 }
 
-export { mockRoom, getRoomMock, newRoomMessageMock, newRoomUserMock, joinRoomMock };
+const addRoomMock = {
+  request: {
+    query: ADD_ROOM,
+  },
+  result: {
+    data: {
+      addRoom: generate.room()
+    }
+  }
+}
+
+export { mockRoom, getRoomMock, newRoomMessageMock, newRoomUserMock, joinRoomMock, addRoomMock };

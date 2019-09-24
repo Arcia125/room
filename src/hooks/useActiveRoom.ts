@@ -105,6 +105,7 @@ export const useActiveRoom = (roomId: string) => {
 
     return newData;
   });
+
   const currentUserQuery = useQuery(GET_CURRENT_USER);
 
   const [joinRoom, joinRoomMutation] = useMutation(JOIN_ROOM, {
