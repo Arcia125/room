@@ -111,7 +111,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/*.{js, ts, tsx}",
+      "**/*.{js,ts,tsx}",
       "!src/index.js",
       "!src/setupProxy.js",
       "!src/typeDefs.js",
