@@ -8,6 +8,7 @@ const CLAIM_ACCOUNT = gql`
         id
         username
         email
+        avatar
       }
     }
   }
