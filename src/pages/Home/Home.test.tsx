@@ -17,6 +17,10 @@ const unauthorizedMocks = [nullCurrentUserMock];
 // mocks queries for when logged in
 const authorizedMocks = [currentUserMock];
 
+beforeEach(() => {
+  jest.resetAllMocks();
+});
+
 afterEach(cleanup);
 
 describe('Home', () => {
@@ -42,5 +46,19 @@ describe('Home', () => {
     );
 
     await wait(() => expect(container).toBeInTheDocument());
+  });
+
+  it('redirects logged in users', async () => {
+    const { container } = render(
+      <MockedProvider addTypename mocks={authorizedMocks}>
+        <Provider>
+          <Home {...mockRouteComponentProps} />
+        </Provider>
+      </MockedProvider>
+    );
+
+    await wait(() =>
+      expect(mockRouteComponentProps.history.push).toBeCalledTimes(1)
+    );
   });
 });
