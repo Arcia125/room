@@ -19,10 +19,7 @@ const currentUserMock = {
 const currentUserMockResolvers = {
   Mutation: currentUser.resolvers.Mutation,
   Query: {
-    currentUser: (root, args, { cache }, info) => {
-      console.log('getting current user');
-      return mockUser;
-    }
+    currentUser: () => mockUser
   }
 };
 
