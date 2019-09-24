@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface LoginFormProps {
+export interface LoginFormProps {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   username: string;
   onChangeUsername: React.ChangeEventHandler<HTMLInputElement>;
