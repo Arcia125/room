@@ -5,13 +5,7 @@ import {
 } from './storage';
 import { GET_CURRENT_USER } from '../graphql/getCurrentUser';
 import { ApolloCache } from 'apollo-cache';
-
-export interface User {
-  id: string;
-  email: string;
-  username: string;
-  avatar: string;
-}
+import { User } from '../types/User';
 
 const TOKEN_STORAGE_KEY = 'roomCurrentUserToken';
 

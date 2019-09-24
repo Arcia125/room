@@ -10,7 +10,7 @@ import { NEW_ROOM_USER } from '../graphql/newRoomUser';
 import { JOIN_ROOM } from '../graphql/joinRoom';
 import { useRoom } from './useRoom';
 import { GET_CURRENT_USER } from '../graphql/getCurrentUser';
-import { User } from '../utils/user';
+import { User } from '../utils/User';
 
 /**
  * @description Hack added to force rerenders when a new message arrives.
@@ -81,6 +81,7 @@ export const useActiveRoom = (roomId: string) => {
    */
   const newMessageUpdater = createRoomQueryUpdater(subscriptionData => {
     const newData = {
+      messages: [],
       ...roomQuery.data
     };
 
@@ -110,7 +111,7 @@ export const useActiveRoom = (roomId: string) => {
   const [joinRoom, joinRoomMutation] = useMutation(JOIN_ROOM, {
     onCompleted: data => {
       // Whenever this mutation completes, add the current user to the room if not already present
-      if (data.joinRoom.success) {
+      if (data.joinRoom && data.joinRoom.success) {
         const currentUser: User = currentUserQuery.data.currentUser;
 
         // don't add user to the current room unless already present
@@ -141,7 +142,7 @@ export const useActiveRoom = (roomId: string) => {
     if (room) {
       joinRoom({ variables: { roomId } });
     }
-  }, [roomId, room]);
+  }, [roomId]);
 
   return { roomQuery, newMessageSubscription, newUserSubscription };
 };

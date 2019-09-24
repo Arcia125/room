@@ -8,10 +8,19 @@ import { Provider } from '../../theme';
 import {
   getRoomMock,
   newRoomMessageMock,
-  mockRoom
+  mockRoom,
+  newRoomUserMock,
+  joinRoomMock
 } from '../../../shared/queryMocks/room';
+import { currentUserMock } from '../../../shared/queryMocks/currentUser';
 
-const mocks = [getRoomMock, newRoomMessageMock];
+const mocks = [
+  currentUserMock,
+  getRoomMock,
+  newRoomMessageMock,
+  newRoomUserMock,
+  joinRoomMock
+];
 
 afterEach(cleanup);
 

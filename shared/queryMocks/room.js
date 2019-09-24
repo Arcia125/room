@@ -1,20 +1,16 @@
 import { GET_ROOM } from '../../src/graphql/getRoom';
 import { NEW_ROOM_MESSAGE } from '../../src/graphql/newRoomMessage';
 import { users } from '../mockData/users';
+import * as generate from '../mockData/generate';
+import { NEW_ROOM_USER } from '../../src/graphql/newRoomUser';
+import { JOIN_ROOM } from '../../src/graphql/joinRoom';
 
-const mockRoom = {
+const mockRoom = generate.room({
   id: 'test-id',
   name: 'test-room',
-  messages: [
-    {
-      id: 0,
-      content: 'test-content',
-      __typename: 'Message',
-    },
-  ],
+  messages: generate.messages(2),
   users,
-  __typename: 'Room',
-};
+});
 
 const { id: roomId } = mockRoom;
 
@@ -37,13 +33,36 @@ const newRoomMessageMock = {
   },
   result: {
     data: {
-      newRoomMessage: {
-        id: 1,
-        content: 'test-content',
-        __typename: 'Message',
-      },
+      newRoomMessage: generate.message(),
     },
   },
 };
 
-export { mockRoom, getRoomMock, newRoomMessageMock };
+const newRoomUserMock = {
+  request: {
+    query: NEW_ROOM_USER,
+    variables: { roomId },
+  },
+  result: {
+    data: {
+      newRoomUser: generate.user()
+    }
+  }
+};
+
+const joinRoomMock = {
+  request: {
+    query: JOIN_ROOM,
+    variables: { roomId }
+  },
+  result: {
+    data: {
+      joinRoom: {
+        success: true,
+        __typename: 'SuccessResult'
+      }
+    }
+  }
+}
+
+export { mockRoom, getRoomMock, newRoomMessageMock, newRoomUserMock, joinRoomMock };
