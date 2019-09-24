@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders without crashing when a user is logged in 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdVaJa ktYadu"
+  >
+    <nav
+      class="sc-bwzfXH bPFVNE"
+    >
+      <a>
+        <img
+          alt="Room Logo"
+          src="logoText.svg"
+        />
+      </a>
+    </nav>
+    <div
+      class="homePage"
+    >
+      <p
+        class="homePage__invite"
+      >
+        Pick a username to get started
+      </p>
+      <form
+        class="sc-bxivhb wUoMT"
+      >
+        <div
+          class="form"
+        >
+          <input
+            class="form__input"
+            placeholder="Enter a username"
+            value=""
+          />
+          <button
+            class="form__button sc-htpNat kYuwnI"
+            color="primary"
+            type="submit"
+          >
+            <i
+              class="material-icons"
+            >
+              arrow_right_alt
+            </i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

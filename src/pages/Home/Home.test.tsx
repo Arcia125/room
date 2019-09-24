@@ -31,7 +31,7 @@ describe('Home', () => {
   });
 
   it('renders without crashing when a user is logged in', async () => {
-    const { container } = render(
+    const { container, asFragment } = render(
       <MockedProvider addTypename resolvers={currentUserMockResolvers}>
         <Provider>
           <Home {...mockRouteComponentProps} />
@@ -40,6 +40,8 @@ describe('Home', () => {
     );
 
     await wait(() => expect(container).toBeInTheDocument());
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('redirects logged in users', async () => {
