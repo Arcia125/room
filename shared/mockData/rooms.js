@@ -1,25 +1,5 @@
-const rooms = [
-  {
-    id: 1,
-    name: 'games',
-    messages: [
-      {
-        id: 0,
-        content: 'test',
-      },
-      {
-        id: 1,
-        content: 'test2',
-      },
-    ],
-    users: [],
-  },
-  {
-    id: 2,
-    name: 'tv',
-    messages: [],
-    users: [],
-  },
-];
+import * as generate from './generate';
+
+const rooms = generate.rooms(2);
 
 export { rooms };

@@ -3,22 +3,25 @@ import { MockedProvider } from '@apollo/react-testing';
 import { render, cleanup, wait } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Dashboard from '.';
+import Login from '.';
 import { Provider } from '../../theme';
-
-const mocks = [];
+import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
+import { nullCurrentUserMockResolvers } from '../../../shared/queryMocks/currentUser';
 
 afterEach(cleanup);
 
-describe('Dashboard', () => {
+describe('Login', () => {
   it('renders without crashing', async () => {
-    const { container } = render(
-      <MockedProvider addTypename mocks={mocks}>
+    const { container, asFragment } = render(
+      <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
         <Provider>
-          <Dashboard />
+          <Login {...mockRouteComponentProps} />
         </Provider>
       </MockedProvider>
     );
+
     await wait(() => expect(container).toBeInTheDocument());
+
+    expect(asFragment()).toMatchSnapshot();
   });
 });

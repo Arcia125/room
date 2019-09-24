@@ -6,13 +6,25 @@ const typeDefs = gql`
     content: String
   }
 
-  type User {
+  interface PublicUser {
     id: ID!
+    username: String
+    avatar: String
+  }
+
+  type ChatUser implements PublicUser {
+    id: ID!
+    username: String
+    avatar: String
+  }
+
+  type User implements PublicUser {
+    id: ID!
+    username: String
+    avatar: String
     email: String
     firstName: String
     lastName: String
-    avatar: String
-    username: String
   }
 
   type AuthPayload {
@@ -24,7 +36,11 @@ const typeDefs = gql`
     id: ID!
     name: String
     messages: [Message]!
-    users: [User]!
+    users: [ChatUser]!
+  }
+
+  type SuccessResult {
+    success: Boolean!
   }
 
   type Query {
@@ -36,12 +52,14 @@ const typeDefs = gql`
     createUser(username: String): AuthPayload
     claimAccount(email: String, password: String): AuthPayload
     login(username: String!, password: String!): AuthPayload
-    addRoom(name: String!): Room
+    addRoom(name: String): Room
     sendMessage(roomId: ID!, content: String!): Message
+    joinRoom(roomId: ID!): SuccessResult
   }
 
   type Subscription {
     newRoomMessage(roomId: ID!): Message
+    newRoomUser(roomId: ID!): ChatUser
   }
 `;
 

@@ -4,13 +4,14 @@ import { render, wait, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import App from './App';
+import { nullCurrentUserMockResolvers } from '../shared/queryMocks/currentUser';
 
 afterEach(cleanup);
 
 describe('App', () => {
   it('renders without crashing', async () => {
     const { container } = render(
-      <MockedProvider mocks={[]}>
+      <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
         <App />
       </MockedProvider>
     );

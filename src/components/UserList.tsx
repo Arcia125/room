@@ -2,7 +2,7 @@ import React from 'react';
 import UserTile from './UserTile';
 
 import StyledUserList from './styles/UserList';
-import { User } from '../utils/user';
+import { User } from '../types/User';
 
 const UserList: React.FunctionComponent<{ users: User[] }> = ({ users }) => (
   <StyledUserList>

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
 
@@ -55,9 +54,7 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
     }
   });
 
-  const [addRoom, addRoomMutation] = useMutation(ADD_ROOM, {
-    variables: { name: roomNames[Math.random() > 0.5 ? 0 : 1] }
-  });
+  const [addRoom, addRoomMutation] = useMutation(ADD_ROOM);
 
   const addedRoomId = addRoomMutation.data && addRoomMutation.data.addRoom.id;
 
@@ -92,12 +89,15 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
         's dashboard
       </h1>
       <p>Create a room to get started</p>
-      <Button color="primary" padding="2" onClick={handleCreateRoom}>
-        {getCurrentUserQuery.loading || addRoomMutation.loading ? (
-          <div>Loading...</div>
-        ) : (
-          <div>create a room</div>
-        )}
+      <Button
+        color="primary"
+        padding="2"
+        onClick={handleCreateRoom}
+        data-testid="create-room-button"
+      >
+        {getCurrentUserQuery.loading || addRoomMutation.loading
+          ? 'Loading...'
+          : 'create a room'}
       </Button>
 
       <Button color="primary" padding="2" onClick={handleClickMyAccount}>

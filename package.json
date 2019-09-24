@@ -23,6 +23,7 @@
     "@apollo/react-hooks": "^3.1.1",
     "@apollo/react-testing": "^3.1.1",
     "@storybook/design-system": "^1.0.0",
+    "@types/faker": "^4.1.5",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
@@ -40,6 +41,7 @@
     "dotenv": "^8.1.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "graphql": "^14.5.4",
     "graphql-server-express": "^1.4.1",
     "graphql-subscriptions": "^1.1.0",
@@ -109,8 +111,14 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/apolloClient.js",
-      "!src/index.js"
+      "**/*.{js,ts,tsx}",
+      "!src/index.js",
+      "!src/setupProxy.js",
+      "!src/typeDefs.js",
+      "!src/urls.js",
+      "!src/serviceWorker.js",
+      "!src/apolloClient.tsx",
+      "!src/theme.tsx"
     ]
   }
 }

@@ -5,15 +5,22 @@ const SAVE_USER = gql`
     $id: ID
     $username: String
     $email: String
+    $avatar: String
     $token: String
   ) {
-    saveUser(id: $id, username: $username, email: $email, token: $token)
-      @client {
+    saveUser(
+      id: $id
+      username: $username
+      email: $email
+      avatar: $avatar
+      token: $token
+    ) @client {
       token
       user {
         id
         username
         email
+        avatar
       }
     }
   }

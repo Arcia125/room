@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard renders without crashing 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      Kevin's dashboard
+    </h1>
+    <p>
+      Create a room to get started
+    </p>
+    <button
+      class="sc-bdVaJa jcypuS"
+      color="primary"
+      data-testid="create-room-button"
+    >
+      create a room
+    </button>
+    <button
+      class="sc-bdVaJa jcypuS"
+      color="primary"
+    >
+      My Account
+    </button>
+  </div>
+</DocumentFragment>
+`;

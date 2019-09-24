@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account finishes loading and displays the current user's username 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      Account
+    </h1>
+    <label
+      for="email"
+    >
+      Email
+    </label>
+    <input
+      id="email"
+      readonly=""
+      value="kevin@test.com"
+    />
+    <label
+      for="password"
+    >
+      Username
+    </label>
+    <input
+      id="password"
+      readonly=""
+      value="Kevin"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Account renders without crashing 1`] = `
+<DocumentFragment>
+  <div>
+    Loading...
+  </div>
+</DocumentFragment>
+`;

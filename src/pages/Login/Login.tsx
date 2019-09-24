@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
+import { RouteComponentProps } from 'react-router';
 
 import { LoginForm } from '../../components/LoginForm';
 import { useLoginForm } from '../../hooks/useLoginForm';
 import { useAuth } from '../../hooks/useAuth';
-import { RouteComponentProps } from 'react-router';
 
-const Login = ({ history }: RouteComponentProps) => {
+const Login: FunctionComponent<RouteComponentProps> = ({ history }) => {
   const auth = useAuth();
 
   const {
