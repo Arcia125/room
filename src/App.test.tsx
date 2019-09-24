@@ -10,7 +10,7 @@ afterEach(cleanup);
 describe('App', () => {
   it('renders without crashing', async () => {
     const { container } = render(
-      <MockedProvider mocks={[]}>
+      <MockedProvider addTypename>
         <App />
       </MockedProvider>
     );
