@@ -5,20 +5,19 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Account from '.';
 import { Provider } from '../../theme';
-
-const mocks = [];
+import { currentUserMockResolvers } from '../../../shared/queryMocks/currentUser';
 
 afterEach(cleanup);
 
 describe('Account', () => {
   it('renders without crashing', async () => {
     const { container } = render(
-      <MockedProvider addTypename mocks={mocks}>
+      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
         <Provider>
           <Account />
         </Provider>
       </MockedProvider>
     );
-    await wait(() => expect(container).toBeInTheDocument());
+    expect(container).toBeInTheDocument();
   });
 });
