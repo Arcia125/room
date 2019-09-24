@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import StyledNavbar from './styles/Navbar';
 import logoText from '../logoText.svg';
 
-const Navbar = props => {
+const Navbar: FunctionComponent = () => {
   return (
     <StyledNavbar>
       <a>
