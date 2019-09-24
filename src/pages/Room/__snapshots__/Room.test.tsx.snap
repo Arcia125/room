@@ -1,0 +1,260 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Room finishes loading initial queries 1`] = `
+<DocumentFragment>
+  <div
+    class="room-page"
+  >
+    <header
+      class="room-page__header"
+    >
+      Chat
+    </header>
+    <div
+      class="sc-bdVaJa nNBRa"
+    >
+      <ul
+        class="sc-htpNat jCTauV"
+      >
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://source.unsplash.com/cqraK2a3Or8/50x50"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Kevin
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://source.unsplash.com/tzzpfLiRPlA/50x50"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Kaitlyn
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://source.unsplash.com/7nL3AhoUxw0/50x50"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Donte
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://source.unsplash.com/4TMBk-LqEKo/50x50"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Chelsie
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/mactopus/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Eriberto50
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/ryanmclaughlin/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Leda7
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/wikiziner/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Davonte_Littel
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/meelford/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Dustin_Mante73
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/oktayelipek/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Ericka.Schmidt
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/dvdwinden/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Corbin82
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/dicesales/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Pablo.DuBuque
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/ankitind/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Maye.Monahan36
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Modesta78
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/algunsanabria/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Holden.Roberts
+          </span>
+        </li>
+        <li
+          class="sc-bwzfXH ijQKqq"
+        >
+          <img
+            alt=""
+            src="https://s3.amazonaws.com/uifaces/faces/twitter/ivanfilipovbg/128.jpg"
+            style="border-radius: 50%;"
+          />
+          <span>
+            Emile.Auer99
+          </span>
+        </li>
+      </ul>
+      <div
+        class="chatbox"
+      >
+        <h1
+          class="chatbox__header"
+        >
+          test-room
+        </h1>
+        <ul
+          class="chatbox__message-list"
+        >
+          <li
+            class="chatbox__message-list--item"
+          >
+            ea quidem facilis
+          </li>
+          <li
+            class="chatbox__message-list--item"
+          >
+            quaerat dolorum rerum
+          </li>
+          <li
+            class="chatbox__message-list--item"
+          >
+            inventore quo dignissimos
+          </li>
+        </ul>
+        <div
+          class="chatbox__input"
+        >
+          <input
+            class="chatbox__input--field"
+            value=""
+          />
+          <button
+            class="chatbox__input--button sc-bxivhb cHHGVo"
+            color="primary"
+          >
+            send
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Room renders without crashing 1`] = `
+<DocumentFragment>
+  <div
+    class="room-page"
+  >
+    <header
+      class="room-page__header"
+    >
+      Chat
+    </header>
+    loading...
+  </div>
+</DocumentFragment>
+`;
