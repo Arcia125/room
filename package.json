@@ -116,7 +116,9 @@
       "!src/setupProxy.js",
       "!src/typeDefs.js",
       "!src/urls.js",
-      "!src/serviceWorker.js"
+      "!src/serviceWorker.js",
+      "!src/apolloClient.tsx",
+      "!src/theme.tsx"
     ]
   }
 }
