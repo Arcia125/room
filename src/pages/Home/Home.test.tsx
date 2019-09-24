@@ -19,20 +19,8 @@ afterEach(cleanup);
 
 describe('Home', () => {
   it('renders without crashing when no user is logged in', async () => {
-    const { container } = render(
-      <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
-        <Provider>
-          <Home {...mockRouteComponentProps} />
-        </Provider>
-      </MockedProvider>
-    );
-
-    await wait(() => expect(container).toBeInTheDocument());
-  });
-
-  it('renders without crashing when a user is logged in', async () => {
     const { container, asFragment } = render(
-      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
+      <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
         <Provider>
           <Home {...mockRouteComponentProps} />
         </Provider>
@@ -42,6 +30,18 @@ describe('Home', () => {
     await wait(() => expect(container).toBeInTheDocument());
 
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('renders without crashing when a user is logged in', async () => {
+    const { container } = render(
+      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
+        <Provider>
+          <Home {...mockRouteComponentProps} />
+        </Provider>
+      </MockedProvider>
+    );
+
+    await wait(() => expect(container).toBeInTheDocument());
   });
 
   it('redirects logged in users', async () => {
