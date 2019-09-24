@@ -6,16 +6,10 @@ import '@testing-library/jest-dom/extend-expect';
 import Home from '.';
 import { Provider } from '../../theme';
 import {
-  nullCurrentUserMock,
-  currentUserMock
+  currentUserMockResolvers,
+  nullCurrentUserMockResolvers
 } from '../../../shared/queryMocks/currentUser';
 import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
-
-// mocks queries for when logged out
-const unauthorizedMocks = [nullCurrentUserMock];
-
-// mocks queries for when logged in
-const authorizedMocks = [currentUserMock];
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -26,7 +20,11 @@ afterEach(cleanup);
 describe('Home', () => {
   it('renders without crashing when no user is logged in', async () => {
     const { container } = render(
-      <MockedProvider addTypename mocks={unauthorizedMocks}>
+      <MockedProvider
+        addTypename
+        mocks={[]}
+        resolvers={nullCurrentUserMockResolvers}
+      >
         <Provider>
           <Home {...mockRouteComponentProps} />
         </Provider>
@@ -38,7 +36,11 @@ describe('Home', () => {
 
   it('renders without crashing when a user is logged in', async () => {
     const { container } = render(
-      <MockedProvider addTypename mocks={authorizedMocks}>
+      <MockedProvider
+        addTypename
+        mocks={[]}
+        resolvers={currentUserMockResolvers}
+      >
         <Provider>
           <Home {...mockRouteComponentProps} />
         </Provider>
@@ -50,7 +52,11 @@ describe('Home', () => {
 
   it('redirects logged in users', async () => {
     const { container } = render(
-      <MockedProvider addTypename mocks={authorizedMocks}>
+      <MockedProvider
+        addTypename
+        mocks={[]}
+        resolvers={currentUserMockResolvers}
+      >
         <Provider>
           <Home {...mockRouteComponentProps} />
         </Provider>
