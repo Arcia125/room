@@ -5,7 +5,7 @@ import logoText from '../logoText.svg';
 const Navbar: FunctionComponent = () => {
   return (
     <StyledNavbar>
-      <a>
+      <a href="/">
         <img src={logoText} alt="Room Logo" />
       </a>
     </StyledNavbar>
