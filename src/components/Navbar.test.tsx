@@ -13,7 +13,7 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe('Navbar', () => {
-  it('renders without crashing when no user is logged in', () => {
+  it('renders without crashing', () => {
     const { container } = render(
       <Provider>
         <Navbar />
