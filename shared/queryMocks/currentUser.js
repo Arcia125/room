@@ -1,6 +1,9 @@
 import { users } from '../mockData/users';
 import { GET_CURRENT_USER } from '../../src/graphql/getCurrentUser';
+import { currentUser } from '../../src/resolvers/currentUser';
 
+
+const mockUser = users[0];
 
 const currentUserMock = {
   request: {
@@ -8,7 +11,17 @@ const currentUserMock = {
   },
   result: {
     data: {
-      currentUser: users[0]
+      currentUser: mockUser
+    }
+  }
+};
+
+const currentUserMockResolvers = {
+  Mutation: currentUser.resolvers.Mutation,
+  Query: {
+    currentUser: (root, args, { cache }, info) => {
+      console.log('getting current user');
+      return mockUser;
     }
   }
 };
@@ -24,4 +37,13 @@ const nullCurrentUserMock = {
   }
 };
 
-export { currentUserMock, nullCurrentUserMock };
+const nullCurrentUserMockResolvers = {
+  Mutation: currentUser.resolvers.Mutation,
+  Query: {
+    currentUser: () => null
+  }
+};
+
+
+
+export { currentUserMock, currentUserMockResolvers, nullCurrentUserMock, nullCurrentUserMockResolvers };
