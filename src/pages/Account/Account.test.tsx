@@ -11,7 +11,7 @@ afterEach(cleanup);
 
 describe('Account', () => {
   it('renders without crashing', async () => {
-    const { container } = render(
+    const { container, asFragment } = render(
       <MockedProvider addTypename resolvers={currentUserMockResolvers}>
         <Provider>
           <Account />
@@ -19,5 +19,7 @@ describe('Account', () => {
       </MockedProvider>
     );
     expect(container).toBeInTheDocument();
+
+    expect(asFragment()).toMatchSnapshot();
   });
 });
