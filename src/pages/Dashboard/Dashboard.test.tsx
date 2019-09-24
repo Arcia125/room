@@ -6,13 +6,14 @@ import '@testing-library/jest-dom/extend-expect';
 import Dashboard from '.';
 import { Provider } from '../../theme';
 import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
+import { currentUserMockResolvers } from '../../../shared/queryMocks/currentUser';
 
 afterEach(cleanup);
 
 describe('Dashboard', () => {
   it('renders without crashing', async () => {
     const { container } = render(
-      <MockedProvider addTypename>
+      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
         <Provider>
           <Dashboard {...mockRouteComponentProps} />
         </Provider>
