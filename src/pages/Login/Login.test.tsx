@@ -12,7 +12,7 @@ afterEach(cleanup);
 
 describe('Login', () => {
   it('renders without crashing', async () => {
-    const { container } = render(
+    const { container, asFragment } = render(
       <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
         <Provider>
           <Login {...mockRouteComponentProps} />
@@ -20,5 +20,6 @@ describe('Login', () => {
       </MockedProvider>
     );
     await wait(() => expect(container).toBeInTheDocument());
+    expect(asFragment()).toMatchSnapshot();
   });
 });
