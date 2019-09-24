@@ -5,17 +5,16 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Dashboard from '.';
 import { Provider } from '../../theme';
-
-const mocks = [];
+import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
 
 afterEach(cleanup);
 
 describe('Dashboard', () => {
   it('renders without crashing', async () => {
     const { container } = render(
-      <MockedProvider addTypename mocks={mocks}>
+      <MockedProvider addTypename>
         <Provider>
-          <Dashboard />
+          <Dashboard {...mockRouteComponentProps} />
         </Provider>
       </MockedProvider>
     );
