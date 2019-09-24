@@ -16,7 +16,10 @@ const PUBLIC_URL_FROM_WINDOW = window && window.location.origin;
 //     ? PUBLIC_URL_FROM_WINDOW
 //     : ENV_PUBLIC_URL || PUBLIC_URL_FROM_WINDOW;
 
-const webSocketUriBase = PUBLIC_URL_FROM_WINDOW.replace(/https?/, 'ws');
+const webSocketUriBase = PUBLIC_URL_FROM_WINDOW.replace(
+  /https?/,
+  window && window.location.protocol === 'https:' ? 'wss' : 'ws'
+);
 
 console.log('webSocketUriBase', webSocketUriBase);
 
