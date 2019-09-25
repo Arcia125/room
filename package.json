@@ -17,7 +17,8 @@
     "build-storybook": "build-storybook",
     "prod-build:docker": "docker build -t arcia125/room .",
     "prod-start:docker": "docker run -d -p 9001:9001 --name room arcia125/room",
-    "cypress": "npx cypress open"
+    "cypress": "npx cypress open",
+    "resetDb": "node -r esm ./scripts/resetDb.js"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
