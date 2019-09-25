@@ -73,7 +73,7 @@ userSchema.methods.comparePassword = function(candidatePassword) {
 
 // encrypt password before save
 userSchema.pre('save', function(next) {
-  const user = this;
+  const user = this as UserDocumentExtended;
 
   if (!user.isModified('password') || !user.password) {
     // don't rehash if it's an old user
