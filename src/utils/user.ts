@@ -22,7 +22,7 @@ const setUser = ({
 }: {
   user: User;
   cache: ApolloCache<any>;
-  token: String;
+  token: string;
 }) => {
   if (cache) {
     cache.writeQuery({

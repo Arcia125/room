@@ -10,10 +10,10 @@ type ClaimAccountFormOnSubmit = ({
   email: string;
 }) => any;
 
-type ClaimAccountFormProps = {
+interface ClaimAccountFormProps {
   onSubmit: ClaimAccountFormOnSubmit;
   children: ReactElement;
-};
+}
 
 const ClaimAccountForm: React.FunctionComponent<ClaimAccountFormProps> = ({
   onSubmit,

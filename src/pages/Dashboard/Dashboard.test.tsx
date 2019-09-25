@@ -48,7 +48,7 @@ describe('Dashboard', () => {
       </MockedProvider>
     );
 
-    let createRoomButton: HTMLElement = await waitForElement(() =>
+    const createRoomButton: HTMLElement = await waitForElement(() =>
       findByTestId('create-room-button')
     );
 
