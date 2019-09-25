@@ -5,7 +5,7 @@ import {
   cleanup,
   wait,
   fireEvent,
-  waitForElement
+  waitForElement,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -48,7 +48,7 @@ describe('Dashboard', () => {
       </MockedProvider>
     );
 
-    let createRoomButton: HTMLElement = await waitForElement(() =>
+    const createRoomButton: HTMLElement = await waitForElement(() =>
       findByTestId('create-room-button')
     );
 

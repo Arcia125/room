@@ -10,8 +10,6 @@ import { CLAIM_ACCOUNT } from '../../graphql/claimAccount';
 import Modal from '../../components/Modal';
 import { SAVE_USER } from '../../graphql/saveUser';
 
-const roomNames = ['test1', 'test2'];
-
 const useModalState = (
   { initialIsOpen = false } = { initialIsOpen: false }
 ) => {
@@ -24,12 +22,12 @@ const useModalState = (
   return {
     isOpen,
     open,
-    close
+    close,
   };
 };
 
 const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
-  history
+  history,
 }) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
@@ -41,17 +39,17 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
     update: (client, mutResult) => {
       const variables = {
         ...mutResult.data.claimAccount.user,
-        token: mutResult.data.claimAccount.token
+        token: mutResult.data.claimAccount.token,
       };
 
       console.log('saving user ', variables);
 
       saveUser({
-        variables
+        variables,
       });
 
       window.location.reload();
-    }
+    },
   });
 
   const [addRoom, addRoomMutation] = useMutation(ADD_ROOM);
@@ -86,7 +84,7 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
         {getCurrentUserQuery.data &&
           getCurrentUserQuery.data.currentUser &&
           getCurrentUserQuery.data.currentUser.username}
-        's dashboard
+        &apos;s dashboard
       </h1>
       <p>Create a room to get started</p>
       <Button

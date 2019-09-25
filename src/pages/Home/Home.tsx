@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
 
-import { ADD_ROOM } from '../../graphql/addRoom';
-import logo from '../../logo.svg';
 import { HomePage } from './styles';
 import Navbar from '../../components/Navbar';
 import { Button } from '../../components/styles/Button';
@@ -57,17 +54,17 @@ const GetStarted = (props: GetStartedProps): JSX.Element => {
     update: (client, mutResult) => {
       const variables = {
         ...mutResult.data.createUser.user,
-        token: mutResult.data.createUser.token
+        token: mutResult.data.createUser.token,
       };
 
       console.log('saving user ', variables);
 
       saveUser({
-        variables
+        variables,
       });
 
       window.location.reload();
-    }
+    },
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

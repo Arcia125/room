@@ -1,6 +1,7 @@
 // Set options as a parameter, environment variable, or rc file.
-require = require("esm")(module /*, options*/);
+// eslint-disable-next-line
+require = require('esm')(module /*, options*/);
 
-require("dotenv").config();
+require('dotenv').config();
 
-module.exports = require("./main.js");
+module.exports = require('./main.js');

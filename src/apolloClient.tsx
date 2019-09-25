@@ -23,7 +23,7 @@ const authHeaders = () => {
   console.log(`getting token for auth headers ${token}`);
 
   return {
-    Authorization: token ? `Bearer ${token}` : ''
+    Authorization: token ? `Bearer ${token}` : '',
   };
 };
 
@@ -35,19 +35,19 @@ const websocketLink = new WebSocketLink({
     connectionParams: () => {
       return {
         headers: {
-          ...authHeaders()
-        }
+          ...authHeaders(),
+        },
       };
-    }
-  }
+    },
+  },
 });
 
 const httpLink = new HttpLink({
   uri: httpUri,
   credentials: 'same-origin',
   headers: {
-    ...authHeaders()
-  }
+    ...authHeaders(),
+  },
 });
 
 const link = ApolloLink.from([
@@ -79,7 +79,7 @@ const link = ApolloLink.from([
     //     reconnect: true,
     //   },
     // }),
-  )
+  ),
 ]);
 
 const options = {
@@ -88,7 +88,7 @@ const options = {
   // clientState: resolvers,
   typeDefs,
   link,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 };
 
 const client = new ApolloClient(options);

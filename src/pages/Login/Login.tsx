@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import PropTypes from 'prop-types';
 import { RouteComponentProps } from 'react-router';
 
 import { LoginForm } from '../../components/LoginForm';
@@ -13,7 +12,7 @@ const Login: FunctionComponent<RouteComponentProps> = ({ history }) => {
     username,
     password,
     onChangeUsername,
-    onChangePassword
+    onChangePassword,
   } = useLoginForm();
 
   if (auth.currentUser) {

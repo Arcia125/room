@@ -4,20 +4,20 @@ import { useField } from '../hooks/useField';
 
 type ClaimAccountFormOnSubmit = ({
   email,
-  password
+  password,
 }: {
   password: string;
   email: string;
 }) => any;
 
-type ClaimAccountFormProps = {
+interface ClaimAccountFormProps {
   onSubmit: ClaimAccountFormOnSubmit;
   children: ReactElement;
-};
+}
 
 const ClaimAccountForm: React.FunctionComponent<ClaimAccountFormProps> = ({
   onSubmit,
-  children
+  children,
 }) => {
   const emailField = useField();
   const passwordField = useField();
@@ -27,7 +27,7 @@ const ClaimAccountForm: React.FunctionComponent<ClaimAccountFormProps> = ({
 
     const onSubmitValue = {
       email: emailField.value,
-      password: passwordField.value
+      password: passwordField.value,
     };
 
     onSubmit(onSubmitValue);

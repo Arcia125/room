@@ -1,7 +1,7 @@
 import { User } from './User';
 
 export interface Message {
-  id: String;
-  content: String;
+  id: string;
+  content: string;
   user: User;
 }

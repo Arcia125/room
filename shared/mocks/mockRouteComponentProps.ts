@@ -8,7 +8,7 @@ const mockLocation: history.Location = {
   hash: '',
   pathname: '/',
   search: '/',
-  state: {}
+  state: {},
 };
 
 const mockHistory: history.History = {
@@ -22,14 +22,14 @@ const mockHistory: history.History = {
   goForward: jest.fn(),
   listen: jest.fn(),
   location: mockLocation,
-  replace: jest.fn()
+  replace: jest.fn(),
 };
 
 const mockMatch: match = {
   isExact: true,
   params: {},
   path: '/',
-  url: '/'
+  url: '/',
 };
 
 /**
@@ -40,5 +40,5 @@ const mockMatch: match = {
 export const mockRouteComponentProps: RouteComponentProps = {
   history: mockHistory,
   location: mockLocation,
-  match: mockMatch
+  match: mockMatch,
 };
