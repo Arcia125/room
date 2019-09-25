@@ -17,7 +17,7 @@ describe('LoginForm', () => {
       password: '',
       onChangePassword: jest.fn(),
       onChangeUsername: jest.fn(),
-      onSubmit: jest.fn()
+      onSubmit: jest.fn(),
     };
 
     const { container } = render(<LoginForm {...loginFormProps} />);

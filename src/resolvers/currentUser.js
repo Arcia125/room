@@ -2,7 +2,7 @@ import { getUser, setUser } from '../utils/user';
 
 const currentUser = {
   defaults: {
-    currentUser: getUser()
+    currentUser: getUser(),
   },
   resolvers: {
     Mutation: {
@@ -14,7 +14,7 @@ const currentUser = {
         setUser({ user, cache, token });
 
         return { user, token, __typename: 'AuthPayload' };
-      }
+      },
     },
     Query: {
       currentUser: (root, args, { cache }, info) => {
@@ -22,9 +22,9 @@ const currentUser = {
 
         const user = getUser();
         return user ? user : null;
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 export { currentUser };

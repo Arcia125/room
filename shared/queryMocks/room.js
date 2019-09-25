@@ -46,25 +46,25 @@ const newRoomUserMock = {
   },
   result: {
     data: {
-      newRoomUser: generate.user()
-    }
-  }
+      newRoomUser: generate.user(),
+    },
+  },
 };
 
 const joinRoomMock = {
   request: {
     query: JOIN_ROOM,
-    variables: { roomId }
+    variables: { roomId },
   },
   result: {
     data: {
       joinRoom: {
         success: true,
-        __typename: 'SuccessResult'
-      }
-    }
-  }
-}
+        __typename: 'SuccessResult',
+      },
+    },
+  },
+};
 
 const addRoomMock = {
   request: {
@@ -72,9 +72,16 @@ const addRoomMock = {
   },
   result: {
     data: {
-      addRoom: generate.room()
-    }
-  }
-}
+      addRoom: generate.room(),
+    },
+  },
+};
 
-export { mockRoom, getRoomMock, newRoomMessageMock, newRoomUserMock, joinRoomMock, addRoomMock };
+export {
+  mockRoom,
+  getRoomMock,
+  newRoomMessageMock,
+  newRoomUserMock,
+  joinRoomMock,
+  addRoomMock,
+};

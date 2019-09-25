@@ -13,20 +13,20 @@ export const useAuth = () => {
     update: (cache, { data }) => {
       const variables = {
         ...data.login.user,
-        token: data.login.token
+        token: data.login.token,
       };
 
       saveUser({
-        variables
+        variables,
       });
 
       window.location.reload();
-    }
+    },
   });
 
   const loginUser = ({
     username,
-    password
+    password,
   }: {
     username: string;
     password: string;
@@ -37,6 +37,6 @@ export const useAuth = () => {
   return {
     loginUser,
     currentUser:
-      getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser
+      getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser,
   };
 };

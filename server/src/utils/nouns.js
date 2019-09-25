@@ -66,7 +66,7 @@ const singularNouns = [
   'soaper',
   'stationary engineer',
   'wheelwright',
-]
+];
 
 const pluralNouns = [
   'rainbows',
@@ -89,13 +89,6 @@ const pluralNouns = [
   'woodworkers',
 ];
 
-const nouns = [
-  ...singularNouns,
-  ...pluralNouns
-];
+const nouns = [...singularNouns, ...pluralNouns];
 
-export {
-  singularNouns,
-  pluralNouns,
-  nouns
-};
+export { singularNouns, pluralNouns, nouns };

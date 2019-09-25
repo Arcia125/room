@@ -24,12 +24,12 @@ const useModalState = (
   return {
     isOpen,
     open,
-    close
+    close,
   };
 };
 
 const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
-  history
+  history,
 }) => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
 
@@ -41,17 +41,17 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
     update: (client, mutResult) => {
       const variables = {
         ...mutResult.data.claimAccount.user,
-        token: mutResult.data.claimAccount.token
+        token: mutResult.data.claimAccount.token,
       };
 
       console.log('saving user ', variables);
 
       saveUser({
-        variables
+        variables,
       });
 
       window.location.reload();
-    }
+    },
   });
 
   const [addRoom, addRoomMutation] = useMutation(ADD_ROOM);

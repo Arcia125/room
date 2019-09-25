@@ -4,7 +4,7 @@ import StyledUserTile from './styles/UserTile';
 
 const UserTile: React.FunctionComponent<{ avatar: string; name: string }> = ({
   avatar,
-  name
+  name,
 }) => (
   <StyledUserTile>
     <img

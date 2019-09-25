@@ -15,7 +15,7 @@ module.exports = function(app) {
     proxy(process.env.REACT_APP_GRAPHQL_WS_ENDPOINT, {
       // target: `ws://${hostName.replace(/https?:\/\//, '')}`,
       target: hostName,
-      ws: true
+      ws: true,
     })
   );
 };

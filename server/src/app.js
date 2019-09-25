@@ -76,7 +76,7 @@ const listen = async (...args) => {
       //   console.log(operation, webSocket);
 
       // },
-      onConnect: (connectionParams, websocket) => {
+      onConnect: connectionParams => {
         console.log('connectionParams', connectionParams);
         const authToken =
           connectionParams &&

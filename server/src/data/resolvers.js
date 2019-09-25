@@ -1,23 +1,23 @@
-import { rooms } from "../../../shared/mockData/rooms";
-import { pubsub } from "../controllers/pubsub";
-import { RoomNotFoundError } from "./errors";
+import { rooms } from '../../../shared/mockData/rooms';
+import { pubsub } from '../controllers/pubsub';
+import { RoomNotFoundError } from './errors';
 
-import { createRandomUsername } from "../utils/createRandomUsername";
-import { signToken } from "../utils/auth";
-import { User } from "../models/User";
-import { createRandomRoomName } from "../utils/createRandomRoomName";
+import { createRandomUsername } from '../utils/createRandomUsername';
+import { signToken } from '../utils/auth';
+import { User } from '../models/User';
+import { createRandomRoomName } from '../utils/createRandomRoomName';
 
 let nextRoomId = rooms.length + 1;
 
 let nextMessageId = 2;
 
-const NEW_ROOM_MESSAGE = "newRoomMessage";
+const NEW_ROOM_MESSAGE = 'newRoomMessage';
 
-const NEW_ROOM_USER = "newRoomUser";
+const NEW_ROOM_USER = 'newRoomUser';
 
 const findRoomById = roomId => {
   const room = rooms.find(room => room.id == roomId);
-  if (!room) throw new RoomNotFoundError("Room could not be found");
+  if (!room) throw new RoomNotFoundError('Room could not be found');
   return room;
 };
 
@@ -45,7 +45,7 @@ const Query = {
   },
   room: (root, { id }) => {
     return findRoomById(id);
-  }
+  },
 };
 
 const Mutation = {
@@ -57,7 +57,7 @@ const Mutation = {
 
     const user = new User({
       username: username || createRandomUsername(),
-      password: null
+      password: null,
     });
 
     const savedUser = await user.save();
@@ -65,18 +65,18 @@ const Mutation = {
     // Sign jwt with user email and username as payload
     const token = signToken({
       email: savedUser.email,
-      username: savedUser.username
+      username: savedUser.username,
     });
 
     return {
       token,
-      user: savedUser
+      user: savedUser,
     };
   },
   claimAccount: async (root, { email, password }, context) => {
-    if (!context.currentUser) throw new Error("Must be signed in.");
+    if (!context.currentUser) throw new Error('Must be signed in.');
     if (context.currentUser.email)
-      throw new Error("Can only be used by unclaimed accounts");
+      throw new Error('Can only be used by unclaimed accounts');
 
     console.log(context.currentUser);
 
@@ -90,19 +90,19 @@ const Mutation = {
 
     const token = signToken({
       email: updatedUser.email,
-      username: updatedUser.username
+      username: updatedUser.username,
     });
 
     return {
       user: updatedUser,
-      token
+      token,
     };
   },
   login: async (root, { username, password }) => {
     // const user = users.find(user => user.username === username);
     const user = await User.findByLogin(username);
 
-    if (!user) throw new Error("User not found");
+    if (!user) throw new Error('User not found');
 
     const matches = await user.comparePassword(password);
 
@@ -110,25 +110,25 @@ const Mutation = {
       // const token = 'implement this!';
       const token = signToken({
         email: user.email,
-        username: user.username
+        username: user.username,
       });
 
       return {
         user,
-        token
+        token,
       };
     }
 
-    throw new Error("Password did not match");
+    throw new Error('Password did not match');
   },
   addRoom: (root, { name }, context) => {
-    console.log("adding room. context ", context);
+    console.log('adding room. context ', context);
     const newRoom = {
       id: nextRoomId++,
       name: name || createRandomRoomName(),
       messages: [],
       // users: context.currentUser ? [context.currentUser] : [],
-      users: []
+      users: [],
     };
 
     rooms.push(newRoom);
@@ -147,7 +147,7 @@ const Mutation = {
   },
   joinRoom: (root, { roomId }, context) => {
     if (!context.currentUser)
-      throw new Error("Must be logged in to join a room");
+      throw new Error('Must be logged in to join a room');
 
     const room = findRoomById(roomId);
 
@@ -157,31 +157,31 @@ const Mutation = {
     }
 
     return {
-      success: true
+      success: true,
     };
-  }
+  },
 };
 
 const Subscription = {
   newRoomMessage: {
     subscribe: (root, { roomId }) => {
       return subscribeToNewRoomMessages(roomId);
-    }
+    },
   },
   newRoomUser: {
     subscribe: (root, { roomId }) => {
       return subscribeToNewRoomUsers(roomId);
-    }
-  }
+    },
+  },
 };
 
 const resolvers = {
   PublicUser: {
-    __resolveType: "User"
+    __resolveType: 'User',
   },
   Query,
   Mutation,
-  Subscription
+  Subscription,
 };
 
 export { resolvers };

@@ -13,7 +13,7 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({
   username,
   onChangeUsername,
   password,
-  onChangePassword
+  onChangePassword,
 }) => {
   return (
     <form onSubmit={onSubmit}>

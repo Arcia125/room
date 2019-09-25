@@ -57,17 +57,17 @@ const GetStarted = (props: GetStartedProps): JSX.Element => {
     update: (client, mutResult) => {
       const variables = {
         ...mutResult.data.createUser.user,
-        token: mutResult.data.createUser.token
+        token: mutResult.data.createUser.token,
       };
 
       console.log('saving user ', variables);
 
       saveUser({
-        variables
+        variables,
       });
 
       window.location.reload();
-    }
+    },
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

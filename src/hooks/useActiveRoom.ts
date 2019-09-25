@@ -2,7 +2,7 @@ import React from 'react';
 import { useSubscription, useMutation, useQuery } from '@apollo/react-hooks';
 import {
   OnSubscriptionDataOptions,
-  SubscriptionResult
+  SubscriptionResult,
 } from '@apollo/react-common';
 
 import { NEW_ROOM_MESSAGE } from '../graphql/newRoomMessage';
@@ -67,7 +67,7 @@ export const useActiveRoom = (roomId: string) => {
 
   const createRoomQueryUpdater = (getUpdatedData: GetUpdatedDataFunc) => ({
     subscriptionData,
-    client
+    client,
   }: OnSubscriptionDataOptions<any>) => {
     if (!subscriptionData.data) return;
 
@@ -81,7 +81,7 @@ export const useActiveRoom = (roomId: string) => {
    */
   const newMessageUpdater = createRoomQueryUpdater(subscriptionData => {
     const newData = {
-      ...roomQuery.data
+      ...roomQuery.data,
     };
 
     const { newRoomMessage } = subscriptionData.data;
@@ -96,7 +96,7 @@ export const useActiveRoom = (roomId: string) => {
    */
   const newUserUpdater = createRoomQueryUpdater(subscriptionData => {
     const newData = {
-      ...roomQuery.data
+      ...roomQuery.data,
     };
 
     const { newRoomUser } = subscriptionData.data;
@@ -117,7 +117,7 @@ export const useActiveRoom = (roomId: string) => {
         // don't add user to the current room unless already present
         if (!room.users.find((user: User) => user.id === currentUser.id)) {
           const newData = {
-            ...roomQuery.data
+            ...roomQuery.data,
           };
 
           newData.room.users = [...newData.room.users, currentUser];
@@ -125,17 +125,17 @@ export const useActiveRoom = (roomId: string) => {
           updateRoomQuery(newData);
         }
       }
-    }
+    },
   });
 
   const newMessageSubscription = useSubscription(NEW_ROOM_MESSAGE, {
     variables: { roomId },
-    onSubscriptionData: newMessageUpdater
+    onSubscriptionData: newMessageUpdater,
   });
 
   const newUserSubscription = useSubscription(NEW_ROOM_USER, {
     variables: { roomId },
-    onSubscriptionData: newUserUpdater
+    onSubscriptionData: newUserUpdater,
   });
 
   React.useEffect(() => {

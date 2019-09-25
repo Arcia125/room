@@ -19,9 +19,4 @@ class RoomNotFoundError extends CustomGraphql404Error {
   }
 }
 
-
-export {
-  CustomGraphqlError,
-  CustomGraphql404Error,
-  RoomNotFoundError
-};
+export { CustomGraphqlError, CustomGraphql404Error, RoomNotFoundError };

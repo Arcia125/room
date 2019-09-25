@@ -10,7 +10,7 @@ import {
   newRoomMessageMock,
   mockRoom,
   newRoomUserMock,
-  joinRoomMock
+  joinRoomMock,
 } from '../../../shared/queryMocks/room';
 import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
 import { currentUserMockResolvers } from '../../../shared/queryMocks/currentUser';
@@ -32,7 +32,7 @@ describe('Room', () => {
             {...mockRouteComponentProps}
             match={{
               ...mockRouteComponentProps.match,
-              params: { roomId: mockRoom.id }
+              params: { roomId: mockRoom.id },
             }}
           />
         </Provider>
@@ -55,7 +55,7 @@ describe('Room', () => {
             {...mockRouteComponentProps}
             match={{
               ...mockRouteComponentProps.match,
-              params: { roomId: mockRoom.id }
+              params: { roomId: mockRoom.id },
             }}
           />
         </Provider>

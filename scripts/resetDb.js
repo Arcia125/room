@@ -1,4 +1,4 @@
-import { connectDb } from "../server/src/models/index";
+import { connectDb } from '../server/src/models/index';
 
 connectDb()
   .then(mongo => {

@@ -9,6 +9,6 @@ export const useField = ({ initialValue = '' } = { initialValue: '' }) => {
 
   return {
     value,
-    onChange
+    onChange,
   };
 };

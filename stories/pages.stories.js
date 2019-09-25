@@ -18,7 +18,7 @@ import Account from '../src/pages/Account';
 const mocks = [getRoomMock, newRoomMessageMock, currentUserMock];
 
 const mockHistory = {
-  push: () => { }
+  push: () => {},
 };
 
 export default {
@@ -40,7 +40,7 @@ room.story = {
   parameters: { notes: { markdown: roomMdText } },
 };
 
-export const login = () => <Login history={mockHistory} />
+export const login = () => <Login history={mockHistory} />;
 
 login.story = {
   name: 'Login',
@@ -49,12 +49,11 @@ login.story = {
 export const dashboard = () => <Dashboard />;
 
 dashboard.story = {
-  name: 'Dashboard'
+  name: 'Dashboard',
 };
 
 export const account = () => <Account />;
 
 account.story = {
-  name: 'Account'
+  name: 'Account',
 };
-

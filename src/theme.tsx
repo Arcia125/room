@@ -6,7 +6,7 @@ const theme = {
     0: '0px',
     1: '8px',
     2: '16px',
-    3: '32px'
+    3: '32px',
   },
   colors: {
     gray: '#B3B2C0',
@@ -16,8 +16,8 @@ const theme = {
     lightPurple: '#EFEEF8',
     purple: '#9056D4',
     pink: '#DD6589',
-    bleh: '#8A4966'
-  }
+    bleh: '#8A4966',
+  },
 };
 
 const Provider: React.FunctionComponent<{ children: ReactElement }> = ({

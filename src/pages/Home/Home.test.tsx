@@ -7,7 +7,7 @@ import Home from '.';
 import { Provider } from '../../theme';
 import {
   currentUserMockResolvers,
-  nullCurrentUserMockResolvers
+  nullCurrentUserMockResolvers,
 } from '../../../shared/queryMocks/currentUser';
 import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
 

@@ -13,7 +13,7 @@ const Login: FunctionComponent<RouteComponentProps> = ({ history }) => {
     username,
     password,
     onChangeUsername,
-    onChangePassword
+    onChangePassword,
   } = useLoginForm();
 
   if (auth.currentUser) {

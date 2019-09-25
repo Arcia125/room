@@ -36,17 +36,17 @@ describe('ClaimAccountForm', () => {
     const submitButton = getByText(submitText);
 
     fireEvent.change(emailInput, {
-      target: { value: testEmail }
+      target: { value: testEmail },
     });
     fireEvent.change(passwordInput, {
-      target: { value: testPassword }
+      target: { value: testPassword },
     });
 
     fireEvent.click(submitButton);
 
     expect(onSubmit).toBeCalledWith({
       email: testEmail,
-      password: testPassword
+      password: testPassword,
     });
   });
 });

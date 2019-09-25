@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import { User } from "../models/User";
-import config from "../../config";
+import mongoose from 'mongoose';
+import { User } from '../models/User';
+import config from '../../config';
 
 const users = {
   add: async ({ username, password }) => {
@@ -24,7 +24,7 @@ const users = {
     //     // res.status(status).send(result);
     //   }
     // });
-  }
+  },
 };
 
 export { users };

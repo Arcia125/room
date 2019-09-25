@@ -5,7 +5,7 @@ import {
   cleanup,
   wait,
   fireEvent,
-  waitForElement
+  waitForElement,
 } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
