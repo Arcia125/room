@@ -1,7 +1,6 @@
 import { rooms } from '../../../shared/mockData/rooms';
 import { pubsub } from '../controllers/pubsub';
 import { RoomNotFoundError } from './errors';
-
 import { createRandomUsername } from '../utils/createRandomUsername';
 import { signToken } from '../utils/auth';
 import { User } from '../models/User';
@@ -124,7 +123,7 @@ const Mutation = {
   addRoom: (root, { name }, context) => {
     console.log('adding room. context ', context);
     const newRoom = {
-      id: nextRoomId++,
+      id: (nextRoomId++).toString(),
       name: name || createRandomRoomName(),
       messages: [],
       // users: context.currentUser ? [context.currentUser] : [],
@@ -135,10 +134,18 @@ const Mutation = {
 
     return newRoom;
   },
-  sendMessage: (root, { roomId, content }) => {
+  sendMessage: (
+    root,
+    { roomId, content }: { roomId: string; content: string },
+    context
+  ) => {
     const room = findRoomById(roomId);
 
-    const newMessage = { id: nextMessageId++, content };
+    const newMessage = {
+      id: (nextMessageId++).toString(),
+      content,
+      user: context.currentUser,
+    };
     room.messages.push(newMessage);
 
     publishNewRoomMessage(roomId, newMessage);

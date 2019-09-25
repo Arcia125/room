@@ -17,7 +17,7 @@ const currentUser = {
       },
     },
     Query: {
-      currentUser: (root, args, { cache }, info) => {
+      currentUser: () => {
         console.log('getting current user');
 
         const user = getUser();

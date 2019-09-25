@@ -142,7 +142,7 @@ export const useActiveRoom = (roomId: string) => {
     if (room) {
       joinRoom({ variables: { roomId } });
     }
-    // disable eslint to prevent joinRoom and room from being included in the depdencies list
+    // disable eslint to prevent joinRoom and room from being included in the dependencies list
     // eslint-disable-next-line
   }, [roomId]);
 

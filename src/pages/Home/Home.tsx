@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
 
-import { ADD_ROOM } from '../../graphql/addRoom';
-import logo from '../../logo.svg';
 import { HomePage } from './styles';
 import Navbar from '../../components/Navbar';
 import { Button } from '../../components/styles/Button';

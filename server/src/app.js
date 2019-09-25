@@ -16,7 +16,8 @@ const app = express();
 // Setup express static to serve static files from build directory.
 app.use(express.static(builtFrontendPath));
 
-app.use(morgan());
+// @ts-ignore
+app.use(morgan(config.PRODUCTION === 'true' ? 'tiny' : 'dev'));
 
 app.use(
   '/graphiql',

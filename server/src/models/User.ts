@@ -1,9 +1,25 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, Document, Model } from 'mongoose';
 import bcrypt from 'bcrypt';
 
 import config from '../../config';
 
-const userSchema = new Schema({
+export interface UserDocument extends Document {
+  username: string;
+  email: string;
+  avatar: string;
+  password: string;
+}
+
+export interface UserDocumentExtended extends UserDocument {
+  comparePassword(password: string): Promise<boolean>;
+}
+
+export interface UserModel extends Model<UserDocumentExtended> {
+  findByUsername(username: string): Promise<UserDocumentExtended>;
+  findByLogin(login: string): Promise<UserDocumentExtended>;
+}
+
+const userSchema = new Schema<UserDocumentExtended>({
   username: {
     type: String,
     required: true,
@@ -82,6 +98,9 @@ userSchema.pre('remove', function(next) {
   this.model('Message').deleteMany({ user: this._id }, next);
 });
 
-const User = mongoose.model('User', userSchema);
+const User: UserModel = mongoose.model<UserDocumentExtended, UserModel>(
+  'User',
+  userSchema
+);
 
 export { User };

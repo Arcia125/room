@@ -20,6 +20,9 @@ const multiple: MultipleFunc<any> = (gen, count) =>
     return generated;
   });
 
+type CreateMultipleGenerator = <T>(
+  gen: FakeDataGenerator<T>
+) => (count: number) => T[];
 /**
  * @description Convenience wrapper around generating arrays with generators.
  * @example
@@ -33,10 +36,8 @@ const multiple: MultipleFunc<any> = (gen, count) =>
  *
  * multipleUserGenerator(2) // [{ id: 1, username: 'example' }, { id: 2, usernamme: 'example2' }]
  */
-let createMultipleGenerator: <T>(
-  gen: FakeDataGenerator<T>
-) => (count: number) => T[];
-createMultipleGenerator = gen => count => multiple(gen, count);
+const createMultipleGenerator: CreateMultipleGenerator = gen => count =>
+  multiple(gen, count);
 
 let nextId = 0;
 

@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import PropTypes from 'prop-types';
 import { RouteComponentProps } from 'react-router';
 
 import { LoginForm } from '../../components/LoginForm';

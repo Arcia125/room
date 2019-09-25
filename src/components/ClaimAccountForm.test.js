@@ -20,7 +20,7 @@ describe('ClaimAccountForm', () => {
   it('handles input and submission', () => {
     const submitText = 'test-submit';
     const onSubmit = jest.fn();
-    const { getByText, getByLabelText, getByTestId } = render(
+    const { getByText, getByLabelText } = render(
       <Provider>
         <ClaimAccountForm onSubmit={onSubmit}>
           <button type="submit">{submitText}</button>

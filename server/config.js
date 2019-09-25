@@ -1,8 +1,11 @@
 const defaults = {
+  PRODUCTION: 'false',
   PORT: 9001,
   JWT_SECRET: 'jwt-secret',
   SALTING_ROUNDS: 10,
   MONGODB_URI: 'mongodb://localhost:27017/room-dev',
+  REACT_APP_GRAPHQL_HTTP_ENDPOINT: '/graphql',
+  REACT_APP_GRAPHQL_WS_ENDPOINT: '/graphql-subscriptions',
 };
 
 const config = {

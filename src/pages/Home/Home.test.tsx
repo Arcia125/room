@@ -10,6 +10,7 @@ import {
   nullCurrentUserMockResolvers,
 } from '../../../shared/queryMocks/currentUser';
 import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
+import { MemoryRouter } from 'react-router';
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -20,11 +21,13 @@ afterEach(cleanup);
 describe('Home', () => {
   it('renders without crashing when no user is logged in', async () => {
     const { container, asFragment } = render(
-      <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
-        <Provider>
-          <Home {...mockRouteComponentProps} />
-        </Provider>
-      </MockedProvider>
+      <MemoryRouter>
+        <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
+          <Provider>
+            <Home {...mockRouteComponentProps} />
+          </Provider>
+        </MockedProvider>
+      </MemoryRouter>
     );
 
     await wait(() => expect(container).toBeInTheDocument());
@@ -34,11 +37,13 @@ describe('Home', () => {
 
   it('renders without crashing when a user is logged in', async () => {
     const { container } = render(
-      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
-        <Provider>
-          <Home {...mockRouteComponentProps} />
-        </Provider>
-      </MockedProvider>
+      <MemoryRouter>
+        <MockedProvider addTypename resolvers={currentUserMockResolvers}>
+          <Provider>
+            <Home {...mockRouteComponentProps} />
+          </Provider>
+        </MockedProvider>
+      </MemoryRouter>
     );
 
     await wait(() => expect(container).toBeInTheDocument());
@@ -46,11 +51,13 @@ describe('Home', () => {
 
   it('redirects logged in users', async () => {
     const { container } = render(
-      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
-        <Provider>
-          <Home {...mockRouteComponentProps} />
-        </Provider>
-      </MockedProvider>
+      <MemoryRouter>
+        <MockedProvider addTypename resolvers={currentUserMockResolvers}>
+          <Provider>
+            <Home {...mockRouteComponentProps} />
+          </Provider>
+        </MockedProvider>
+      </MemoryRouter>
     );
 
     await wait(() =>

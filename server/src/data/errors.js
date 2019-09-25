@@ -13,10 +13,6 @@ class CustomGraphql404Error extends CustomGraphqlError {
   }
 }
 
-class RoomNotFoundError extends CustomGraphql404Error {
-  constructor(...args) {
-    super(...args);
-  }
-}
+class RoomNotFoundError extends CustomGraphql404Error {}
 
 export { CustomGraphqlError, CustomGraphql404Error, RoomNotFoundError };

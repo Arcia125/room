@@ -35,7 +35,7 @@ const validateToken = authToken => {
   });
 };
 
-const findUserByDecodedToken = authToken => {
+const findUserByDecodedToken = () => {
   return async validatedAuthToken => {
     const user = await User.findByLogin(
       validatedAuthToken.username || validatedAuthToken.email
