@@ -44,7 +44,7 @@ const apolloServer = new ApolloServer({
 
     if (token) {
       return validateToken(token)
-        .then(findUserByDecodedToken(token))
+        .then(findUserByDecodedToken)
         .then(user => {
           console.log('authenticating user ', user);
           return {

@@ -35,14 +35,12 @@ const validateToken = authToken => {
   });
 };
 
-const findUserByDecodedToken = () => {
-  return async validatedAuthToken => {
-    const user = await User.findByLogin(
-      validatedAuthToken.username || validatedAuthToken.email
-    );
+const findUserByDecodedToken = async validatedAuthToken => {
+  const user = await User.findByLogin(
+    validatedAuthToken.username || validatedAuthToken.email
+  );
 
-    return user;
-  };
+  return user;
 };
 
 export { signToken, validateToken, findUserByDecodedToken };

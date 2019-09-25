@@ -183,9 +183,6 @@ const Subscription = {
 };
 
 const resolvers = {
-  PublicUser: {
-    __resolveType: 'User',
-  },
   Query,
   Mutation,
   Subscription,
