@@ -46,6 +46,13 @@
     "cross-env": "^5.2.1",
     "dotenv": "^8.1.0",
     "esm": "^3.2.25",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-cypress": "^2.6.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "graphql": "^14.5.4",
@@ -69,7 +76,8 @@
     "styled-components": "^4.3.2",
     "subscriptions-transport-ws": "^0.9.16",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "@typescript-eslint/parser": "^1.13.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.0",
@@ -81,15 +89,7 @@
     "@testing-library/dom": "^6.2.0",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
     "cypress": "^3.4.1",
-    "eslint": "^6.4.0",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-cypress": "^2.6.1",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^2.0.1",
     "nodemon": "^1.19.2"
   },
   "browserslist": {
