@@ -18,7 +18,9 @@
     "prod-build:docker": "docker build -t arcia125/room .",
     "prod-start:docker": "docker run -d -p 9001:9001 --name room arcia125/room",
     "cypress": "npx cypress open",
-    "resetDb": "node -r esm ./scripts/resetDb.js"
+    "resetDb": "node -r esm ./scripts/resetDb.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
@@ -78,15 +80,16 @@
     "@testing-library/dom": "^6.2.0",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
     "cypress": "^3.4.1",
+    "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-cypress": "^2.6.1",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "nodemon": "^1.19.2"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -106,8 +109,8 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --write",
+    "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
       "git add"
     ]
   },
