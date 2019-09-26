@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const defaults = {
   PRODUCTION: 'false',
   PORT: 9001,

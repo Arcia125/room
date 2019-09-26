@@ -8,6 +8,8 @@ export interface UserDocument extends Document {
   email: string;
   avatar: string;
   password: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface UserDocumentExtended extends UserDocument {
@@ -15,8 +17,8 @@ export interface UserDocumentExtended extends UserDocument {
 }
 
 export interface UserModel extends Model<UserDocumentExtended> {
-  findByUsername(username: string): Promise<UserDocumentExtended>;
-  findByLogin(login: string): Promise<UserDocumentExtended>;
+  findByUsername(username: string): Promise<this>;
+  findByLogin(login: string): Promise<this>;
 }
 
 const userSchema = new Schema<UserDocumentExtended>({
@@ -45,7 +47,7 @@ const userSchema = new Schema<UserDocumentExtended>({
   },
 });
 
-userSchema.statics.findByUsername = async function(username) {
+userSchema.statics.findByUsername = async function(username: string) {
   const user = await this.findOne({
     username,
   });
@@ -53,7 +55,7 @@ userSchema.statics.findByUsername = async function(username) {
   return user;
 };
 
-userSchema.statics.findByLogin = async function(login) {
+userSchema.statics.findByLogin = async function(login: string) {
   let user = await this.findByUsername(login);
   if (!user) {
     user = await this.findOne({ email: login });
