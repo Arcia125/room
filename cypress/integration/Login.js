@@ -1,5 +1,8 @@
 beforeEach(() => {
-  cy.exec('npm run resetDb').then(() => {});
+  // cy.wrap prevents the code from hanging on the first run
+  cy.wrap(() =>
+    cy.exec('npm run resetDb', { failOnNonZeroExit: false }).then(console.log)
+  );
 });
 
 describe('login', () => {

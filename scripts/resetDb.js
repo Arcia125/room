@@ -1,9 +1,13 @@
-import { connectDb } from '../server/src/models/index';
+import mongoose from 'mongoose';
 
-connectDb()
+import config from '../server/config';
+
+mongoose
+  .connect(config.MONGODB_URI)
   .then(mongo => {
     return mongo.connection.dropDatabase();
   })
   .then(() => {
-    process.exit();
+    console.log('successfully reset database');
+    process.exit(0);
   });

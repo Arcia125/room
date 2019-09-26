@@ -18,6 +18,11 @@
       "label": "Start Frontend",
       "type": "shell",
       "command": "npm run develop:frontend"
+    },
+    {
+      "type": "npm",
+      "script": "develop:backend",
+      "problemMatcher": ["$tsc"]
     }
   ]
 }

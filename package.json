@@ -7,7 +7,7 @@
   "main": "index.js",
   "proxy": "http://localhost:9001",
   "scripts": {
-    "start": "node -r ts-node/register ./server/index.js",
+    "start": "ts-node --project ./tsconfig.server.json ./server/main.ts",
     "develop:backend": "nodemon",
     "develop:frontend": "react-scripts start",
     "build:frontend": "react-scripts build",
@@ -17,7 +17,7 @@
     "build-storybook": "build-storybook",
     "prod-build:docker": "docker build -t arcia125/room .",
     "prod-start:docker": "docker run -d -p 9001:9001 --name room arcia125/room",
-    "cypress": "npx cypress open",
+    "cypress": "cypress open",
     "resetDb": "node -r esm ./scripts/resetDb.js",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "lint:fix": "eslint . --fix --ext .js,.ts,.tsx"
@@ -27,9 +27,13 @@
     "@apollo/react-testing": "^3.1.1",
     "@babel/core": "^7.6.0",
     "@storybook/design-system": "^1.0.0",
+    "@types/bcrypt": "^3.0.0",
+    "@types/dotenv": "^6.1.1",
     "@types/faker": "^4.1.5",
     "@types/jest": "^24.0.18",
+    "@types/jsonwebtoken": "^8.3.4",
     "@types/mongoose": "^5.5.18",
+    "@types/morgan": "^1.7.37",
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
@@ -37,6 +41,8 @@
     "@types/react-router": "^5.0.5",
     "@types/react-router-dom": "^4.3.5",
     "@types/styled-components": "^4.1.19",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
     "apollo-boost": "^0.4.4",
     "apollo-link-state": "^0.4.2",
     "apollo-link-ws": "^1.0.19",
@@ -45,14 +51,13 @@
     "bcrypt": "^3.0.6",
     "cross-env": "^5.2.1",
     "dotenv": "^8.1.0",
-    "esm": "^3.2.25",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-cypress": "^2.6.1",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "graphql": "^14.5.4",
@@ -76,8 +81,7 @@
     "styled-components": "^4.3.2",
     "subscriptions-transport-ws": "^0.9.16",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.3",
-    "@typescript-eslint/parser": "^1.13.0"
+    "typescript": "^3.6.3"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.0",
@@ -118,7 +122,7 @@
   "jest": {
     "collectCoverageFrom": [
       "**/*.{js,ts,tsx}",
-      "!src/index.js",
+      "!src/index.ts",
       "!src/setupProxy.js",
       "!src/typeDefs.js",
       "!src/urls.js",
@@ -135,7 +139,7 @@
       "node_modules"
     ],
     "watch": [
-      "server"
+      "server/**"
     ],
     "exec": "npm start",
     "ext": "ts"
