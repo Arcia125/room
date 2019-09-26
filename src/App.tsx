@@ -1,14 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Loadable from 'react-loadable';
 
-import Home from './pages/Home';
-import Room from './pages/Room';
 import { Provider } from './theme';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Account from './pages/Account';
 import { logout } from './utils/user';
 import { Button } from './components/styles/Button';
+import { Loading } from './components/Loading';
+
+const makeLoadable = (loader: any) =>
+  Loadable({
+    loader,
+    loading: Loading,
+  });
+
+const LoadableHome = makeLoadable(() => import('./pages/Home'));
+
+const LoadableLogin = makeLoadable(() => import('./pages/Login'));
+
+const LoadableRoom = makeLoadable(() => import('./pages/Room'));
+
+const LoadableDashboard = makeLoadable(() => import('./pages/Dashboard'));
+
+const LoadableAccount = makeLoadable(() => import('./pages/Account'));
 
 const App = () => {
   return (
@@ -17,11 +30,11 @@ const App = () => {
         <Button onClick={logout as React.MouseEventHandler<HTMLButtonElement>}>
           logout
         </Button>
-        <Route path="/" component={Home} exact />
-        <Route path="/login" component={Login} />
-        <Route path="/r/:roomId" component={Room} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/account" component={Account} />
+        <Route path="/" component={LoadableHome} exact />
+        <Route path="/login" component={LoadableLogin} />
+        <Route path="/r/:roomId" component={LoadableRoom} />
+        <Route path="/dashboard" component={LoadableDashboard} />
+        <Route path="/account" component={LoadableAccount} />
       </Router>
     </Provider>
   );
