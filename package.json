@@ -20,7 +20,8 @@
     "cypress": "cypress open",
     "resetDb": "node -r esm ./scripts/resetDb.js",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "lint:fix": "eslint . --fix --ext .js,.ts,.tsx"
+    "lint:fix": "eslint . --fix --ext .js,.ts,.tsx",
+    "heroku-postbuild": "npm run build:frontend"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.1",
