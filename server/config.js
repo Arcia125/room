@@ -11,6 +11,7 @@ const defaults = {
   REACT_APP_GRAPHQL_HTTP_ENDPOINT: '/graphql',
   REACT_APP_GRAPHQL_WS_ENDPOINT: '/graphql-subscriptions',
   LOG_FILE_NAME: null,
+  LOG_FILE_LEVEL: 'debug',
   LOG_LEVEL: 'info',
 };
 
