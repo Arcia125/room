@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
 
 import config from '../../config';
-import { User, UserModel } from '../models/User';
+import { User, UserDocumentExtended } from '../models/User';
+import { logger } from './logger';
 
 interface TokenPayload {
   email: string;
@@ -29,12 +30,14 @@ const signToken = (userPayload: TokenPayload) =>
 
 const validateToken = (authToken: string) => {
   const tokenValue = getTokenValue(authToken);
-  console.log('validateToken', tokenValue);
+  logger.debug('validateToken ', { tokenValue });
   return new Promise<TokenPayload>((resolve, reject) => {
     jwt.verify(tokenValue, config.JWT_SECRET, jwtOpts, (err, decoded) => {
-      console.log('err', err);
-      if (err) return reject(err);
-      console.log('validatedToken', decoded);
+      if (err) {
+        logger.error('err', { error: err });
+        return reject(err);
+      }
+      logger.debug('validatedToken ', { decoded });
       return resolve(decoded as TokenPayload);
     });
   });
@@ -42,7 +45,7 @@ const validateToken = (authToken: string) => {
 
 const findUserByDecodedToken = async (
   validatedAuthToken: TokenPayload
-): Promise<UserModel> => {
+): Promise<UserDocumentExtended | null> => {
   const user = await User.findByLogin(
     validatedAuthToken.username || validatedAuthToken.email
   );

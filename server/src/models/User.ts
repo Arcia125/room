@@ -2,6 +2,7 @@ import mongoose, { Schema, Document, Model } from 'mongoose';
 import bcrypt from 'bcrypt';
 
 import config from '../../config';
+import { logger } from '../utils/logger';
 
 export interface UserDocument extends Document {
   username: string;
@@ -12,42 +13,55 @@ export interface UserDocument extends Document {
   lastName: string;
 }
 
+interface PasswordComparer {
+  (this: UserDocumentExtended, password: string): Promise<boolean>;
+}
+
+interface UserQuery {
+  (this: UserModel, query: string): Promise<UserDocumentExtended | null>;
+}
+
 export interface UserDocumentExtended extends UserDocument {
-  comparePassword(password: string): Promise<boolean>;
+  comparePassword: PasswordComparer;
 }
 
 export interface UserModel extends Model<UserDocumentExtended> {
-  findByUsername(username: string): Promise<this>;
-  findByLogin(login: string): Promise<this>;
+  findByUsername: UserQuery;
+  findByLogin: UserQuery;
 }
 
-const userSchema = new Schema<UserDocumentExtended>({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
+const userSchema = new Schema<UserDocumentExtended>(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      sparse: true,
+      required: false,
+      unique: true,
+      trim: true,
+    },
+    avatar: {
+      type: String,
+      required: false,
+      unique: false,
+      trim: true,
+    },
+    password: {
+      type: String,
+      trim: true,
+    },
   },
-  email: {
-    type: String,
-    sparse: true,
-    required: false,
-    unique: true,
-    trim: true,
-  },
-  avatar: {
-    type: String,
-    required: false,
-    unique: false,
-    trim: true,
-  },
-  password: {
-    type: String,
-    trim: true,
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
-userSchema.statics.findByUsername = async function(username: string) {
+const findByUserName: UserQuery = async function(username) {
   const user = await this.findOne({
     username,
   });
@@ -55,7 +69,7 @@ userSchema.statics.findByUsername = async function(username: string) {
   return user;
 };
 
-userSchema.statics.findByLogin = async function(login: string) {
+const findByLogin: UserQuery = async function(login) {
   let user = await this.findByUsername(login);
   if (!user) {
     user = await this.findOne({ email: login });
@@ -63,7 +77,7 @@ userSchema.statics.findByLogin = async function(login: string) {
   return user;
 };
 
-userSchema.methods.comparePassword = function(candidatePassword) {
+const comparePassword: PasswordComparer = function(candidatePassword) {
   return new Promise((resolve, reject) => {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
       if (err) return reject(err);
@@ -72,6 +86,12 @@ userSchema.methods.comparePassword = function(candidatePassword) {
     });
   });
 };
+
+userSchema.statics.findByUsername = findByUserName;
+
+userSchema.statics.findByLogin = findByLogin;
+
+userSchema.methods.comparePassword = comparePassword;
 
 // encrypt password before save
 userSchema.pre('save', function(next) {
@@ -85,7 +105,9 @@ userSchema.pre('save', function(next) {
 
   bcrypt.hash(user.password, config.SALTING_ROUNDS, function(err, hash) {
     if (err) {
-      console.log('Error hashing password for user', user.username);
+      logger.debug('Error hashing password for user', {
+        message: user.username,
+      });
       return next(err);
     }
 
@@ -100,7 +122,7 @@ userSchema.pre('remove', function(next) {
   this.model('Message').deleteMany({ user: this._id }, next);
 });
 
-const User: UserModel = mongoose.model<UserDocumentExtended, UserModel>(
+const User = mongoose.model<UserDocumentExtended, UserModel>(
   'User',
   userSchema
 );

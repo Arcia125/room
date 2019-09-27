@@ -1,6 +1,12 @@
 import { rooms } from '../../../shared/mockData/rooms';
 import { pubsub } from '../controllers/pubsub';
-import { RoomNotFoundError } from './errors';
+import {
+  RoomNotFoundError,
+  UserNotFoundError,
+  NotLoggedInError,
+  NotAllowedError,
+  IncorrectPasswordError,
+} from './errors';
 import { createRandomUsername } from '../utils/createRandomUsername';
 import { signToken } from '../utils/auth';
 import { User, UserDocumentExtended } from '../models/User';
@@ -9,9 +15,10 @@ import { IResolvers } from 'graphql-tools';
 import { Resolvers } from 'apollo-boost';
 import { Message } from '../../../src/types/Message';
 import { User as UserType } from '../../../src/types/User';
+import { logger } from '../utils/logger';
 
 interface RoomGQLContext {
-  currentUser: UserDocumentExtended;
+  currentUser: UserDocumentExtended | null;
 }
 
 let nextRoomId = rooms.length + 1;
@@ -61,7 +68,7 @@ const Mutation = {
   //   // const user = new User();
   // },
   createUser: async (root: any, { username }: { username: string }) => {
-    console.log(`creating user ${username}`);
+    logger.info(`creating user ${username}`);
 
     const user = new User({
       username: username || createRandomUsername(),
@@ -86,11 +93,11 @@ const Mutation = {
     { email, password }: { email: string; password: string },
     context: RoomGQLContext
   ) => {
-    if (!context.currentUser) throw new Error('Must be signed in.');
+    if (!context.currentUser) throw new NotLoggedInError('Must be signed in.');
     if (context.currentUser.email)
-      throw new Error('Can only be used by unclaimed accounts');
+      throw new NotAllowedError('Can only be used by unclaimed accounts');
 
-    console.log(context.currentUser);
+    logger.debug('Claiming account for ', { currentUser: context });
 
     const user = context.currentUser;
 
@@ -117,7 +124,7 @@ const Mutation = {
     // const user = users.find(user => user.username === username);
     const user = await (User as any).findByLogin(username);
 
-    if (!user) throw new Error('User not found');
+    if (!user) throw new UserNotFoundError('User not found');
 
     const matches = await user.comparePassword(password);
 
@@ -134,10 +141,10 @@ const Mutation = {
       };
     }
 
-    throw new Error('Password did not match');
+    throw new IncorrectPasswordError('Password did not match');
   },
   addRoom: (root: any, { name }: { name: string }, context: RoomGQLContext) => {
-    console.log('adding room. context ', context);
+    logger.debug('adding room ', { context: context });
     const newRoom = {
       id: (nextRoomId++).toString(),
       name: name || createRandomRoomName(),
@@ -166,6 +173,7 @@ const Mutation = {
     };
     room.messages.push(newMessage);
 
+    logger.info('new message in room', { roomId, newMessage });
     publishNewRoomMessage(roomId, newMessage);
 
     return newMessage;
@@ -175,12 +183,15 @@ const Mutation = {
     { roomId }: { roomId: string },
     context: RoomGQLContext
   ) => {
-    if (!context.currentUser)
-      throw new Error('Must be logged in to join a room');
+    if (!context.currentUser) {
+      throw new NotLoggedInError('Must be logged in to join a room');
+    }
 
     const room = findRoomById(roomId);
 
-    if (!room.users.find(user => user.id === context.currentUser.id)) {
+    const currentUserId = context.currentUser && context.currentUser.id;
+
+    if (!room.users.find(user => user.id === currentUserId)) {
       room.users.push(context.currentUser as UserType);
       publishNewRoomUserChannel(roomId, context.currentUser as UserType);
     }
