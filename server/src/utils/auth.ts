@@ -13,18 +13,8 @@ const jwtOpts = {
   issuer: 'room',
 };
 
-/**
- * @typedef {Object} UserPayload
- * @property {String} [email]
- * @property {String} [username]
- */
-
 const getTokenValue = (token: string) => token.replace('Bearer ', '');
 
-/**
- *
- * @param {UserPayload} userPayload
- */
 const signToken = (userPayload: TokenPayload) =>
   jwt.sign(userPayload, config.JWT_SECRET, jwtOpts);
 
