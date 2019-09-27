@@ -46,7 +46,6 @@ app.get('*', function(req, res) {
 const apolloServer = new ApolloServer({
   schema,
   context: ({ req }) => {
-    console.log('Creating graphql http context. req.headers: ', req.headers);
     const token = req.headers.authorization;
 
     if (token) {

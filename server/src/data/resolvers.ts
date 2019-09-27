@@ -10,8 +10,6 @@ import { Resolvers } from 'apollo-boost';
 import { Message } from '../../../src/types/Message';
 import { User as UserType } from '../../../src/types/User';
 
-console.log('resolvers User', User);
-
 interface RoomGQLContext {
   currentUser: UserDocumentExtended;
 }
