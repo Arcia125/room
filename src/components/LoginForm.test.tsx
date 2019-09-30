@@ -1,8 +1,10 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import { MemoryRouter } from 'react-router';
 
-import { LoginForm, LoginFormProps } from './LoginForm';
+import { LoginForm } from './LoginForm';
+import { Provider } from '../theme';
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -12,7 +14,7 @@ afterEach(cleanup);
 
 describe('LoginForm', () => {
   it('renders without crashing', () => {
-    const loginFormProps: LoginFormProps = {
+    const loginFormProps = {
       username: '',
       password: '',
       onChangePassword: jest.fn(),
@@ -20,7 +22,13 @@ describe('LoginForm', () => {
       onSubmit: jest.fn(),
     };
 
-    const { container } = render(<LoginForm {...loginFormProps} />);
+    const { container } = render(
+      <MemoryRouter>
+        <Provider>
+          <LoginForm {...loginFormProps} />
+        </Provider>
+      </MemoryRouter>
+    );
 
     expect(container).toBeInTheDocument();
   });

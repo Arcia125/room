@@ -4,6 +4,31 @@ import { RouteComponentProps } from 'react-router';
 import { LoginForm } from '../../components/LoginForm';
 import { useLoginForm } from '../../hooks/useLoginForm';
 import { useAuth } from '../../hooks/useAuth';
+import styled from 'styled-components';
+import Navbar from '../../components/Navbar';
+
+const StyledLogin = styled.div`
+  background-color: ${p => p.theme.colors.lightPurple};
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .loginPage {
+    & form {
+      display: flex;
+      flex-direction: column;
+    }
+    &__invite {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.58rem;
+      line-height: 1.5;
+    }
+    & a {
+      text-decoration: none;
+    }
+  }
+`;
 
 const Login: FunctionComponent<RouteComponentProps> = ({ history }) => {
   const auth = useAuth();
@@ -26,15 +51,19 @@ const Login: FunctionComponent<RouteComponentProps> = ({ history }) => {
   };
 
   return (
-    <div>
-      <LoginForm
-        onSubmit={onSubmit}
-        username={username}
-        onChangeUsername={onChangeUsername}
-        password={password}
-        onChangePassword={onChangePassword}
-      />
-    </div>
+    <StyledLogin>
+      <Navbar />
+      <div className="loginPage">
+        <p className="loginPage__invite">Come back in!</p>
+        <LoginForm
+          onSubmit={onSubmit}
+          username={username}
+          onChangeUsername={onChangeUsername}
+          password={password}
+          onChangePassword={onChangePassword}
+        />
+      </div>
+    </StyledLogin>
   );
 };
 

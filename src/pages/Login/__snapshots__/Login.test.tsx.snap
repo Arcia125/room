@@ -2,22 +2,74 @@
 
 exports[`Login renders without crashing 1`] = `
 <DocumentFragment>
-  <div>
-    <form>
-      <input
-        type="text"
-        value=""
-      />
-      <input
-        type="password"
-        value=""
-      />
-      <button
-        type="submit"
+  <div
+    class="sc-htpNat fJdYQ"
+  >
+    <nav
+      class="sc-bwzfXH bPFVNE"
+    >
+      <a
+        href="/"
       >
-        login
-      </button>
-    </form>
+        <img
+          alt="Room Logo"
+          src="logoText.svg"
+        />
+      </a>
+    </nav>
+    <div
+      class="loginPage"
+    >
+      <p
+        class="loginPage__invite"
+      >
+        Come back in!
+      </p>
+      <form>
+        <label
+          for="username"
+        >
+          Username
+        </label>
+        <input
+          id="username"
+          type="text"
+          value=""
+        />
+        <label
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          id="password"
+          type="password"
+          value=""
+        />
+        <a
+          href="/forgot-password"
+        >
+          Forgot password?
+        </a>
+        <button
+          class="sc-bdVaJa vMbWT"
+          color="primary"
+          type="submit"
+        >
+          login
+        </button>
+        <p>
+          <span>
+            Need an account?
+          </span>
+          <a
+            href="/"
+          >
+            Register
+          </a>
+        </p>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;
