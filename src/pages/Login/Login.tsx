@@ -17,17 +17,10 @@ const StyledLogin = styled.div`
   .loginPage {
     display: grid;
     grid-gap: 32px;
-    & form {
-      display: flex;
-      flex-direction: column;
-    }
     &__invite {
       font-family: 'Poppins', sans-serif;
       font-size: 2.58rem;
       line-height: 1.5;
-    }
-    & a {
-      text-decoration: none;
     }
   }
 `;
