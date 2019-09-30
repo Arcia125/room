@@ -3,7 +3,7 @@
 exports[`Login renders without crashing 1`] = `
 <DocumentFragment>
   <div
-    class="sc-htpNat fJdYQ"
+    class="sc-htpNat ezvLvN"
   >
     <nav
       class="sc-bwzfXH bPFVNE"
@@ -26,31 +26,43 @@ exports[`Login renders without crashing 1`] = `
         Come back in!
       </p>
       <form>
-        <label
-          for="username"
+        <div
+          class="loginForm__inputs"
         >
-          Username
-        </label>
-        <input
-          id="username"
-          type="text"
-          value=""
-        />
-        <label
-          for="password"
-        >
-          Password
-        </label>
-        <input
-          id="password"
-          type="password"
-          value=""
-        />
-        <a
-          href="/forgot-password"
-        >
-          Forgot password?
-        </a>
+          <div
+            class="loginForm__username"
+          >
+            <label
+              for="username"
+            >
+              Username
+            </label>
+            <input
+              id="username"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="loginForm__password"
+          >
+            <label
+              for="password"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              value=""
+            />
+            <a
+              href="/forgot-password"
+            >
+              Forgot password?
+            </a>
+          </div>
+        </div>
         <button
           class="sc-bdVaJa vMbWT"
           color="primary"

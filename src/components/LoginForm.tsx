@@ -19,21 +19,27 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({
 }) => {
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="username">Username</label>
-      <input
-        id="username"
-        type="text"
-        value={username}
-        onChange={onChangeUsername}
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        value={password}
-        onChange={onChangePassword}
-      />
-      <Link to="/forgot-password">Forgot password?</Link>
+      <div className="loginForm__inputs">
+        <div className="loginForm__username">
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            value={username}
+            onChange={onChangeUsername}
+          />
+        </div>
+        <div className="loginForm__password">
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={onChangePassword}
+          />
+          <Link to="/forgot-password">Forgot password?</Link>
+        </div>
+      </div>
       <Button color="primary" type="submit">
         login
       </Button>

@@ -15,6 +15,8 @@ const StyledLogin = styled.div`
   align-items: center;
   flex-direction: column;
   .loginPage {
+    display: grid;
+    grid-gap: 32px;
     & form {
       display: flex;
       flex-direction: column;
