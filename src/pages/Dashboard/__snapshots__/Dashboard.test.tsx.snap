@@ -10,14 +10,14 @@ exports[`Dashboard renders without crashing 1`] = `
       Create a room to get started
     </p>
     <button
-      class="sc-bdVaJa jcypuS"
+      class="sc-bdVaJa gRUmbC"
       color="primary"
       data-testid="create-room-button"
     >
       create a room
     </button>
     <button
-      class="sc-bdVaJa jcypuS"
+      class="sc-bdVaJa gRUmbC"
       color="primary"
     >
       My Account

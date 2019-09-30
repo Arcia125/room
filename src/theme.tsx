@@ -9,6 +9,8 @@ const theme = {
     3: '32px',
   },
   colors: {
+    blueAccent: '#2D9CDB',
+    blueLink: '#2A8CF1',
     gray: '#B3B2C0',
     grayDark: '#1f1f1f',
     lightBlue: '#AEAFE8',

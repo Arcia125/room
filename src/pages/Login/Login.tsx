@@ -15,17 +15,15 @@ const StyledLogin = styled.div`
   align-items: center;
   flex-direction: column;
   .loginPage {
-    & form {
-      display: flex;
-      flex-direction: column;
-    }
+    display: grid;
+    grid-gap: 32px;
+    width: 348px;
+    max-width: 90vw;
     &__invite {
       font-family: 'Poppins', sans-serif;
       font-size: 2.58rem;
       line-height: 1.5;
-    }
-    & a {
-      text-decoration: none;
+      text-align: center;
     }
   }
 `;
