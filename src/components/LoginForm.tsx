@@ -14,8 +14,25 @@ export interface LoginFormProps {
 
 const StyledLoginForm = styled.form`
   display: grid;
+  grid-gap: 16px;
   & a {
     text-decoration: none;
+    color: ${p => p.theme.colors.blueLink};
+  }
+  & label {
+    color: #bdbdbd;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: normal;
+  }
+  & input {
+    border: none;
+    height: 48px;
+    border-radius: 2px;
+  }
+  & button {
+    cursor: pointer;
+    font-size: 16px;
   }
   & .loginForm__inputs {
     display: grid;
@@ -29,6 +46,20 @@ const StyledLoginForm = styled.form`
   }
   & .loginForm__submit {
     display: grid;
+    grid-gap: 8px;
+    & button {
+      height: 48px;
+    }
+  }
+  & .loginForm__helperText {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 8px;
+    font-size: 16px;
+    color: #aeb3c8;
+  }
+  a.loginForm__helperText {
+    color: ${p => p.theme.colors.blueLink};
   }
 `;
 
@@ -59,14 +90,16 @@ const LoginForm: React.FunctionComponent<LoginFormProps> = ({
             value={password}
             onChange={onChangePassword}
           />
-          <Link to="/forgot-password">Forgot password?</Link>
+          <Link className="loginForm__helperText" to="/forgot-password">
+            Forgot your password?
+          </Link>
         </div>
       </div>
       <div className="loginForm__submit">
         <Button color="primary" type="submit">
           login
         </Button>
-        <p>
+        <p className="loginForm__helperText">
           <span>Need an account?</span>
           <Link to="/">Register</Link>
         </p>

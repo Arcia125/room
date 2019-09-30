@@ -7,7 +7,7 @@ const buttonColorStyles = (props: { color: 'primary' | undefined }) => {
   if (props.color === 'primary') {
     return css`
       color: #fff;
-      background-color: #2d9cdb;
+      background-color: ${p => p.theme.colors.blueAccent};
       &:hover,
       &:active {
         color: #24468a;

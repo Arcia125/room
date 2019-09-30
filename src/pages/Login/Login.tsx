@@ -17,10 +17,13 @@ const StyledLogin = styled.div`
   .loginPage {
     display: grid;
     grid-gap: 32px;
+    width: 348px;
+    max-width: 90vw;
     &__invite {
       font-family: 'Poppins', sans-serif;
       font-size: 2.58rem;
       line-height: 1.5;
+      text-align: center;
     }
   }
 `;
