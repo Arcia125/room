@@ -16,6 +16,7 @@ import Login from '../src/pages/Login/Login';
 import { currentUserMockResolvers } from '../shared/queryMocks/currentUser';
 import Dashboard from '../src/pages/Dashboard';
 import Account from '../src/pages/Account';
+import ForgotPassword from '../src/pages/ForgotPassword';
 
 const mocks = [getRoomMock, newRoomMessageMock, newRoomUserMock, joinRoomMock];
 
@@ -62,4 +63,10 @@ export const account = () => <Account />;
 
 account.story = {
   name: 'Account',
+};
+
+export const forgotPassword = () => <ForgotPassword history={mockHistory} />;
+
+forgotPassword.story = {
+  name: 'ForgotPassword',
 };
