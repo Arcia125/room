@@ -232,7 +232,7 @@ exports[`Room finishes loading initial queries 1`] = `
             value=""
           />
           <button
-            class="chatbox__input--button sc-bxivhb iukTRN"
+            class="chatbox__input--button sc-bxivhb WJDYT"
             color="primary"
           >
             send

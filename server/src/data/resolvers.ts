@@ -143,6 +143,23 @@ const Mutation = {
 
     throw new IncorrectPasswordError('Password did not match');
   },
+  forgotPassword: async (
+    root: any,
+    { email }: { email: string },
+    context: RoomGQLContext
+  ) => {
+    const user = await User.findByEmail(email);
+    if (user && user.email) {
+      console.log('*******IMPLEMENT PASSWORD RESET EMAIL*******');
+      throw new Error('send forgot password email not implemented');
+      return {
+        success: false, // TODO return success upon sending password reset email
+      };
+    }
+    return {
+      success: false,
+    };
+  },
   addRoom: (root: any, { name }: { name: string }, context: RoomGQLContext) => {
     logger.debug('adding room ', { context: context });
     const newRoom = {

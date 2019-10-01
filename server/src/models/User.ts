@@ -28,6 +28,7 @@ export interface UserDocumentExtended extends UserDocument {
 export interface UserModel extends Model<UserDocumentExtended> {
   findByUsername: UserQuery;
   findByLogin: UserQuery;
+  findByEmail: UserQuery;
 }
 
 const userSchema = new Schema<UserDocumentExtended>(
@@ -72,8 +73,16 @@ const findByUserName: UserQuery = async function(username) {
 const findByLogin: UserQuery = async function(login) {
   let user = await this.findByUsername(login);
   if (!user) {
-    user = await this.findOne({ email: login });
+    user = await this.findByEmail(login);
   }
+  return user;
+};
+
+const findByEmail: UserQuery = async function(email) {
+  const user = await this.findOne({
+    email,
+  });
+
   return user;
 };
 
@@ -90,6 +99,8 @@ const comparePassword: PasswordComparer = function(candidatePassword) {
 userSchema.statics.findByUsername = findByUserName;
 
 userSchema.statics.findByLogin = findByLogin;
+
+userSchema.statics.findByEmail = findByEmail;
 
 userSchema.methods.comparePassword = comparePassword;
 

@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import { LoginForm } from '../../components/LoginForm';
+import { ForgotPasswordForm } from '../../components/ForgotPasswordForm';
 import { useLoginForm } from '../../hooks/useLoginForm';
 import { useAuth } from '../../hooks/useAuth';
 import styled from 'styled-components';
 import Navbar from '../../components/Navbar';
+import { useForgotPasswordForm } from '../../hooks/useForgotPasswordForm';
 
 const StyledForgotPassword = styled.div`
   background-color: ${p => p.theme.colors.lightPurple};
@@ -14,7 +15,7 @@ const StyledForgotPassword = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  .loginPage {
+  .forgotPasswordPage {
     display: grid;
     grid-gap: 32px;
     width: 348px;
@@ -33,12 +34,14 @@ const ForgotPassword: FunctionComponent<RouteComponentProps> = ({
 }) => {
   const auth = useAuth();
 
-  const {
-    username,
-    password,
-    onChangeUsername,
-    onChangePassword,
-  } = useLoginForm();
+  // const {
+  //   username,
+  //   password,
+  //   onChangeEmail,
+  //   onChangePassword,
+  // } = useLoginForm();
+
+  const { email, onChangeEmail } = useForgotPasswordForm();
 
   if (auth.currentUser) {
     // if there is a current user, redirect to dashboard
@@ -47,20 +50,18 @@ const ForgotPassword: FunctionComponent<RouteComponentProps> = ({
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
     event.preventDefault();
-    auth.loginUser({ username, password });
+    auth.sendForgotPassword({ email });
   };
 
   return (
     <StyledForgotPassword>
       <Navbar />
-      <div className="loginPage">
-        <p className="loginPage__invite">Come back in!</p>
-        <LoginForm
+      <div className="forgotPasswordPage">
+        <p className="forgotPasswordPage__invite">Recover Password</p>
+        <ForgotPasswordForm
           onSubmit={onSubmit}
-          username={username}
-          onChangeUsername={onChangeUsername}
-          password={password}
-          onChangePassword={onChangePassword}
+          email={email}
+          onChangeEmail={onChangeEmail}
         />
       </div>
     </StyledForgotPassword>
