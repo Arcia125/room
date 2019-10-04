@@ -52,6 +52,11 @@ const typeDefs = gql`
     createUser(username: String): AuthPayload
     claimAccount(email: String, password: String): AuthPayload
     login(username: String!, password: String!): AuthPayload
+    resetPassword(
+      password: String!
+      repeatPassword: String!
+      recoveryToken: String!
+    ): AuthPayload
     forgotPassword(email: String!): SuccessResult
     addRoom(name: String): Room
     sendMessage(roomId: ID!, content: String!): Message

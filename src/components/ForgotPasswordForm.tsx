@@ -36,7 +36,7 @@ const ForgotPasswordForm: React.FunctionComponent<ForgotPasswordFormProps> = ({
 }) => {
   return (
     <StyledForgotPasswordForm className="loginForm" onSubmit={onSubmit}>
-      <div className="forgotPasswordForm__submit">
+      <div className="forgotPasswordForm__inputs">
         <Input
           label="Email"
           id="email"

@@ -160,6 +160,43 @@ const Mutation = {
       success: false,
     };
   },
+  resetPassword: async (
+    root: any,
+    {
+      password,
+      repeatPassword,
+      recoveryToken,
+    }: { password: string; repeatPassword: string; recoveryToken: string }
+  ) => {
+    if (recoveryToken === '')
+      throw new NotAllowedError('Invalid recovery token');
+
+    if (password !== repeatPassword)
+      throw new NotAllowedError('Passwords must match');
+
+    const user = await User.findOne({
+      recoveryToken,
+    });
+
+    if (!user)
+      throw new UserNotFoundError(
+        'Could not find a user associated with that token'
+      );
+
+    user.password = password;
+    user.recoveryToken = '';
+    await user.save();
+
+    const token = signToken({
+      email: user.email,
+      username: user.username,
+    });
+
+    return {
+      token,
+      user,
+    };
+  },
   addRoom: (root: any, { name }: { name: string }, context: RoomGQLContext) => {
     logger.debug('adding room ', { context: context });
     const newRoom = {

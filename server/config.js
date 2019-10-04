@@ -13,6 +13,9 @@ const defaults = {
   LOG_FILE_NAME: null,
   LOG_FILE_LEVEL: 'debug',
   LOG_LEVEL: 'info',
+  MAILGUN_API_KEY: null,
+  MAILGUN_DOMAIN: null,
+  MAILGUN_SENDER: null,
 };
 
 const config = {

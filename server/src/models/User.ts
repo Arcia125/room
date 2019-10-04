@@ -11,6 +11,7 @@ export interface UserDocument extends Document {
   password: string;
   firstName: string;
   lastName: string;
+  recoveryToken: string;
 }
 
 interface PasswordComparer {
@@ -55,6 +56,11 @@ const userSchema = new Schema<UserDocumentExtended>(
     password: {
       type: String,
       trim: true,
+    },
+    recoveryToken: {
+      type: String,
+      trim: true,
+      default: null,
     },
   },
   {

@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 
 import config from '../../config';
 import { User, UserDocumentExtended } from '../models/User';
@@ -43,4 +44,18 @@ const findUserByDecodedToken = async (
   return user;
 };
 
-export { signToken, validateToken, findUserByDecodedToken };
+const createRecoveryToken = () => {
+  return new Promise<string>((resolve, reject) => {
+    crypto.randomBytes(20, (err, buf) => {
+      if (err) return reject(err);
+      resolve(buf.toString('hex'));
+    });
+  });
+};
+
+export {
+  signToken,
+  validateToken,
+  findUserByDecodedToken,
+  createRecoveryToken,
+};
