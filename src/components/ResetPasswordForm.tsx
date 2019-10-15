@@ -12,6 +12,7 @@ export interface ResetPasswordFormProps {
   onChangePassword: React.ChangeEventHandler<HTMLInputElement>;
   repeatPassword: string;
   onChangeRepeatPassword: React.ChangeEventHandler<HTMLInputElement>;
+  disabled: boolean;
 }
 
 const StyledResetPasswordForm = styled.form`
@@ -37,6 +38,7 @@ const ResetPasswordForm: React.FunctionComponent<ResetPasswordFormProps> = ({
   onChangePassword,
   repeatPassword,
   onChangeRepeatPassword,
+  disabled,
 }) => {
   return (
     <StyledResetPasswordForm className="loginForm" onSubmit={onSubmit}>
@@ -59,7 +61,7 @@ const ResetPasswordForm: React.FunctionComponent<ResetPasswordFormProps> = ({
         />
       </div>
       <div className="resetPasswordForm__submit">
-        <Button color="primary" type="submit">
+        <Button disabled={disabled} color="primary" type="submit">
           RESET PASSWORD
         </Button>
         <HelperText className="resetPasswordForm__helperText">

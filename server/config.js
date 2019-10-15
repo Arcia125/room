@@ -15,7 +15,7 @@ const defaults = {
   LOG_LEVEL: 'info',
   MAILGUN_API_KEY: null,
   MAILGUN_DOMAIN: null,
-  MAILGUN_SENDER: null,
+  MAILGUN_SENDER: 'Info <noreply@room-dev.com>',
 };
 
 const config = {

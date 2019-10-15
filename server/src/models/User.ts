@@ -52,6 +52,7 @@ const userSchema = new Schema<UserDocumentExtended>(
       required: false,
       unique: false,
       trim: true,
+      default: 'https://via.placeholder.com/50x50',
     },
     password: {
       type: String,

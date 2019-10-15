@@ -16,6 +16,7 @@ import { Resolvers } from 'apollo-boost';
 import { Message } from '../../../src/types/Message';
 import { User as UserType } from '../../../src/types/User';
 import { logger } from '../utils/logger';
+import { sendRecoveryEmail } from '../utils/mail';
 
 interface RoomGQLContext {
   currentUser: UserDocumentExtended | null;
@@ -126,6 +127,8 @@ const Mutation = {
 
     if (!user) throw new UserNotFoundError('User not found');
 
+    logger.debug('Logging in user', { user });
+
     const matches = await user.comparePassword(password);
 
     if (matches) {
@@ -150,14 +153,20 @@ const Mutation = {
   ) => {
     const user = await User.findByEmail(email);
     if (user && user.email) {
-      console.log('*******IMPLEMENT PASSWORD RESET EMAIL*******');
-      throw new Error('send forgot password email not implemented');
-      return {
-        success: false, // TODO return success upon sending password reset email
-      };
+      // console.log('*******IMPLEMENT PASSWORD RESET EMAIL*******');
+      // throw new Error('send forgot password email not implemented');
+      // return {
+      //   success: false, // TODO return success upon sending password reset email
+      // };
+
+      const body = await sendRecoveryEmail({ email });
+
+      logger.info('forgotPassword mutation resolver sendRecoveryEmail body', {
+        body,
+      });
     }
     return {
-      success: false,
+      success: true,
     };
   },
   resetPassword: async (

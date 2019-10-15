@@ -10,6 +10,8 @@ export interface ForgotPasswordFormProps {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   email: string;
   onChangeEmail: React.ChangeEventHandler<HTMLInputElement>;
+  disabled: boolean;
+  error?: React.ReactNode;
 }
 
 const StyledForgotPasswordForm = styled.form`
@@ -33,6 +35,8 @@ const ForgotPasswordForm: React.FunctionComponent<ForgotPasswordFormProps> = ({
   onSubmit,
   email,
   onChangeEmail,
+  disabled,
+  error,
 }) => {
   return (
     <StyledForgotPasswordForm className="loginForm" onSubmit={onSubmit}>
@@ -45,8 +49,9 @@ const ForgotPasswordForm: React.FunctionComponent<ForgotPasswordFormProps> = ({
           required
         />
       </div>
+      {error}
       <div className="forgotPasswordForm__submit">
-        <Button color="primary" type="submit">
+        <Button disabled={disabled} color="primary" type="submit">
           SEND RECOVERY EMAIL
         </Button>
         <HelperText className="forgotPasswordForm__helperText">

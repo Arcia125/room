@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { RouteComponentProps, useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 import styled from 'styled-components';
 
 import { ForgotPasswordForm } from '../../components/ForgotPasswordForm';
@@ -31,13 +31,105 @@ const StyledForgotPassword = styled.div`
     & .error {
       color: red;
     }
+    & .success {
+      color: ${p => p.theme.colors.purple};
+      font-size: 1.5rem;
+    }
   }
 `;
 
-const ForgotPassword: FunctionComponent<RouteComponentProps> = ({
-  history,
+const ResetPasswordContent = ({
+  data,
+  loading,
+  error,
+  password,
+  onChangePassword,
+  repeatPassword,
+  onChangeRepeatPassword,
+  onSubmitResetPasswordForm,
+}: {
+  data?: {
+    resetPassword: {
+      success: boolean;
+    };
+  };
+  loading: boolean;
+  error?: Error;
+  password: string;
+  onChangePassword: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  repeatPassword: string;
+  onChangeRepeatPassword: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmitResetPasswordForm: (event: React.FormEvent<HTMLFormElement>) => void;
 }) => {
+  return (
+    <>
+      <p className="forgotPasswordPage__invite">Create a New Password</p>
+      {error && <HelperText className="error">{error.message}</HelperText>}
+      <ResetPasswordForm
+        disabled={loading}
+        password={password}
+        onChangePassword={onChangePassword}
+        repeatPassword={repeatPassword}
+        onChangeRepeatPassword={onChangeRepeatPassword}
+        onSubmit={onSubmitResetPasswordForm}
+      />
+    </>
+  );
+};
+
+const ForgotPasswordContent = ({
+  data,
+  error,
+  loading,
+  onSubmitForgotPasswordForm,
+  email,
+  onChangeEmail,
+}: {
+  data?: {
+    forgotPassword: {
+      success: boolean;
+    };
+  };
+  error?: Error;
+  loading: boolean;
+  onSubmitForgotPasswordForm: (event: React.FormEvent<HTMLFormElement>) => void;
+  email: string;
+  onChangeEmail: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}) => {
+  return (
+    <>
+      <p className="forgotPasswordPage__invite">Recover Password</p>
+      {data && data.forgotPassword.success ? (
+        <p className="success">
+          Success! If we find an account matching this email, we&apos;ll send it
+          instructions to reset your password.
+        </p>
+      ) : (
+        <ForgotPasswordForm
+          onSubmit={onSubmitForgotPasswordForm}
+          email={email}
+          onChangeEmail={onChangeEmail}
+          disabled={loading}
+          error={
+            error && <HelperText className="error">{error.message}</HelperText>
+          }
+        />
+      )}
+    </>
+  );
+};
+
+const useParamToken = () => {
   const { token } = useParams<{ token: string }>();
+
+  return { token: token ? token.split('&')[0] : '' };
+};
+
+const ForgotPassword: FunctionComponent<{ noRedirect: boolean }> = ({
+  noRedirect,
+}) => {
+  const { token } = useParamToken();
+  const history = useHistory();
 
   const auth = useAuth();
 
@@ -50,7 +142,7 @@ const ForgotPassword: FunctionComponent<RouteComponentProps> = ({
     onChangeRepeatPassword,
   } = useResetPasswordForm();
 
-  if (auth.currentUser) {
+  if (auth.currentUser && !noRedirect) {
     // if there is a current user, redirect to dashboard
     history.push('/dashboard');
   }
@@ -59,7 +151,9 @@ const ForgotPassword: FunctionComponent<RouteComponentProps> = ({
     HTMLFormElement
   > = event => {
     event.preventDefault();
-    auth.sendForgotPassword({ email });
+    auth.sendForgotPassword({
+      email,
+    });
   };
 
   const onSubmitResetPasswordForm: React.FormEventHandler<
@@ -69,35 +163,28 @@ const ForgotPassword: FunctionComponent<RouteComponentProps> = ({
     auth.sendResetPassword({ password, repeatPassword, recoveryToken: token });
   };
 
-  console.log('token', token);
+  const isResetPassword = !!token;
 
-  console.log('auth.resetPasswordMutation ', auth.resetPasswordMutation);
-
-  const content = token ? (
-    <>
-      <p className="forgotPasswordPage__invite">Create a New Password</p>
-      {auth.resetPasswordMutation.error && (
-        <HelperText className="error">
-          {auth.resetPasswordMutation.error.message}
-        </HelperText>
-      )}
-      <ResetPasswordForm
-        password={password}
-        onChangePassword={onChangePassword}
-        repeatPassword={repeatPassword}
-        onChangeRepeatPassword={onChangeRepeatPassword}
-        onSubmit={onSubmitResetPasswordForm}
-      />
-    </>
+  const content = isResetPassword ? (
+    <ResetPasswordContent
+      data={auth.resetPasswordMutation.data}
+      loading={auth.resetPasswordMutation.loading}
+      error={auth.resetPasswordMutation.error}
+      password={password}
+      onChangePassword={onChangePassword}
+      repeatPassword={repeatPassword}
+      onChangeRepeatPassword={onChangeRepeatPassword}
+      onSubmitResetPasswordForm={onSubmitResetPasswordForm}
+    />
   ) : (
-    <>
-      <p className="forgotPasswordPage__invite">Recover Password</p>
-      <ForgotPasswordForm
-        onSubmit={onSubmitForgotPasswordForm}
-        email={email}
-        onChangeEmail={onChangeEmail}
-      />
-    </>
+    <ForgotPasswordContent
+      data={auth.forgotPasswordMutation.data}
+      loading={auth.forgotPasswordMutation.loading}
+      error={auth.forgotPasswordMutation.error}
+      onSubmitForgotPasswordForm={onSubmitForgotPasswordForm}
+      email={email}
+      onChangeEmail={onChangeEmail}
+    />
   );
 
   return (

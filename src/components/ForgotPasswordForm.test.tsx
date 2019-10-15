@@ -18,6 +18,7 @@ describe('ForgotPasswordForm', () => {
       email: '',
       onChangeEmail: jest.fn(),
       onSubmit: jest.fn(),
+      disabled: false,
     };
 
     const { container } = render(

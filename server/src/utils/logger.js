@@ -7,7 +7,7 @@ const defaultConfigs = {
     level: config.LOG_LEVEL,
     format: format.combine(format.colorize(), format.simple()),
     transports: [new transports.Console()],
-    defaultMeta: { service: 'room' },
+    defaultMeta: {},
   },
 
   fileTransport: {

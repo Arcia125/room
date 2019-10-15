@@ -65,7 +65,7 @@ account.story = {
   name: 'Account',
 };
 
-export const forgotPassword = () => <ForgotPassword history={mockHistory} />;
+export const forgotPassword = () => <ForgotPassword noRedirect />;
 
 forgotPassword.story = {
   name: 'ForgotPassword',
