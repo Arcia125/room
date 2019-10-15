@@ -189,7 +189,7 @@ const ForgotPassword: FunctionComponent<{ noRedirect: boolean }> = ({
 
   return (
     <StyledForgotPassword>
-      <Navbar />
+      <Navbar showLogin />
       <div className="forgotPasswordPage">{content}</div>
     </StyledForgotPassword>
   );

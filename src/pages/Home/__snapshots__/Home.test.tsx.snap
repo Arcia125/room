@@ -16,6 +16,13 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
           src="logoText.svg"
         />
       </a>
+      <a
+        class="sc-htpNat hGMLdq"
+        color="#B3B2C0"
+        href="/login"
+      >
+        LOGIN
+      </a>
     </nav>
     <div
       class="homePage"
@@ -26,7 +33,7 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
         Pick a username to get started
       </p>
       <form
-        class="sc-bxivhb wUoMT"
+        class="sc-ifAKCX kCEAxF"
       >
         <div
           class="form"
@@ -37,7 +44,7 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
             value=""
           />
           <button
-            class="form__button sc-htpNat kIumzk"
+            class="form__button sc-bxivhb WJDYT"
             color="primary"
             type="submit"
           >

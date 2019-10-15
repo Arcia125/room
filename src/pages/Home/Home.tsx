@@ -106,7 +106,7 @@ const Home: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   return (
     <HomePage>
-      <Navbar />
+      <Navbar showLogin />
       <div className="homePage">
         <p className="homePage__invite">Pick a username to get started</p>
         <GetStarted history={history} />
