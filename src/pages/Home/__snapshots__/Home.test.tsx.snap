@@ -33,7 +33,7 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
         Pick a username to get started
       </p>
       <form
-        class="sc-ifAKCX kCEAxF"
+        class="sc-EHOje gPqzLV"
       >
         <div
           class="form"
@@ -56,6 +56,19 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
           </button>
         </div>
       </form>
+      <p
+        class="sc-ifAKCX iKeSpj"
+      >
+        <span>
+          Have an account?
+        </span>
+        <a
+          class="sc-htpNat eeHqNq"
+          href="/login"
+        >
+          Login
+        </a>
+      </p>
     </div>
   </div>
 </DocumentFragment>
