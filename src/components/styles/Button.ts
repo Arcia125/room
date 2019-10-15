@@ -56,7 +56,8 @@ const Button: StyledButton = styled.button`
   transition: 325ms ease-in-out;
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  cursor: pointer;
+  font-size: 16px;
   padding: ${getThemeSpacing};
   ${buttonColorStyles};
 ` as StyledButton;

@@ -13,5 +13,5 @@
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": ["server"]
+  "include": ["server", "shared"]
 }
