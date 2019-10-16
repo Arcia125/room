@@ -14,6 +14,7 @@ import { Provider } from '../../theme';
 import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
 import { currentUserMockResolvers } from '../../../shared/queryMocks/currentUser';
 import { addRoomMock } from '../../../shared/queryMocks/room';
+import { MemoryRouter } from 'react-router';
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -24,11 +25,13 @@ afterEach(cleanup);
 describe('Dashboard', () => {
   it('renders without crashing', async () => {
     const { container, asFragment } = render(
-      <MockedProvider addTypename resolvers={currentUserMockResolvers}>
-        <Provider>
-          <Dashboard {...mockRouteComponentProps} />
-        </Provider>
-      </MockedProvider>
+      <MemoryRouter>
+        <MockedProvider addTypename resolvers={currentUserMockResolvers}>
+          <Provider>
+            <Dashboard {...mockRouteComponentProps} />
+          </Provider>
+        </MockedProvider>
+      </MemoryRouter>
     );
     await wait(() => expect(container).toBeInTheDocument());
 
@@ -37,15 +40,17 @@ describe('Dashboard', () => {
 
   it('allows the user to create a room', async () => {
     const { findByTestId } = render(
-      <MockedProvider
-        addTypename
-        mocks={[addRoomMock]}
-        resolvers={currentUserMockResolvers}
-      >
-        <Provider>
-          <Dashboard {...mockRouteComponentProps} />
-        </Provider>
-      </MockedProvider>
+      <MemoryRouter>
+        <MockedProvider
+          addTypename
+          mocks={[addRoomMock]}
+          resolvers={currentUserMockResolvers}
+        >
+          <Provider>
+            <Dashboard {...mockRouteComponentProps} />
+          </Provider>
+        </MockedProvider>
+      </MemoryRouter>
     );
 
     const createRoomButton: HTMLElement = await waitForElement(() =>
