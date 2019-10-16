@@ -10,6 +10,8 @@ import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { CREATE_USER } from '../../graphql/createUser';
 import { SAVE_USER } from '../../graphql/saveUser';
 import { useField } from '../../hooks/useField';
+import { HelperText } from '../../components/styles/HelperText';
+import { Link } from '../../components/styles/Link';
 
 const GetStartedForm = styled.form`
   .form {
@@ -106,10 +108,14 @@ const Home: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   return (
     <HomePage>
-      <Navbar />
+      <Navbar showLogin />
       <div className="homePage">
         <p className="homePage__invite">Pick a username to get started</p>
         <GetStarted history={history} />
+        <HelperText>
+          <span>Have an account?</span>
+          <Link to="/login">Login</Link>
+        </HelperText>
       </div>
     </HomePage>
   );
