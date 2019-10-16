@@ -9,9 +9,8 @@ import { ClaimAccountForm } from '../../components/ClaimAccountForm';
 import { CLAIM_ACCOUNT } from '../../graphql/claimAccount';
 import Modal from '../../components/Modal';
 import { SAVE_USER } from '../../graphql/saveUser';
-import SideNavbar from '../../components/SideNavbar';
-import { StyledDashboard } from './styles';
 import Header from '../../components/Header';
+import MainLayout from '../../components/MainLayout';
 
 const useModalState = (
   { initialIsOpen = false } = { initialIsOpen: false }
@@ -82,9 +81,8 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
   };
 
   return (
-    <StyledDashboard>
-      <SideNavbar />
-      <main>
+    <>
+      <MainLayout>
         <Header />
         <h1>
           {getCurrentUserQuery.data &&
@@ -107,7 +105,7 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
         <Button color="primary" padding="2" onClick={handleClickMyAccount}>
           My Account
         </Button>
-      </main>
+      </MainLayout>
       <Modal
         isOpen={claimAccountModal.isOpen}
         onRequestClose={claimAccountModal.close}
@@ -118,7 +116,7 @@ const Dashboard: React.FunctionComponent<RouteComponentProps> = ({
           </Button>
         </ClaimAccountForm>
       </Modal>
-    </StyledDashboard>
+    </>
   );
 };
 

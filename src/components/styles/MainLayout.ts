@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledDashboard = styled.div`
+const StyledMainLayout = styled.div`
   display: grid;
   grid-template-rows: 100vh;
   grid-template-columns: 192px 1fr;
@@ -11,4 +11,4 @@ const StyledDashboard = styled.div`
   }
 `;
 
-export { StyledDashboard };
+export { StyledMainLayout };
