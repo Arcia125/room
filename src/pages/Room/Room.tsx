@@ -7,6 +7,7 @@ import UserList from '../../components/UserList';
 import { SEND_MESSAGE } from '../../graphql/sendMessage';
 import { Button } from '../../components/styles/Button';
 import { useActiveRoom } from '../../hooks/useActiveRoom';
+import MainLayout from '../../components/MainLayout';
 
 interface RoomMessage {
   id: string;
@@ -90,10 +91,12 @@ const Room: React.FunctionComponent<
   }
 
   return (
-    <div className="room-page">
-      <header className="room-page__header">Chat</header>
-      {content}
-    </div>
+    <MainLayout>
+      <div className="room-page">
+        <header className="room-page__header">Chat</header>
+        {content}
+      </div>
+    </MainLayout>
   );
 };
 

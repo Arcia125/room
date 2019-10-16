@@ -11,7 +11,7 @@ import { useResetPasswordForm } from '../../hooks/useResetPasswordForm';
 import { HelperText } from '../../components/styles/HelperText';
 
 const StyledForgotPassword = styled.div`
-  background-color: ${p => p.theme.colors.lightPurple};
+  background-color: ${p => p.theme.colors.lighterPurple};
   min-height: 100vh;
   display: flex;
   justify-content: center;
