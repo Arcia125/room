@@ -70,7 +70,7 @@ exports[`Login renders without crashing 1`] = `
           class="loginForm__submit"
         >
           <button
-            class="sc-bdVaJa fTbwKq"
+            class="sc-bdVaJa bxjkAU"
             color="primary"
             type="submit"
           >

@@ -44,7 +44,7 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
             value=""
           />
           <button
-            class="form__button sc-bxivhb WJDYT"
+            class="form__button sc-bxivhb esJnqo"
             color="primary"
             type="submit"
           >
