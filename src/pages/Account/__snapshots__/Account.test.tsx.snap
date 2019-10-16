@@ -6,7 +6,7 @@ exports[`Account finishes loading and displays the current user's username 1`] =
     class="sc-bdVaJa cdwebl"
   >
     <nav
-      class="sc-bwzfXH kCtIxr"
+      class="sc-bwzfXH jcfAU"
     >
       <div
         class="user"
@@ -124,7 +124,7 @@ exports[`Account renders without crashing 1`] = `
     class="sc-bdVaJa cdwebl"
   >
     <nav
-      class="sc-bwzfXH kCtIxr"
+      class="sc-bwzfXH jcfAU"
     >
       <div
         class="user"
