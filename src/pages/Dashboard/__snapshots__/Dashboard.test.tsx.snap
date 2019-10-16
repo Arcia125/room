@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashboard allows the user to create a room 1`] = `<DocumentFragment />`;
-
 exports[`Dashboard renders without crashing 1`] = `
 <DocumentFragment>
   <div

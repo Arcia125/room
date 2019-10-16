@@ -37,31 +37,4 @@ describe('Dashboard', () => {
 
     expect(asFragment()).toMatchSnapshot();
   });
-
-  it('allows the user to create a room', async () => {
-    const { findByTestId } = render(
-      <MemoryRouter>
-        <MockedProvider
-          addTypename
-          mocks={[addRoomMock]}
-          resolvers={currentUserMockResolvers}
-        >
-          <Provider>
-            <Dashboard {...mockRouteComponentProps} />
-          </Provider>
-        </MockedProvider>
-      </MemoryRouter>
-    );
-
-    const createRoomButton: HTMLElement = await waitForElement(() =>
-      findByTestId('create-room-button')
-    );
-
-    fireEvent.click(createRoomButton);
-
-    // after the createRoom mutation completes the component should redirect to the new room
-    await wait(() =>
-      expect(mockRouteComponentProps.history.push).toBeCalledTimes(1)
-    );
-  });
 });
