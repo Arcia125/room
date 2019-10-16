@@ -6,7 +6,7 @@ exports[`Room finishes loading initial queries 1`] = `
     class="sc-ifAKCX kViNAh"
   >
     <nav
-      class="sc-EHOje ePZhyt"
+      class="sc-EHOje jrDMue"
     >
       <div
         class="user"
@@ -340,7 +340,7 @@ exports[`Room renders without crashing 1`] = `
     class="sc-ifAKCX kViNAh"
   >
     <nav
-      class="sc-EHOje ePZhyt"
+      class="sc-EHOje jrDMue"
     >
       <div
         class="user"

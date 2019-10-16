@@ -13,6 +13,11 @@ const StyledSideNavbar = styled.nav`
   & .user {
     align-self: center;
     justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
     & img {
       height: 64px;
     }
