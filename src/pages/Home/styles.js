@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HomePage = styled.div`
-  background-color: ${p => p.theme.colors.lightPurple};
+  background-color: ${p => p.theme.colors.lighterPurple};
   min-height: 100vh;
   display: flex;
   justify-content: center;
