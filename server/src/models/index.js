@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-import { User } from "./User";
-import { Message } from "./Message";
-import config from "../../config";
+import { User } from './User';
+import { Message } from './Message';
+import config from '../../config';
 
 const connectDb = () => {
   return mongoose.connect(config.MONGODB_URI);

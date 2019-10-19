@@ -4,7 +4,7 @@ const defaultLoginOpts = { initialUsername: '', initialPassword: '' };
 
 const useLoginForm = ({
   initialUsername = '',
-  initialPassword = ''
+  initialPassword = '',
 } = defaultLoginOpts) => {
   const usernameField = useField({ initialValue: initialUsername });
   const passwordField = useField({ initialValue: initialPassword });
@@ -13,7 +13,7 @@ const useLoginForm = ({
     username: usernameField.value,
     password: passwordField.value,
     onChangeUsername: usernameField.onChange,
-    onChangePassword: passwordField.onChange
+    onChangePassword: passwordField.onChange,
   };
 };
 

@@ -1,7 +1,7 @@
 import {
   getLocalStorageValue,
   setLocalStorage,
-  removeFromLocalStorage
+  removeFromLocalStorage,
 } from './storage';
 import { GET_CURRENT_USER } from '../graphql/getCurrentUser';
 import { ApolloCache } from 'apollo-cache';
@@ -18,16 +18,16 @@ const getToken = () => getLocalStorageValue(TOKEN_STORAGE_KEY, null);
 const setUser = ({
   user,
   cache,
-  token
+  token,
 }: {
   user: User;
   cache: ApolloCache<any>;
-  token: String;
+  token: string;
 }) => {
   if (cache) {
     cache.writeQuery({
       query: GET_CURRENT_USER,
-      data: { currentUser: user }
+      data: { currentUser: user },
     });
   }
 

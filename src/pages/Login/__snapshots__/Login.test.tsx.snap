@@ -2,22 +2,95 @@
 
 exports[`Login renders without crashing 1`] = `
 <DocumentFragment>
-  <div>
-    <form>
-      <input
-        type="text"
-        value=""
-      />
-      <input
-        type="password"
-        value=""
-      />
-      <button
-        type="submit"
+  <div
+    class="sc-bxivhb ebgYGz"
+  >
+    <nav
+      class="sc-htpNat gHSSDV"
+    >
+      <a
+        href="/"
       >
-        login
-      </button>
-    </form>
+        <img
+          alt="Room Logo"
+          src="logoText.svg"
+        />
+      </a>
+    </nav>
+    <div
+      class="loginPage"
+    >
+      <p
+        class="loginPage__invite"
+      >
+        Come back in!
+      </p>
+      <form
+        class="loginForm sc-bwzfXH iLgZzU"
+      >
+        <div
+          class="loginForm__inputs"
+        >
+          <div
+            class="loginForm__input"
+          >
+            <label
+              for="username"
+            >
+              Username
+            </label>
+            <input
+              id="username"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="loginForm__input"
+          >
+            <label
+              for="password"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              value=""
+            />
+            <a
+              class="loginForm__helperText"
+              href="/forgot-password"
+            >
+              Forgot your password?
+            </a>
+          </div>
+        </div>
+        <div
+          class="loginForm__submit"
+        >
+          <button
+            class="sc-bdVaJa iGgGiy"
+            color="primary"
+            type="submit"
+          >
+            login
+          </button>
+          <p
+            class="loginForm__helperText"
+          >
+            <span>
+              Need an account?
+            </span>
+            <a
+              href="/"
+            >
+              Register
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
   </div>
 </DocumentFragment>
 `;

@@ -8,7 +8,9 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
     <nav
       class="sc-bwzfXH bPFVNE"
     >
-      <a>
+      <a
+        href="/"
+      >
         <img
           alt="Room Logo"
           src="logoText.svg"
@@ -35,7 +37,7 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
             value=""
           />
           <button
-            class="form__button sc-htpNat kYuwnI"
+            class="form__button sc-htpNat kqvTnN"
             color="primary"
             type="submit"
           >

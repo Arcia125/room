@@ -17,8 +17,8 @@ const Room: React.FunctionComponent<
   RouteComponentProps<{ roomId: string }>
 > = ({
   match: {
-    params: { roomId }
-  }
+    params: { roomId },
+  },
 }) => {
   const [userMessage, setUserMessage] = React.useState('');
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -32,7 +32,7 @@ const Room: React.FunctionComponent<
 
   const [sendMessage, sendMessageMutation] = useMutation(SEND_MESSAGE, {
     variables: { roomId, content: userMessage },
-    onCompleted: handleSendMessageComplete
+    onCompleted: handleSendMessageComplete,
   });
 
   const handleSend = () => {

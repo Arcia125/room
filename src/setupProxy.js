@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const proxy = require('http-proxy-middleware');
 
 const hostName =
@@ -15,7 +16,7 @@ module.exports = function(app) {
     proxy(process.env.REACT_APP_GRAPHQL_WS_ENDPOINT, {
       // target: `ws://${hostName.replace(/https?:\/\//, '')}`,
       target: hostName,
-      ws: true
+      ws: true,
     })
   );
 };
