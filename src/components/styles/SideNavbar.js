@@ -17,7 +17,6 @@ const StyledSideNavbar = styled.nav`
     display: flex;
     flex-direction: column;
     align-items: center;
-}
     & img {
       height: 64px;
     }
