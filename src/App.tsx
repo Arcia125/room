@@ -17,6 +17,10 @@ const LoadableHome = makeLoadable(() => import('./pages/Home'));
 
 const LoadableLogin = makeLoadable(() => import('./pages/Login'));
 
+const LoadableForgotPassword = makeLoadable(() =>
+  import('./pages/ForgotPassword')
+);
+
 const LoadableRoom = makeLoadable(() => import('./pages/Room'));
 
 const LoadableDashboard = makeLoadable(() => import('./pages/Dashboard'));
@@ -27,11 +31,20 @@ const App = () => {
   return (
     <Provider>
       <Router>
-        <Button onClick={logout as React.MouseEventHandler<HTMLButtonElement>}>
+        {/* <Button onClick={logout as React.MouseEventHandler<HTMLButtonElement>}>
           logout
-        </Button>
+        </Button> */}
         <Route path="/" component={LoadableHome} exact />
         <Route path="/login" component={LoadableLogin} />
+        <Route
+          path="/forgot-password"
+          component={LoadableForgotPassword}
+          exact
+        />
+        <Route
+          path="/forgot-password/:token"
+          component={LoadableForgotPassword}
+        />
         <Route path="/r/:roomId" component={LoadableRoom} />
         <Route path="/dashboard" component={LoadableDashboard} />
         <Route path="/account" component={LoadableAccount} />

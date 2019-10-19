@@ -1,9 +1,16 @@
 import styled, { css, StyledComponent } from 'styled-components';
 
 import { getThemeSpacing } from '../../utils/styleUtils';
-import { ReactElement } from 'react';
+import { ReactElement, ReactChildren } from 'react';
 
-const buttonColorStyles = (props: { color: 'primary' | undefined }) => {
+const buttonColorStyles = (props: { color?: 'primary'; basic?: boolean }) => {
+  if (props.basic) {
+    return css`
+      color: ${p => p.theme.colors.grayBlue};
+      background-color: transparent;
+    `;
+  }
+
   if (props.color === 'primary') {
     return css`
       color: #fff;
@@ -42,7 +49,7 @@ type StyledButton = StyledComponent<
   'button',
   any,
   {
-    children: ReactElement | string;
+    basic?: boolean;
     color?: 'primary';
     padding?: number | string;
     disabled?: boolean;
@@ -56,8 +63,14 @@ const Button: StyledButton = styled.button`
   transition: 325ms ease-in-out;
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  cursor: pointer;
+  font-size: 16px;
   padding: ${getThemeSpacing};
+  display: flex;
+  align-items: center;
+  & svg {
+    margin-right: 5px;
+  }
   ${buttonColorStyles};
 ` as StyledButton;
 

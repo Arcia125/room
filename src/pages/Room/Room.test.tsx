@@ -14,6 +14,7 @@ import {
 } from '../../../shared/queryMocks/room';
 import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
 import { currentUserMockResolvers } from '../../../shared/queryMocks/currentUser';
+import { MemoryRouter } from 'react-router';
 
 const mocks = [getRoomMock, newRoomMessageMock, newRoomUserMock, joinRoomMock];
 
@@ -22,21 +23,23 @@ afterEach(cleanup);
 describe('Room', () => {
   it('renders without crashing', () => {
     const { container, asFragment } = render(
-      <MockedProvider
-        addTypename
-        mocks={mocks}
-        resolvers={currentUserMockResolvers}
-      >
-        <Provider>
-          <Room
-            {...mockRouteComponentProps}
-            match={{
-              ...mockRouteComponentProps.match,
-              params: { roomId: mockRoom.id },
-            }}
-          />
-        </Provider>
-      </MockedProvider>
+      <MemoryRouter>
+        <MockedProvider
+          addTypename
+          mocks={mocks}
+          resolvers={currentUserMockResolvers}
+        >
+          <Provider>
+            <Room
+              {...mockRouteComponentProps}
+              match={{
+                ...mockRouteComponentProps.match,
+                params: { roomId: mockRoom.id },
+              }}
+            />
+          </Provider>
+        </MockedProvider>
+      </MemoryRouter>
     );
     expect(container).toBeInTheDocument();
 
@@ -45,21 +48,23 @@ describe('Room', () => {
 
   it('finishes loading initial queries', async () => {
     const { getByText, asFragment } = render(
-      <MockedProvider
-        addTypename
-        mocks={mocks}
-        resolvers={currentUserMockResolvers}
-      >
-        <Provider>
-          <Room
-            {...mockRouteComponentProps}
-            match={{
-              ...mockRouteComponentProps.match,
-              params: { roomId: mockRoom.id },
-            }}
-          />
-        </Provider>
-      </MockedProvider>
+      <MemoryRouter>
+        <MockedProvider
+          addTypename
+          mocks={mocks}
+          resolvers={currentUserMockResolvers}
+        >
+          <Provider>
+            <Room
+              {...mockRouteComponentProps}
+              match={{
+                ...mockRouteComponentProps.match,
+                params: { roomId: mockRoom.id },
+              }}
+            />
+          </Provider>
+        </MockedProvider>
+      </MemoryRouter>
     );
 
     // wait for the room name to be in the document

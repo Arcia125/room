@@ -11,6 +11,7 @@ export interface UserDocument extends Document {
   password: string;
   firstName: string;
   lastName: string;
+  recoveryToken: string;
 }
 
 interface PasswordComparer {
@@ -28,6 +29,7 @@ export interface UserDocumentExtended extends UserDocument {
 export interface UserModel extends Model<UserDocumentExtended> {
   findByUsername: UserQuery;
   findByLogin: UserQuery;
+  findByEmail: UserQuery;
 }
 
 const userSchema = new Schema<UserDocumentExtended>(
@@ -50,10 +52,16 @@ const userSchema = new Schema<UserDocumentExtended>(
       required: false,
       unique: false,
       trim: true,
+      default: 'https://via.placeholder.com/50x50',
     },
     password: {
       type: String,
       trim: true,
+    },
+    recoveryToken: {
+      type: String,
+      trim: true,
+      default: null,
     },
   },
   {
@@ -72,8 +80,16 @@ const findByUserName: UserQuery = async function(username) {
 const findByLogin: UserQuery = async function(login) {
   let user = await this.findByUsername(login);
   if (!user) {
-    user = await this.findOne({ email: login });
+    user = await this.findByEmail(login);
   }
+  return user;
+};
+
+const findByEmail: UserQuery = async function(email) {
+  const user = await this.findOne({
+    email,
+  });
+
   return user;
 };
 
@@ -90,6 +106,8 @@ const comparePassword: PasswordComparer = function(candidatePassword) {
 userSchema.statics.findByUsername = findByUserName;
 
 userSchema.statics.findByLogin = findByLogin;
+
+userSchema.statics.findByEmail = findByEmail;
 
 userSchema.methods.comparePassword = comparePassword;
 
