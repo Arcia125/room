@@ -1,17 +1,14 @@
 import React from 'react';
 import { useMutation } from '@apollo/react-hooks';
-
+import { useHistory } from 'react-router-dom';
 import { Button } from './styles/Button';
 import GetStartedFormStyles from './styles/GetStarted';
 import { CREATE_USER } from '../graphql/createUser';
 import { SAVE_USER } from '../graphql/saveUser';
 import { useField } from '../hooks/useField';
 
-export interface GetStartedProps {
-  history: any;
-}
-
-const GetStarted = (props: GetStartedProps): JSX.Element => {
+const GetStarted = (props): JSX.Element => {
+  const history = useHistory();
   const { value, onChange } = useField();
   const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
 
@@ -19,18 +16,18 @@ const GetStarted = (props: GetStartedProps): JSX.Element => {
     update: (client, mutResult) => {
       const variables = {
         ...mutResult.data.createUser.user,
-        token: mutResult.data.createUser.token
+        token: mutResult.data.createUser.token,
       };
       console.log('saving user ', variables);
       saveUser({ variables });
       window.location.reload();
-    }
+    },
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     createUser({ variables: { username: value } });
-    props.history.push('/dashboard');
+    history.push('/dashboard');
   };
 
   return (

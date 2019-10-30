@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 import styled from 'styled-components';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 import { HomePage } from './styles';
+import { Button } from '../../components/styles/Button';
 import Navbar from '../../components/Navbar';
 import GetStarted from '../../components/GetStarted';
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
@@ -13,58 +15,8 @@ import { useField } from '../../hooks/useField';
 import { HelperText } from '../../components/styles/HelperText';
 import { Link } from '../../components/styles/Link';
 
-export interface GetStartedProps {
-  history: any;
-}
-
-const GetStarted = (props: GetStartedProps): JSX.Element => {
-  const { value, onChange } = useField();
-
-  const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
-
-  const [createUser, createUserMutation] = useMutation(CREATE_USER, {
-    update: (client, mutResult) => {
-      const variables = {
-        ...mutResult.data.createUser.user,
-        token: mutResult.data.createUser.token,
-      };
-
-      console.log('saving user ', variables);
-
-      saveUser({
-        variables,
-      });
-
-      window.location.reload();
-    },
-  });
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    createUser({ variables: { username: value } });
-    props.history.push('/dashboard');
-  };
-
-  return (
-    <>
-      <GetStartedForm onSubmit={handleSubmit}>
-        <div className="form">
-          <input
-            className="form__input"
-            value={value}
-            onChange={onChange}
-            placeholder="Enter a username"
-          />
-          <Button className="form__button" color="primary" type="submit">
-            <i className="material-icons">arrow_right_alt</i>
-          </Button>
-        </div>
-      </GetStartedForm>
-    </>
-  );
-};
-
-const Home: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+const Home: React.FunctionComponent<RouteComponentProps> = () => {
+  const history = useHistory();
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
@@ -80,7 +32,7 @@ const Home: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       <Navbar showLogin />
       <div className="homePage">
         <p className="homePage__invite">Pick a username to get started</p>
-        <GetStarted history={history} />
+        <GetStarted />
         <HelperText>
           <span>Have an account?</span>
           <Link to="/login">Login</Link>
