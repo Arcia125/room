@@ -6,7 +6,7 @@ exports[`Room finishes loading initial queries 1`] = `
     class="sc-ifAKCX kViNAh"
   >
     <nav
-      class="sc-EHOje jrDMue"
+      class="sc-EHOje hpFLPR"
     >
       <div
         class="user"
@@ -99,190 +99,565 @@ exports[`Room finishes loading initial queries 1`] = `
           Chat
         </header>
         <div
-          class="sc-bdVaJa nNBRa"
+          class="sc-bdVaJa bpitov"
         >
           <ul
-            class="sc-htpNat jCTauV"
+            class="sc-htpNat AOzsL"
           >
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Kevin's avatar"
+                class="user__avatar"
                 src="https://source.unsplash.com/cqraK2a3Or8/50x50"
-                style="border-radius: 50%;"
               />
-              <span>
-                Kevin
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Kevin
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Kaitlyn's avatar"
+                class="user__avatar"
                 src="https://source.unsplash.com/tzzpfLiRPlA/50x50"
-                style="border-radius: 50%;"
               />
-              <span>
-                Kaitlyn
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Kaitlyn
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Donte's avatar"
+                class="user__avatar"
                 src="https://source.unsplash.com/7nL3AhoUxw0/50x50"
-                style="border-radius: 50%;"
               />
-              <span>
-                Donte
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Donte
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Chelsie's avatar"
+                class="user__avatar"
                 src="https://source.unsplash.com/4TMBk-LqEKo/50x50"
-                style="border-radius: 50%;"
               />
-              <span>
-                Chelsie
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Chelsie
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Eriberto50's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/mactopus/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Eriberto50
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Eriberto50
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Leda7's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/ryanmclaughlin/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Leda7
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Leda7
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Davonte_Littel's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/wikiziner/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Davonte_Littel
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Davonte_Littel
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Dustin_Mante73's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/meelford/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Dustin_Mante73
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Dustin_Mante73
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Ericka.Schmidt's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/oktayelipek/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Ericka.Schmidt
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Ericka.Schmidt
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Corbin82's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/dvdwinden/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Corbin82
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Corbin82
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Pablo.DuBuque's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/dicesales/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Pablo.DuBuque
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Pablo.DuBuque
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Maye.Monahan36's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/ankitind/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Maye.Monahan36
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Maye.Monahan36
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Modesta78's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/idiot/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Modesta78
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Modesta78
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
+                alt="Holden.Roberts's avatar"
+                class="user__avatar"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/algunsanabria/128.jpg"
-                style="border-radius: 50%;"
               />
-              <span>
-                Holden.Roberts
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Holden.Roberts
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
             <li
-              class="sc-bwzfXH ijQKqq"
+              class="sc-bwzfXH edwCsR"
             >
               <img
-                alt=""
-                src="https://s3.amazonaws.com/uifaces/faces/twitter/ivanfilipovbg/128.jpg"
-                style="border-radius: 50%;"
+                alt="Please just make one's avatar"
+                class="user__avatar"
+                src="https://via.placeholder.com/50x50"
               />
-              <span>
-                Emile.Auer99
-              </span>
+              <div
+                class="user-glance"
+              >
+                <span
+                  class="user-glance__name"
+                >
+                  Please just make one
+                </span>
+                <span
+                  class="user-glance__last-message"
+                >
+                  Sure 8:pm
+                </span>
+              </div>
+              <div
+                class="message-info"
+              >
+                <span
+                  class="message-info__last-contact"
+                >
+                  02 Feb
+                </span>
+                <span
+                  class="message-info__notification"
+                >
+                  1
+                </span>
+              </div>
             </li>
           </ul>
           <div
@@ -309,7 +684,7 @@ exports[`Room finishes loading initial queries 1`] = `
               <li
                 class="chatbox__message-list--item"
               >
-                inventore quo dignissimos
+                lorem ipsum dolor
               </li>
             </ul>
             <div
@@ -340,7 +715,7 @@ exports[`Room renders without crashing 1`] = `
     class="sc-ifAKCX kViNAh"
   >
     <nav
-      class="sc-EHOje jrDMue"
+      class="sc-EHOje hpFLPR"
     >
       <div
         class="user"
