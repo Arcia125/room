@@ -4,7 +4,7 @@ const StyledUserList = styled.ul`
   padding: 1.6rem;
   list-style: none;
   background-color: #efeef8;
-  width: 30rem;
+  width: 32rem;
   height: min-content;
   display: grid;
   grid-gap: 8px;

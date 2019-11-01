@@ -8,11 +8,19 @@ const UserTile: React.FunctionComponent<{ avatar: string; name: string }> = ({
 }) => (
   <StyledUserTile>
     <img
-      style={{ borderRadius: '50%' }}
+      className="user__avatar"
       src={avatar || 'https://via.placeholder.com/50x50'}
-      alt=""
+      alt={`${name}'s avatar`}
     />
-    <span>{name}</span>
+    <div className="user-glance">
+      <span className="user-glance__name">{name}</span>
+      <span className="user-glance__last-message">Sure 8:pm</span>
+    </div>
+
+    <div className="message-info">
+      <span className="message-info__last-contact">02 Feb</span>
+      <span className="message-info__notification">1</span>
+    </div>
   </StyledUserTile>
 );
 

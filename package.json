@@ -37,7 +37,7 @@
     "@types/mongoose": "^5.5.18",
     "@types/morgan": "^1.7.37",
     "@types/node": "^12.7.5",
-    "@types/react": "^16.9.2",
+    "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.0",
     "@types/react-loadable": "^5.5.1",
     "@types/react-modal": "^3.8.3",

@@ -33,7 +33,7 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
         Pick a username to get started
       </p>
       <form
-        class="sc-EHOje gPqzLV"
+        class="sc-ifAKCX kCEAxF"
       >
         <div
           class="form"
@@ -57,7 +57,7 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
         </div>
       </form>
       <p
-        class="sc-ifAKCX iKeSpj"
+        class="sc-EHOje hiuNXc"
       >
         <span>
           Have an account?

@@ -40,12 +40,12 @@ home.story = {
   parameters: { notes: { markdown: homeMdText } },
 };
 
-export const room = () => <Room match={{ params: { roomId: mockRoom.id } }} />;
+// export const room = () => <Room match={{ params: { roomId: mockRoom.id } }} />;
 
-room.story = {
-  name: 'Room',
-  parameters: { notes: { markdown: roomMdText } },
-};
+// room.story = {
+//   name: 'Room',
+//   parameters: { notes: { markdown: roomMdText } },
+// };
 
 export const login = () => <Login history={mockHistory} />;
 
