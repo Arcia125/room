@@ -259,6 +259,8 @@ const Mutation = {
       publishNewRoomUserChannel(roomId, context.currentUser as UserType);
     }
 
+    console.log('user joined room');
+
     return {
       success: true,
     };

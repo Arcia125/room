@@ -77,12 +77,12 @@ const StyledRoom = styled.div`
           #2d8df2,
           #9198e5
         );
-        transform: rotate(-45deg);
-        width: 4rem;
-        height: 4rem;
+        width: 3.2rem;
+        height: 3.2rem;
         border: none;
         border-radius: 50%;
         cursor: pointer;
+        box-shadow: 0px 12px 9px #c6e0fb;
         .material-icons {
           transform: translate(2px);
           font-size: 26px;

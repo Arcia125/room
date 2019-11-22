@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from './Button';
 
 const StyledSideNavbar = styled.nav`
   display: grid;
@@ -32,6 +33,10 @@ const StyledSideNavbar = styled.nav`
   }
   & ul {
     list-style: none;
+  }
+
+  & ${Button} svg {
+    margin-right: 5px;
   }
 `;
 
