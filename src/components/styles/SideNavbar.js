@@ -23,12 +23,15 @@ const StyledSideNavbar = styled.nav`
     }
     & p {
       text-align: center;
-      font-family: Poppins;
+      font-family: 'Poppins', sans-serif;
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
 
       letter-spacing: 0.005em;
+    }
+    & .username {
+      margin: 8px 0 0 0;
     }
   }
   & ul {
