@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const merge = (...objs: { [key: string]: any }[]) =>
   [...objs].reduce(
     (acc, obj) =>

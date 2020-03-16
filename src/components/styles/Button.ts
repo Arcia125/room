@@ -1,7 +1,6 @@
 import styled, { css, StyledComponent } from 'styled-components';
 
 import { getThemeSpacing } from '../../utils/styleUtils';
-import { ReactElement, ReactChildren } from 'react';
 
 const buttonColorStyles = (props: { color?: 'primary'; basic?: boolean }) => {
   if (props.basic) {
@@ -47,6 +46,7 @@ const buttonReset = css`
 
 type StyledButton = StyledComponent<
   'button',
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   any,
   {
     basic?: boolean;

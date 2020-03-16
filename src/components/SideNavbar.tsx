@@ -38,7 +38,7 @@ const SideNavbar: FunctionComponent<{}> = () => {
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
 
-  const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
+  const [saveUser] = useMutation(SAVE_USER);
 
   const [claimAccount, claimAccountMutation] = useMutation(CLAIM_ACCOUNT, {
     update: (client, mutResult) => {

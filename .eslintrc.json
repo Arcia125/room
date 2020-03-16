@@ -33,6 +33,6 @@
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "no-prototype-builtins": "off",
-    "react/prop-types": "warn"
+    "react/prop-types": "off"
   }
 }

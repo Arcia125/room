@@ -1,13 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import { Button } from './styles/Button';
 
 const StyledSvg = styled.svg``;
 
-const SendButton: React.FunctionComponent<{
-  [key: string]: any;
-}> = props => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SendButton: React.FunctionComponent<{ [key: string]: any }> = props => {
   return (
     <Button {...props}>
       <StyledSvg

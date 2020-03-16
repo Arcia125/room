@@ -31,6 +31,7 @@ const useHackyUpdater = () => {
   return forceUpdate;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GetUpdatedDataFunc = (subscriptionData: SubscriptionResult<any>) => any;
 
 export const useActiveRoom = (roomId: string) => {
@@ -45,6 +46,7 @@ export const useActiveRoom = (roomId: string) => {
    */
   const hackyForceUpdate = useHackyUpdater();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateRoomQuery = (newData: any) => {
     // update query in cache
     // const newQuery = {
@@ -53,7 +55,7 @@ export const useActiveRoom = (roomId: string) => {
     //   data: newData,
     // };
     // client.writeQuery(newQuery);
-    roomQuery.updateQuery((previousQueryResult: any) => {
+    roomQuery.updateQuery(() => {
       return newData;
     });
 
@@ -67,8 +69,8 @@ export const useActiveRoom = (roomId: string) => {
 
   const createRoomQueryUpdater = (getUpdatedData: GetUpdatedDataFunc) => ({
     subscriptionData,
-    client,
-  }: OnSubscriptionDataOptions<any>) => {
+  }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  OnSubscriptionDataOptions<any>) => {
     if (!subscriptionData.data) return;
 
     const newData = getUpdatedData(subscriptionData);
@@ -77,7 +79,7 @@ export const useActiveRoom = (roomId: string) => {
   };
 
   /**
-   * @description funciton tha tupdates the room whenever a new message is received
+   * @description function that updates the room whenever a new message is received
    */
   const newMessageUpdater = createRoomQueryUpdater(subscriptionData => {
     const newData = {
@@ -108,7 +110,7 @@ export const useActiveRoom = (roomId: string) => {
 
   const currentUserQuery = useQuery(GET_CURRENT_USER);
 
-  const [joinRoom, joinRoomMutation] = useMutation(JOIN_ROOM, {
+  const [joinRoom] = useMutation(JOIN_ROOM, {
     onCompleted: data => {
       // Whenever this mutation completes, add the current user to the room if not already present
       if (data.joinRoom && data.joinRoom.success) {
