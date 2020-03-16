@@ -3,10 +3,10 @@
 exports[`Home renders without crashing when no user is logged in 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdVaJa ktYadu"
+    class="sc-bdVaJa dAqJLm"
   >
     <nav
-      class="sc-bwzfXH bPFVNE"
+      class="sc-bwzfXH cdyKRR"
     >
       <a
         href="/"
@@ -44,7 +44,7 @@ exports[`Home renders without crashing when no user is logged in 1`] = `
             value=""
           />
           <button
-            class="form__button sc-bxivhb esJnqo"
+            class="form__button sc-bxivhb eMfxuW"
             color="primary"
             type="submit"
           >

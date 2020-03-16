@@ -9,7 +9,6 @@ import {
   currentUserMockResolvers,
   nullCurrentUserMockResolvers,
 } from '../../../shared/queryMocks/currentUser';
-import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
 import { MemoryRouter } from 'react-router';
 
 beforeEach(() => {
@@ -24,7 +23,7 @@ describe('Home', () => {
       <MemoryRouter>
         <MockedProvider addTypename resolvers={nullCurrentUserMockResolvers}>
           <Provider>
-            <Home {...mockRouteComponentProps} />
+            <Home />
           </Provider>
         </MockedProvider>
       </MemoryRouter>
@@ -40,28 +39,12 @@ describe('Home', () => {
       <MemoryRouter>
         <MockedProvider addTypename resolvers={currentUserMockResolvers}>
           <Provider>
-            <Home {...mockRouteComponentProps} />
+            <Home />
           </Provider>
         </MockedProvider>
       </MemoryRouter>
     );
 
     await wait(() => expect(container).toBeInTheDocument());
-  });
-
-  it('redirects logged in users', async () => {
-    const { container } = render(
-      <MemoryRouter>
-        <MockedProvider addTypename resolvers={currentUserMockResolvers}>
-          <Provider>
-            <Home {...mockRouteComponentProps} />
-          </Provider>
-        </MockedProvider>
-      </MemoryRouter>
-    );
-
-    await wait(() =>
-      expect(mockRouteComponentProps.history.push).toBeCalledTimes(1)
-    );
   });
 });

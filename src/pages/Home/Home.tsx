@@ -1,4 +1,4 @@
-import React, { ReactChild } from 'react';
+import React, { ReactChild, useEffect } from 'react';
 import styled from 'styled-components';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
@@ -20,12 +20,14 @@ const Home: React.FunctionComponent<RouteComponentProps> = () => {
   const getCurrentUserQuery = useQuery(GET_CURRENT_USER);
   const currentUser =
     getCurrentUserQuery.data && getCurrentUserQuery.data.currentUser;
+  useEffect(() => {
+    if (currentUser) history.push('/dashboard');
+  }, [currentUser, history]);
 
   if (getCurrentUserQuery.loading) return <HomePage>Loading...</HomePage>;
   if (getCurrentUserQuery.error) {
     return <HomePage>getCurrentUserQuery.error.message</HomePage>;
   }
-  if (currentUser) history.push('/dashboard');
 
   return (
     <HomePage>

@@ -3,10 +3,10 @@
 exports[`Room finishes loading initial queries 1`] = `
 <DocumentFragment>
   <div
-    class="sc-ifAKCX kViNAh"
+    class="sc-bxivhb iZwyOD"
   >
     <nav
-      class="sc-EHOje hpFLPR"
+      class="sc-EHOje ficTPg"
     >
       <div
         class="user"
@@ -23,7 +23,7 @@ exports[`Room finishes loading initial queries 1`] = `
       <ul>
         <li>
           <button
-            class="sc-bxivhb UGMhj"
+            class="sc-ifAKCX gIxZVq"
             data-testid="create-room-button"
           >
             <svg
@@ -43,7 +43,7 @@ exports[`Room finishes loading initial queries 1`] = `
         </li>
         <li>
           <button
-            class="sc-bxivhb UGMhj"
+            class="sc-ifAKCX gIxZVq"
           >
             <svg
               fill="none"
@@ -62,7 +62,7 @@ exports[`Room finishes loading initial queries 1`] = `
         </li>
         <li>
           <button
-            class="sc-bxivhb UGMhj"
+            class="sc-ifAKCX gIxZVq"
           >
             <svg
               fill="none"
@@ -99,13 +99,13 @@ exports[`Room finishes loading initial queries 1`] = `
           Chat
         </header>
         <div
-          class="sc-bdVaJa bpitov"
+          class="sc-bdVaJa jHQQWE"
         >
           <ul
-            class="sc-htpNat AOzsL"
+            class="sc-htpNat ihnnmk"
           >
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Kevin's avatar"
@@ -142,7 +142,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Kaitlyn's avatar"
@@ -179,7 +179,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Donte's avatar"
@@ -216,7 +216,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Chelsie's avatar"
@@ -253,7 +253,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Eriberto50's avatar"
@@ -290,7 +290,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Leda7's avatar"
@@ -327,7 +327,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Davonte_Littel's avatar"
@@ -364,7 +364,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Dustin_Mante73's avatar"
@@ -401,7 +401,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Ericka.Schmidt's avatar"
@@ -438,7 +438,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Corbin82's avatar"
@@ -475,7 +475,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Pablo.DuBuque's avatar"
@@ -512,7 +512,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Maye.Monahan36's avatar"
@@ -549,7 +549,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Modesta78's avatar"
@@ -586,7 +586,7 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
                 alt="Holden.Roberts's avatar"
@@ -623,12 +623,12 @@ exports[`Room finishes loading initial queries 1`] = `
               </div>
             </li>
             <li
-              class="sc-bwzfXH edwCsR"
+              class="sc-bwzfXH bXAEdK"
             >
               <img
-                alt="Please just make one's avatar"
+                alt="Emile.Auer99's avatar"
                 class="user__avatar"
-                src="https://via.placeholder.com/50x50"
+                src="https://s3.amazonaws.com/uifaces/faces/twitter/ivanfilipovbg/128.jpg"
               />
               <div
                 class="user-glance"
@@ -636,7 +636,7 @@ exports[`Room finishes loading initial queries 1`] = `
                 <span
                   class="user-glance__name"
                 >
-                  Please just make one
+                  Emile.Auer99
                 </span>
                 <span
                   class="user-glance__last-message"
@@ -684,7 +684,7 @@ exports[`Room finishes loading initial queries 1`] = `
               <li
                 class="chatbox__message-list--item"
               >
-                lorem ipsum dolor
+                inventore quo dignissimos
               </li>
             </ul>
             <div
@@ -695,10 +695,38 @@ exports[`Room finishes loading initial queries 1`] = `
                 value=""
               />
               <button
-                class="chatbox__input--button sc-bxivhb esJnqo"
+                class="chatbox__input--button sc-ifAKCX RGfmm"
                 color="primary"
               >
-                send
+                <svg
+                  class="sc-bZQynM bOrPFB"
+                  fill="none"
+                  height="20"
+                  viewBox="5 5 10 18"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    clip-path="url(#clip0)"
+                  >
+                    <path
+                      d="M11.7683 21.5379L17.3812 6.36591L2.52139 12.7597L6.11252 16.1786L14.4552 9.44821L8.16739 18.1293L11.7683 21.5379Z"
+                      fill="white"
+                    />
+                  </g>
+                  <defs>
+                    <clippath
+                      id="clip0"
+                    >
+                      <rect
+                        fill="white"
+                        height="17"
+                        transform="translate(0 12.3292) rotate(-46.4893)"
+                        width="17"
+                      />
+                    </clippath>
+                  </defs>
+                </svg>
               </button>
             </div>
           </div>
@@ -712,10 +740,10 @@ exports[`Room finishes loading initial queries 1`] = `
 exports[`Room renders without crashing 1`] = `
 <DocumentFragment>
   <div
-    class="sc-ifAKCX kViNAh"
+    class="sc-bxivhb iZwyOD"
   >
     <nav
-      class="sc-EHOje hpFLPR"
+      class="sc-EHOje ficTPg"
     >
       <div
         class="user"
@@ -725,7 +753,7 @@ exports[`Room renders without crashing 1`] = `
       <ul>
         <li>
           <button
-            class="sc-bxivhb UGMhj"
+            class="sc-ifAKCX gIxZVq"
             data-testid="create-room-button"
           >
             <svg
@@ -745,7 +773,7 @@ exports[`Room renders without crashing 1`] = `
         </li>
         <li>
           <button
-            class="sc-bxivhb UGMhj"
+            class="sc-ifAKCX gIxZVq"
           >
             <svg
               fill="none"
@@ -764,7 +792,7 @@ exports[`Room renders without crashing 1`] = `
         </li>
         <li>
           <button
-            class="sc-bxivhb UGMhj"
+            class="sc-ifAKCX gIxZVq"
           >
             <svg
               fill="none"
