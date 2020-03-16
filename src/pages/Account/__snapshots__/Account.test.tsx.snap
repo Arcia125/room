@@ -3,10 +3,10 @@
 exports[`Account finishes loading and displays the current user's username 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdVaJa cdwebl"
+    class="sc-bdVaJa djwEpI"
   >
     <nav
-      class="sc-bwzfXH jcfAU"
+      class="sc-htpNat hqILtS"
     >
       <div
         class="user"
@@ -23,7 +23,7 @@ exports[`Account finishes loading and displays the current user's username 1`] =
       <ul>
         <li>
           <button
-            class="sc-htpNat klOdBn"
+            class="sc-bwzfXH lbzJyc"
             data-testid="create-room-button"
           >
             <svg
@@ -43,7 +43,7 @@ exports[`Account finishes loading and displays the current user's username 1`] =
         </li>
         <li>
           <button
-            class="sc-htpNat klOdBn"
+            class="sc-bwzfXH lbzJyc"
           >
             <svg
               fill="none"
@@ -62,7 +62,7 @@ exports[`Account finishes loading and displays the current user's username 1`] =
         </li>
         <li>
           <button
-            class="sc-htpNat klOdBn"
+            class="sc-bwzfXH lbzJyc"
           >
             <svg
               fill="none"
@@ -121,10 +121,10 @@ exports[`Account finishes loading and displays the current user's username 1`] =
 exports[`Account renders without crashing 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdVaJa cdwebl"
+    class="sc-bdVaJa djwEpI"
   >
     <nav
-      class="sc-bwzfXH jcfAU"
+      class="sc-htpNat hqILtS"
     >
       <div
         class="user"
@@ -134,7 +134,7 @@ exports[`Account renders without crashing 1`] = `
       <ul>
         <li>
           <button
-            class="sc-htpNat klOdBn"
+            class="sc-bwzfXH lbzJyc"
             data-testid="create-room-button"
           >
             <svg
@@ -154,7 +154,7 @@ exports[`Account renders without crashing 1`] = `
         </li>
         <li>
           <button
-            class="sc-htpNat klOdBn"
+            class="sc-bwzfXH lbzJyc"
           >
             <svg
               fill="none"
@@ -173,7 +173,7 @@ exports[`Account renders without crashing 1`] = `
         </li>
         <li>
           <button
-            class="sc-htpNat klOdBn"
+            class="sc-bwzfXH lbzJyc"
           >
             <svg
               fill="none"
