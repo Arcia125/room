@@ -16,7 +16,7 @@ const theme = {
     grayBlue: '#AEB3C8',
     lightBlue: '#AEAFE8',
     blue: '#AC2FC9',
-    lighterPurple: '#EFEEF8',
+    lighterPurple: '#faf9fc',
     lightPurple: '#D8D8F3',
     purple: '#9056D4',
     pink: '#DD6589',

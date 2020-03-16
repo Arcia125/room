@@ -8,7 +8,7 @@ const StyledRoom = styled.div`
   grid-template-areas:
     'search-bar room-name'
     'list' 'messages';
-  background-color: ${'#EFEEF8'};
+  background-color: #faf9fc;
   .chatbox {
     max-width: 90rem;
     &__user-list {
@@ -20,7 +20,7 @@ const StyledRoom = styled.div`
     }
 
     &__header {
-      color: ${'#454D57'};
+      color: #454d57;
       font-family: 'Montserrat', sans-serif;
       padding-bottom: 1.6rem;
       margin-bottom: 1.6rem;
@@ -41,7 +41,7 @@ const StyledRoom = styled.div`
         font-family: 'Montserrat', sans-serif;
         font-weight: 500;
         font-size: 1.6rem;
-        background-color: ${'#EAE8ED'};
+        background-color: #eae8ed;
         padding: 1.6rem;
         border-radius: 18px;
       }
@@ -77,12 +77,12 @@ const StyledRoom = styled.div`
           #2d8df2,
           #9198e5
         );
-        transform: rotate(-45deg);
-        width: 4rem;
-        height: 4rem;
+        width: 3.2rem;
+        height: 3.2rem;
         border: none;
         border-radius: 50%;
         cursor: pointer;
+        box-shadow: 0px 12px 9px #c6e0fb;
         .material-icons {
           transform: translate(2px);
           font-size: 26px;
@@ -95,7 +95,7 @@ const StyledRoom = styled.div`
   .room-page {
     padding: 4rem;
     &__header {
-      color: ${'#1f1f1f'};
+      color: #1f1f1f;
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
       font-size: 4.8rem;

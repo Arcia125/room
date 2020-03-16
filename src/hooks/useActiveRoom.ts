@@ -139,7 +139,7 @@ export const useActiveRoom = (roomId: string) => {
   });
 
   React.useEffect(() => {
-    if (room) {
+    if (typeof roomId === 'number') {
       joinRoom({ variables: { roomId } });
     }
     // disable eslint to prevent joinRoom and room from being included in the dependencies list
