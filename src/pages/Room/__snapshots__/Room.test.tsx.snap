@@ -6,7 +6,7 @@ exports[`Room finishes loading initial queries 1`] = `
     class="sc-bxivhb iZwyOD"
   >
     <nav
-      class="sc-EHOje ficTPg"
+      class="sc-EHOje bHYmcF"
     >
       <div
         class="user"
@@ -16,7 +16,9 @@ exports[`Room finishes loading initial queries 1`] = `
           src="https://source.unsplash.com/cqraK2a3Or8/50x50"
           style="border-radius: 50%;"
         />
-        <p>
+        <p
+          class="username"
+        >
           Kevin
         </p>
       </div>
@@ -743,7 +745,7 @@ exports[`Room renders without crashing 1`] = `
     class="sc-bxivhb iZwyOD"
   >
     <nav
-      class="sc-EHOje ficTPg"
+      class="sc-EHOje bHYmcF"
     >
       <div
         class="user"
