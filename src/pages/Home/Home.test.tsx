@@ -9,7 +9,6 @@ import {
   currentUserMockResolvers,
   nullCurrentUserMockResolvers,
 } from '../../../shared/queryMocks/currentUser';
-import { mockRouteComponentProps } from '../../../shared/mocks/mockRouteComponentProps';
 import { MemoryRouter } from 'react-router';
 
 beforeEach(() => {
