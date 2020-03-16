@@ -7,18 +7,17 @@ import { CREATE_USER } from '../graphql/createUser';
 import { SAVE_USER } from '../graphql/saveUser';
 import { useField } from '../hooks/useField';
 
-const GetStarted = (props): JSX.Element => {
+const GetStarted = (): JSX.Element => {
   const history = useHistory();
   const { value, onChange } = useField();
-  const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
+  const [saveUser] = useMutation(SAVE_USER);
 
-  const [createUser, createUserMutation] = useMutation(CREATE_USER, {
-    update: (client, mutResult) => {
+  const [createUser] = useMutation(CREATE_USER, {
+    update: (_client, mutResult) => {
       const variables = {
         ...mutResult.data.createUser.user,
         token: mutResult.data.createUser.token,
       };
-      console.log('saving user ', variables);
       saveUser({ variables });
       window.location.reload();
     },

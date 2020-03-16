@@ -8,7 +8,7 @@ type ClaimAccountFormOnSubmit = ({
 }: {
   password: string;
   email: string;
-}) => any;
+}) => void;
 
 interface ClaimAccountFormProps {
   onSubmit: ClaimAccountFormOnSubmit;

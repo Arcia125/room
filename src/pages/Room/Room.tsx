@@ -5,7 +5,6 @@ import { RouteComponentProps } from 'react-router';
 import StyledRoom from '../../components/styles/Room';
 import UserList from '../../components/UserList';
 import { SEND_MESSAGE } from '../../graphql/sendMessage';
-import { Button } from '../../components/styles/Button';
 import { useActiveRoom } from '../../hooks/useActiveRoom';
 import MainLayout from '../../components/MainLayout';
 import SendButton from '../../components/SendButton';
@@ -32,7 +31,7 @@ const Room: React.FunctionComponent<
 
   const handleSendMessageComplete = () => setUserMessage('');
 
-  const [sendMessage, sendMessageMutation] = useMutation(SEND_MESSAGE, {
+  const [sendMessage] = useMutation(SEND_MESSAGE, {
     variables: { roomId, content: userMessage },
     onCompleted: handleSendMessageComplete,
   });

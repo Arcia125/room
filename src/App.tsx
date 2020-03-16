@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import { Provider } from './theme';
-import { logout } from './utils/user';
-import { Button } from './components/styles/Button';
 import { Loading } from './components/Loading';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const makeLoadable = (loader: any) =>
   Loadable({
     loader,
@@ -31,9 +30,6 @@ const App = () => {
   return (
     <Provider>
       <Router>
-        {/* <Button onClick={logout as React.MouseEventHandler<HTMLButtonElement>}>
-          logout
-        </Button> */}
         <Route path="/" component={LoadableHome} exact />
         <Route path="/login" component={LoadableLogin} />
         <Route

@@ -21,6 +21,7 @@ const setUser = ({
   token,
 }: {
   user: User;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   cache: ApolloCache<any>;
   token: string;
 }) => {
@@ -39,6 +40,7 @@ const setUser = ({
 /**
  * @TODO finish
  */
+// eslint-disable-next-line
 const logout = ({ cache }: { cache?: ApolloCache<any> }) => {
   // if (cache) {
   // }

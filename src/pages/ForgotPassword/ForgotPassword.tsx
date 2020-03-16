@@ -39,7 +39,6 @@ const StyledForgotPassword = styled.div`
 `;
 
 const ResetPasswordContent = ({
-  data,
   loading,
   error,
   password,

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
 import { useQuery } from '@apollo/react-hooks';
 import MainLayout from '../../components/MainLayout';

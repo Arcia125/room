@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type LocalStorageParser = (text: string) => any;
 
 const getLocalStorageValue = (
@@ -10,6 +11,7 @@ const getLocalStorageValue = (
   return parser && value ? parser(value) : value;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const setLocalStorage = (key: string, value: any) =>
   localStorage.setItem(
     key,

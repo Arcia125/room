@@ -13,18 +13,16 @@ export const useAuth = () => {
     FORGOT_PASSWORD
   );
 
-  const [saveUser, saveUserMutation] = useMutation(SAVE_USER);
+  const [saveUser] = useMutation(SAVE_USER);
 
   const [executeResetPassword, resetPasswordMutation] = useMutation(
     RESET_PASSWORD,
     {
-      update: (cache, { data }) => {
+      update: (_cache, { data }) => {
         const variables = {
           ...data.resetPassword.user,
           token: data.resetPassword.token,
         };
-
-        console.log('saving user ', JSON.stringify(variables));
 
         saveUser({
           variables,
@@ -35,14 +33,12 @@ export const useAuth = () => {
     }
   );
 
-  const [executeLogin, loginMutation] = useMutation(LOGIN, {
+  const [executeLogin] = useMutation(LOGIN, {
     update: (cache, { data }) => {
       const variables = {
         ...data.login.user,
         token: data.login.token,
       };
-
-      console.log('saving user ', JSON.stringify(variables));
 
       saveUser({
         variables,
