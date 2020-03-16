@@ -47,8 +47,6 @@ const SideNavbar: FunctionComponent<{}> = () => {
         token: mutResult.data.claimAccount.token,
       };
 
-      console.log('saving user ', variables);
-
       saveUser({
         variables,
       });
@@ -89,7 +87,9 @@ const SideNavbar: FunctionComponent<{}> = () => {
                 src={getCurrentUserQuery.data.currentUser.avatar}
                 alt="avatar"
               />
-              <p>{getCurrentUserQuery.data.currentUser.username}</p>
+              <p className="username">
+                {getCurrentUserQuery.data.currentUser.username}
+              </p>
             </>
           )}
         </div>

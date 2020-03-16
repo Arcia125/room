@@ -6,7 +6,7 @@ exports[`Account finishes loading and displays the current user's username 1`] =
     class="sc-bdVaJa djwEpI"
   >
     <nav
-      class="sc-htpNat hqILtS"
+      class="sc-htpNat jBacjW"
     >
       <div
         class="user"
@@ -16,7 +16,9 @@ exports[`Account finishes loading and displays the current user's username 1`] =
           src="https://source.unsplash.com/cqraK2a3Or8/50x50"
           style="border-radius: 50%;"
         />
-        <p>
+        <p
+          class="username"
+        >
           Kevin
         </p>
       </div>
@@ -124,7 +126,7 @@ exports[`Account renders without crashing 1`] = `
     class="sc-bdVaJa djwEpI"
   >
     <nav
-      class="sc-htpNat hqILtS"
+      class="sc-htpNat jBacjW"
     >
       <div
         class="user"
