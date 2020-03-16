@@ -1,17 +1,12 @@
-import React, { ReactChild, useEffect } from 'react';
-import styled from 'styled-components';
-import { useMutation, useQuery } from '@apollo/react-hooks';
+import React, { useEffect } from 'react';
+import { useQuery } from '@apollo/react-hooks';
 import { RouteComponentProps } from 'react-router';
 import { useHistory } from 'react-router-dom';
 
 import { HomePage } from './styles';
-import { Button } from '../../components/styles/Button';
 import Navbar from '../../components/Navbar';
 import GetStarted from '../../components/GetStarted';
 import { GET_CURRENT_USER } from '../../graphql/getCurrentUser';
-import { CREATE_USER } from '../../graphql/createUser';
-import { SAVE_USER } from '../../graphql/saveUser';
-import { useField } from '../../hooks/useField';
 import { HelperText } from '../../components/styles/HelperText';
 import { Link } from '../../components/styles/Link';
 
