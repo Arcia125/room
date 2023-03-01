@@ -101,7 +101,7 @@
     "@testing-library/dom": "^6.2.0",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.4",
-    "cypress": "^3.4.1",
+    "cypress": "^12.7.0",
     "nodemon": "^1.19.2"
   },
   "browserslist": {
